@@ -1,320 +1,1164 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from www.zuooh.com/index by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 Sep 2017 16:01:06 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>Snapscript</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <script type="text/javascript">
-        (function() {
-            var link_element = document.createElement("link"),
-                s = document.getElementsByTagName("script")[0];
-            if (window.location.protocol !== "http:" && window.location.protocol !== "index.html") {
-                link_element.href = "index.html";
-            }
-            link_element.href += "//fonts.googleapis.com/css?family=Droid+Sans:400,700";
-            link_element.rel = "stylesheet";
-            link_element.type = "text/css";
-            s.parentNode.insertBefore(link_element, s);
-        })();
-    </script>
-    <script type="text/javascript">
-        (function() {
-            var link_element = document.createElement("link"),
-                s = document.getElementsByTagName("script")[0];
-            if (window.location.protocol !== "http:" && window.location.protocol !== "index.html") {
-                link_element.href = "index.html";
-            }
-            link_element.href += "//fonts.googleapis.com/css?family=Asap:400italic,400,700italic,700";
-            link_element.rel = "stylesheet";
-            link_element.type = "text/css";
-            s.parentNode.insertBefore(link_element, s);
-        })();
-    </script>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
-</head>
-<style type="text/css">
-#editor {
-  overflow: scroll;
-  max-height: 500px
+        <head>
+                    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.5/es5-shim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/2.4.1/lodash.js"></script>
+    <script src="https://cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+    <script src="markdown-it.js"></script>
+    <script src="https://twemoji.maxcdn.com/twemoji.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+    <!-- Ancient IE support - load shiv & kill broken highlighter--><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script>window.hljs = null;</script>
+    <![endif]-->
+    <!-- GA counter-->
+<style>
+html, body {
+    height: 100%;
+    width: 600px;        
 }
 
-.subject-width {
-  width: 800px;
-}
-
-.fixed-width-button {
-  width: 80px !important;
-    height: 23px;
-  border: none;
-}
-
-.fixed-width-input {
-  width: 580px
-}
-
-.fixed-width-textarea {
-  width: 580px;
-  height: 400px;
-}
-
-.fixed-width-short-input {
-  width: 300px
-}
-
-.search-query {
-  width: 190px;
-}
-
-.pagination-centered {
-  text-align: center;
-}
-
-.input-append button.add-on {
-  height: inherit !important;
-}
-.page {
-  background-color: #ebebeb;
-}
-
-.grid {
-  border-width: 1px;
-  border-color: #bbbbbb;
-  border-collapse: collapse;
-    border-radius: 4px; 
-    -webkit-border-radius: 4px;  
-}
-
-.header {
-  padding: 8px; 
-  white-space: nowrap;
-  word-break: keep-all;
-  font-weight: bold;
-}
-
-.normal {
-  padding: 8px;
-  background-color: #ffffff;
-  white-space: nowrap;
-  word-break: keep-all;
-  font-weight: normal;
-}
-
-.highlight {
-  padding: 8px;
-  background-color: #efefef;
-  white-space: nowrap;
-  word-break: keep-all;
-  font-weight: normal;
-}
-
-.update {
-  padding: 8px;
-    color: #ffffff;
-  background-color: #89c236;
-  white-space: nowrap;
-  word-break: keep-all;
-  font-weight: normal;
-}
-
-.input {
-  border: 1px solid #bbbbbb;
-  padding: 5px;
-  font-family: verdana, arial, sans-serif;
-  font-size: 11px;
-}
-
-.label {
-  font-family: verdana, arial, sans-serif;
-  font-size: 14px;
-  font-weight: normal;
-}
-
-.debug {
-  width: 500px;
-  height: 150px;
-  padding: 5px;
-  font-family: verdana, arial, sans-serif;
-  font-size: 11px;
-}
 </style>
+        </head>
 <body>
+<p><img src="https://raw.githubusercontent.com/tern-lang/tern-site/master/www.tern-lang.org/img/logo-small.png" alt="Tern"></p>
+<p>Tern is an optionally typed object oriented language with first class functions and coroutines.
+It borrows concepts and constructs from many sources including Swift, JavaScript, Java, and
+Scala amongst others. It is interpreted and has no intermediate representation, so there is
+no need to compile or build your application.</p>
+<p>The interpreter has been built from the ground up, no tools or libraries have been used. As a result the
+project is small, fully self contained, and can be either embedded or run as a standalone application.
+Here you will get an overview on how the interpreter works and the language in addition to the debugger
+and development environment.</p>
+<ul>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#parallel-compilation">Parallel Compilation</a>
+<ul>
+<li><a href="#scanner">Scanner</a></li>
+<li><a href="#grammar">Grammar</a></li>
+<li><a href="#lexical-analysis">Lexical Analysis</a></li>
+<li><a href="#parser">Parser</a></li>
+<li><a href="#assembler">Assembler</a></li>
+</ul>
+</li>
+<li><a href="#static-analysis">Static Analysis</a></li>
+<li><a href="#evaluation">Evaluation</a></li>
+<li><a href="#command-directive">Command Directive</a></li>
+<li><a href="#example-programs">Example Programs</a>
+<ul>
+<li><a href="#mario">Mario</a></li>
+<li><a href="#flappy-bird">Flappy Bird</a></li>
+<li><a href="#space-invaders">Space Invaders</a></li>
+<li><a href="#tetris">Tetris</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#language">Language</a>
+<ul>
+<li><a href="#basic-types">Basic Types</a>
+<ul>
+<li><a href="#booleans">Booleans</a></li>
+<li><a href="#numbers">Numbers</a></li>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#arrays">Arrays</a></li>
+<li><a href="#collections">Collections</a></li>
+</ul>
+</li>
+<li><a href="#operators">Operators</a>
+<ul>
+<li><a href="#arithmetic-operators">Arithmetic Operators</a></li>
+<li><a href="#bitwise-operators">Bitwise Operators</a></li>
+<li><a href="#relational-operators">Relational Operators</a></li>
+<li><a href="#logical-operators">Logical Operators</a></li>
+</ul>
+</li>
+<li><a href="#conditions">Conditions</a>
+<ul>
+<li><a href="#if-statement">If Statement</a></li>
+<li><a href="#else-statement">Else Statement</a></li>
+<li><a href="#unless-statement">Unless Statement</a></li>
+<li><a href="#assert-statement">Assert Statement</a></li>
+<li><a href="#debug-statement">Debug Statement</a></li>
+<li><a href="#ternary-operator">Ternary Operator</a></li>
+<li><a href="#null-coalesce">Null Coalesce</a></li>
+</ul>
+</li>
+<li><a href="#loops">Loops</a>
+<ul>
+<li><a href="#while-statement">While Statement</a></li>
+<li><a href="#until-statement">Until Statement</a></li>
+<li><a href="#for-statement">For Statement</a></li>
+<li><a href="#for-in-statement">For In Statement</a></li>
+<li><a href="#loop-statement">Loop Statement</a></li>
+</ul>
+</li>
+<li><a href="#exceptions">Exceptions</a>
+<ul>
+<li><a href="#catch-statement">Catch Statement</a></li>
+<li><a href="#finally-statement">Finally Statement</a></li>
+</ul>
+</li>
+<li><a href="#functions">Functions</a>
+<ul>
+<li><a href="#declaration">Declaration</a></li>
+<li><a href="#type-constraints">Type Constraints</a></li>
+<li><a href="#variable-arguments">Variable Arguments</a></li>
+<li><a href="#closures">Closures</a></li>
+<li><a href="#function-handles">Function Handles</a></li>
+<li><a href="#generic-functions">Generic Functions</a></li>
+<li><a href="#coroutines">Coroutines</a></li>
+<li><a href="#async-await">Async Await</a></li>
+<li><a href="#blank-parameters">Blank Parameters</a></li>
+</ul>
+</li>
+<li><a href="#types">Types</a>
+<ul>
+<li><a href="#class">Class</a></li>
+<li><a href="#enumeration">Enumeration</a></li>
+<li><a href="#trait">Trait</a></li>
+<li><a href="#module">Module</a></li>
+<li><a href="#annotations">Annotations</a></li>
+<li><a href="#type-alias">Type Alias</a></li>
+<li><a href="#uniform-access">Uniform Access</a></li>
+<li><a href="#import">Import</a></li>
+<li><a href="#coercion">Coercion</a></li>
+<li><a href="#platform-integration">Platform Integration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#tools">Tools</a>
+<ul>
+<li><a href="#command-line-interpreter">Command Line Interpreter</a></li>
+<li><a href="#development-environment">Development Environment</a>
+<ul>
+<li><a href="#breakpoints">Breakpoints</a></li>
+<li><a href="#console">Console</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#threads">Threads</a></li>
+<li><a href="#process-view">Process View</a></li>
+<li><a href="#debug-perspective">Debug Perspective</a></li>
+<li><a href="#full-screen">Full Screen</a></li>
+</ul>
+</li>
+<li><a href="#debug-agent">Debug Agent</a></li>
+<li><a href="#android">Android</a></li>
+</ul>
+</li>
+</ul>
+<h2>Overview</h2>
+<p>Tern is an optionally typed scripting language for the <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">JVM</a>
+and is compatible with all Android variants
+such as <a href="https://en.wikipedia.org/wiki/Dalvik_(software)">Dalvik</a> and <a href="https://en.wikipedia.org/wiki/Android_Runtime">ART</a>. The learning curve is small for anyone with experience of Java, JavaScript, or a similar
+imperative  language. It has excellent integration with the host platform and can
+leverage the vast ecosystem of the JVM without excessive boilerplate.</p>
+<p>The language is ideal for embedding in to an existing application, and is a fraction of the size
+of similar languages for the JVM platform. In addition to embedding it can be run as a standalone
+interpreter and has a development environment which allows scripts to be debugged and profiled.</p>
+<h3>Parallel Compilation</h3>
+<p>Tern programs can be separated in to multiple source files that define the types and functions representing
+the execution flow. To minimise start times the parsing and assembly of the source is performed in parallel.
+Once defined the execution graph is joined in to a single executable and static analysis is performed.</p>
+<p>The tools and frameworks required to parse and assemble the source code are all custom and written from the
+ground up with performance and correctness being the primary goals. In most conventional implementations
+a grammar is used to generate the parser, however for flexibility this implementation processes the grammar
+at runtime as the program starts, the parser has no prior knowledge of the grammar. This architecture simplifies
+the implementation and makes it language agnostic.</p>
+<h4>Scanner</h4>
+<p>In the initial phase of compilation the source is passed through a scanner and compressor. This removes
+comments and command directives from the source text in addition to whitespace that has no semantic value.
+When the scanner has completed it emits three segments representing the compressed source text, the line
+numbers the source was scanned from, and a type index classifying the source characters.</p>
+<h4>Grammar</h4>
+<p>To make sense of the source code a custom grammar is required. The grammar used for compilation of
+the Tern language leverages a custom framework that uses a variant of <a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Bacus Naur Form</a>. It is defined
+using special rules and literal values that form the basis of a <a href="https://en.wikipedia.org/wiki/Recursive_descent_parser">Recursive Descendant Parser</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>|</td>
+<td>Represents a logical OR</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Represents one or more</td>
+</tr>
+<tr>
+<td>+</td>
+<td>Represents at least once</td>
+</tr>
+<tr>
+<td>?</td>
+<td>Represents one or none</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>Define a production</td>
+</tr>
+<tr>
+<td>()</td>
+<td>Group productions and literals</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>Group productions where first match wins</td>
+</tr>
+<tr>
+<td>_</td>
+<td>Represents whitespace</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>Represents a symbol</td>
+</tr>
+<tr>
+<td>‘’</td>
+<td>Represents a literal text value</td>
+</tr>
+</tbody>
+</table>
+<p>The formal grammar for the language is defined with these rules, it can be modified to extend the language
+or tweak existing behaviour.</p>
+<p><a href="https://github.com/snapscript/snap/blob/master/snap-parse/src/main/resources/grammar.txt">Language Grammar</a></p>
+<h4>Lexical Analysis</h4>
+<p>The lexical analysis phase indexes the source in to a stream of tokens or lexemes. A token can represent
+one or more primitive character sequences that are known to the parser. For example a quoted string, a
+decimal number, or perhaps a known keyword defined in the grammar. To categorise the tokens the formal
+grammar is indexed in to a sequence of literals. If a token matches a known literal then it
+is classified as a literal. Any given token can contain a number of separate classifications which enables
+the parser to determine based on the grammar and its context what the token represents.</p>
+<p>When this phase of processing completes there is an ordered sequence of classified tokens. Each token
+will have the line number it was extracted from in addition to a bitmask describing the classifications
+it has received. It is up to the parser to map these tokens to the formal grammar.</p>
+<h4>Parser</h4>
+<p>The parser consumes the sequence of categorised tokens produced by the lexer. The parser has backtracking
+semantics and is performed in two phases. The first phase is to the map the tokens against the grammar and
+the second phase is to produce an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree</a>.</p>
+<h4>Assembler</h4>
+<p>The final phase of the compilation process is assembly. This process uses a configured set of instructions
+to map top level grammars to nodes within an execution graph. Configuring a set of instructions facilitates
+a dependency injection mechanism which is used to build the program.</p>
+<p>The syntax tree is traversed in a depth first manner to determine what the instruction dependencies are needed. As the
+traversal retreats back up from the leafs of the tree to the root instructions are assembled. This process is
+similar to how many other dependency injection system works.</p>
+<p><a href="https://github.com/snapscript/snap/blob/master/snap-tree/src/main/resources/instruction.txt">Language Instructions</a></p>
+<h3>Static Analysis</h3>
+<p>As a program grows large so to does its complexity. To manage this complexity static analysis is performed across
+the entire codebase. The level of static analysis performed is up to the developer as types are optional. Access
+modifiers are also provided to describe intent and visibility of functions and variables.</p>
+<p>When leveraging types further qualification can be given in the form of generics. <a href="https://en.wikipedia.org/wiki/Generic_programming">Generics</a> allow the developer
+to describe the types of parameters that can be used for a specific declaration.</p>
+<h3>Evaluation</h3>
+<p>Code evaluation is the process of transforming text to code at runtime. This can be useful when you want
+to perform some dynamic task. In languages such as Java the reflection framework allows developers to
+introspect and execute code in a dynamic way. With evaluation you can achieve similar functionality without
+the boilerplate. Internally evaluations cache the execution trees they represent which eliminates
+the performance overheads.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> instance = <span class="hljs-built_in">eval</span>(<span class="hljs-string">"new "</span> + type + <span class="hljs-string">"()"</span>);
+</code></pre>
+<h3>Command Directive</h3>
+<p>The command directive is used to tell command interpreters where the interpreter for the source is located. This is
+is often called the <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">Shebang</a> directive and is interpreted by common shells like bash. The first line of any Tern
+source file can contain this command directive.</p>
+<pre class="hljs language-sh"><code><span class="hljs-comment">#!/usr/bin/env snap</span>
+</code></pre>
+<h3>Example Programs</h3>
+<p>The best way to learn any language is through examples. Below is a collection of examples from applications that
+have been written in Tern. The source code for these examples are available on Github and are free to download.</p>
+<h4>Mario</h4>
+<p>This is a clone of the <a href="https://en.wikipedia.org/wiki/Mario_Bros.">Mario</a> game comes with the full source code in addition to the images and sounds. It has
+been written twice, once with full static typing and one with dynamic typing. Below is a YouTube video of the
+program being run and debugged with Tern Studio.</p>
+<p><a href="https://www.youtube.com/watch?v=6vo2y83unG0"><img src="http://img.youtube.com/vi/6vo2y83unG0/0.jpg" alt="Debug Desktop Game"></a></p>
+<h5>Statically Typed</h5>
+<p>The statically typed implementation performs type checking throughout.</p>
+<p><a href="https://github.com/snapscript/snap-develop/tree/master/snap-studio/work/demo/games/src/mario">Source Code</a></p>
+<h5>Dynamically Typed</h5>
+<p>The dynamically typed implementation is identical to the statically typed implementation without type
+constraints.</p>
+<p><a href="https://github.com/snapscript/snap-develop/tree/master/snap-studio/work/games/mario/src/mario">Source Code</a></p>
+<h5>Android</h5>
+<p>In order to run on Android a framework was required to perform double buffering and map user
+actions to program behaviour. The Android game framework can be found on Github within this profile.</p>
+<p><a href="https://github.com/snapscript/snap-develop/blob/master/snap-studio/work/android/mario/src/mario/start.snap">Source Code</a></p>
+<h4>Flappy Bird</h4>
+<p>This is a clone of the <a href="https://en.wikipedia.org/wiki/Flappy_Bird">Flappy Bird</a> game and is targeted for Android. Below is a YouTube vide of the application
+being run and debugged remotely with Tern Studio.</p>
+<p><a href="https://www.youtube.com/watch?v=w-baBQbZ5dI"><img src="http://img.youtube.com/vi/w-baBQbZ5dI/0.jpg" alt="Debug Android Game"></a></p>
+<p><a href="https://github.com/snapscript/snap-develop/tree/master/snap-studio/work/android/flappybird/src/flappybird">Source Code</a></p>
+<h4>Space Invaders</h4>
+<p>This is a very basic clone of the classic <a href="https://en.wikipedia.org/wiki/Space_Invaders">Space Invaders</a> game. The implementation is short but leverages some
+of the more interesting language features such as async await.</p>
+<p><a href="https://github.com/snapscript/snap-develop/tree/master/snap-studio/work/demo/games/src/spaceinvaders">Source Code</a></p>
+<h4>Tetris</h4>
+<p>This is a very basic clone of the classic <a href="https://en.wikipedia.org/wiki/Tetris">Tetris</a> game. The implementation does not leverage graphics or sounds and
+shapes are painted on the screen with AWT primitives.</p>
+<p><a href="https://github.com/snapscript/snap-develop/tree/master/snap-studio/work/demo/games/src/tetris">Source Code</a></p>
+<h3>Language</h3>
+<p>Learning how to code applications with Tern is easy, particularly if you have experience with Java, Javascript,
+or a similar language. Below you will find various sections illustrating the basics, where you will learn about
+types, functions, and the various statements and expressions that can be used.</p>
+<h4>Basic Types</h4>
+<p>For programs to be useful, we need to be able to work with some of the simplest units of data such as numbers,
+strings, structures, boolean values, and the like. Support for these basic types is much the same as you would
+expected for Java, with some additional features such as string templates, map, set, and list literals.</p>
+<p>In order to reference values they must be associated with a variable. Variables are declared with the keyword
+<code>let</code> or <code>const</code>. A variable can have an optional constraint by declaring a type. If constrained a
+variable can only reference values of the declared type.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> v = <span class="hljs-number">22</span>; <span class="hljs-comment">// v can reference any type</span>
+<span class="hljs-keyword">let</span> i: Integer = <span class="hljs-number">22</span>; <span class="hljs-comment">// i can only reference integers</span>
+<span class="hljs-keyword">let</span> d: Double = <span class="hljs-number">22.0</span>; <span class="hljs-comment">// d can only reference doubles</span>
+<span class="hljs-keyword">const</span> c = <span class="hljs-number">1.23</span>; <span class="hljs-comment">// c is constant, it cannot change</span>
+</code></pre>
+<h5>Booleans</h5>
+<p>The most basic type is the simple true or false value, which is called a boolean value.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> a = <span class="hljs-literal">true</span>; <span class="hljs-comment">// value a is true</span>
+<span class="hljs-keyword">let</span> b = <span class="hljs-literal">false</span>; <span class="hljs-comment">// false</span>
+<span class="hljs-keyword">let</span> c = <span class="hljs-built_in">Boolean</span>.FALSE; <span class="hljs-comment">// type constraint of Boolean</span>
+<span class="hljs-keyword">let</span> d: <span class="hljs-built_in">Boolean</span> = <span class="hljs-built_in">Boolean</span>.TRUE; <span class="hljs-comment">// like Boolean d = Boolean.TRUE</span>
+<span class="hljs-keyword">let</span> e = <span class="hljs-built_in">Boolean</span>.FALSE; <span class="hljs-comment">// like Object e = Boolean.FALSE</span>
+</code></pre>
+<h5>Numbers</h5>
+<p>The most basic type is the simple true or false value, which is called a ‘boolean’ value.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> binary = <span class="hljs-number">0b0111011</span>; <span class="hljs-comment">// binary literal</span>
+<span class="hljs-keyword">let</span> hex = <span class="hljs-number">0xffe16</span>; <span class="hljs-comment">// hexidecimal literal</span>
+<span class="hljs-keyword">let</span> int = <span class="hljs-number">11</span>;
+<span class="hljs-keyword">let</span> real = <span class="hljs-number">2.13</span>;
+<span class="hljs-keyword">let</span> typed: Integer = <span class="hljs-number">22</span>; <span class="hljs-comment">// integer value 22</span>
+<span class="hljs-keyword">let</span> coercion: Double = <span class="hljs-string">"1.234e2"</span>; <span class="hljs-comment">// coercion of string to double</span>
+</code></pre>
+<h5>Strings</h5>
+<p>A fundamental part of creating programs is working with textual data. As in other languages,
+we use the type string to refer to these textual types. Strings are represented by characters
+between a single quote, a double quote, or a backtick. When characters are between double quotes
+or backticks they are interpolated, meaning they have expressions evaluated within them. These
+expressions start with the dollar character. All strings can span multiple lines.</p>
+<pre class="hljs language-rust"><code><span class="hljs-keyword">let</span> string = <span class="hljs-symbol">'Hello</span> World!'; <span class="hljs-comment">// literal string</span>
+<span class="hljs-keyword">let</span> template = <span class="hljs-string">"The sum of 1 and 2 is ${1 + 2}"</span>; <span class="hljs-comment">// interpolated string</span>
+<span class="hljs-keyword">let</span> concat = <span class="hljs-string">"The sum of 1 and 2 is "</span> + (<span class="hljs-number">1</span> + <span class="hljs-number">2</span>); <span class="hljs-comment">// concatenation</span>
+
+<span class="hljs-keyword">let</span> multiline = <span class="hljs-string">"Details
+    a) This is a new line
+    b) This is another new line"</span>;
     
-<header>
-  <div class="container">
-    <div class="row">
-      <div class="logo span3">
-        <a class="brand" href="about.html"><img src="img/logo.png"></a>
-      </div>
-      <div class="span9">
-        <div class="navbar navbar-inverse">
-          <div class="navbar-inner">
-            <div class="container">
-              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-              </a>
-              <div class="nav-collapse collapse">
-                <ul class="nav">
-                  <li  class="active" ><a href="index.html">Home</a></li>
-                  <li  class="" ><a href="about.html">About</a></li>
-                  <li  class="" ><a href="learn.html">Learn</a></li>
-                  <li ><a href="download.html">Download</a></li>
-                  <li  class="" ><a href="https://github.com/snapscript">Github</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-  <div class="wrapper">
-  <div class="main-banner">
-  <div class="container">
-    <div class="main-message">
-      <br>
-      <br>
-      <h1 style="color: #ffffff; font-size: 3em;">Powerful, Embeddable, Lightweight</h1>
-      <br>
-      <br>
-      <center>
-         <p style="color: #5f933b; font-size: 1.3em; width: 70%;">
-Snap is an open source, optionally typed, object oriented language for the Java platform that 
-is fully featured yet a fraction the size of similar languages
-        </p>
-      </center>
-    </div>
-  </div>
-</div>
+<span class="hljs-keyword">let</span> backtick = `A backtick can contain <span class="hljs-string">"quotes"</span> and ${expressions}
+    and can span multiple lines`;    
+</code></pre>
+<h5>Arrays</h5>
+<p>To allocate an contiguous sequence of memory an array is required. An array can be created from
+any type, however arrays of numbers or bytes are created as primitive arrays internally. These
+primitive arrays provide better integration with streams and buffers.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> array = <span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>[<span class="hljs-number">10</span>]; <span class="hljs-comment">// array of strings</span>
+<span class="hljs-keyword">let</span> bytes = <span class="hljs-keyword">new</span> Byte[<span class="hljs-number">11</span>]; <span class="hljs-comment">// primitive byte[11]</span>
+<span class="hljs-keyword">let</span> byte = array[<span class="hljs-number">1</span>]; <span class="hljs-comment">// reference element in array</span>
+<span class="hljs-keyword">let</span> matrix = <span class="hljs-keyword">new</span> Long[<span class="hljs-number">10</span>][<span class="hljs-number">22</span>]; <span class="hljs-comment">// multidimensional long[10][22];</span>
+<span class="hljs-keyword">let</span> long = matrix[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>]; <span class="hljs-comment">// reference multidimensional</span>
+</code></pre>
+<h4>Collections</h4>
+<p>Complex data structures can be represented with a simple and straight forward syntax. Collection
+types found in Java such as maps, sets, and lists can be represented as follows.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> set = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"x"</span>, <span class="hljs-string">"y"</span>}; <span class="hljs-comment">// creates a LinkedHashSet</span>
+<span class="hljs-keyword">let</span> list = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]; <span class="hljs-comment">// creates an ArrayList</span>
+<span class="hljs-keyword">let</span> map = {<span class="hljs-string">"a"</span>: <span class="hljs-number">1</span>, <span class="hljs-string">"b"</span>: <span class="hljs-number">2</span>}; <span class="hljs-comment">// creates a LinkedHashSet</span>
+<span class="hljs-keyword">let</span> empty = {:}; <span class="hljs-comment">// creates an empty map</span>
+<span class="hljs-keyword">let</span> mix = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, {<span class="hljs-string">"a"</span>: {<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, [<span class="hljs-number">55</span>, <span class="hljs-number">66</span>]}}]; <span class="hljs-comment">// mix collection types</span>
 
- 
-</div>
-<div id="wrapper">
-  <div class="container">
-      <div class="row">
-    <div class="span4">
-        <div class="icons-box">
-            <i class="ico-gamepad circle big"></i>
-            <div class="title">
-                <h3>Mobile Gaming</h3>
-            </div>
-            <p>Mobile applications are easy to develop with Android 2.1 and up, debugging can be done from any web browser without the need for 
-           emulators</p>
-            <!-- >p>Implementing gaming solutions across a wide range of platforms such as Android, iOS, and Windows Phone while maintaining a consistent user experience
-            is a must for any gaming platform. Talk to us about leveraging HTML, JavaScript, and CSS through Cordova or developing native solutions.</p-->
-            <div class="clear"></div>
-        </div>
+<span class="hljs-keyword">let</span> multiline = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"John Doe"</span>,
+    <span class="hljs-attr">address</span>: {
+        <span class="hljs-attr">city</span>: <span class="hljs-string">"Unknown"</span>,
+        <span class="hljs-attr">state</span>: <span class="hljs-string">"California"</span>
+    },
+    <span class="hljs-attr">age</span>: <span class="hljs-number">33</span>
+};
 
-    </div>
-    <div class="span4">
-        <div class="icons-box">
-            <i class="ico-cloud circle big"></i>
-            <div class="title">
-                <h3>Desktop Applications</h3>
-            </div>
-           <p>Developing applications for the desktop is easy, leveraging the full Java ecosystem you can write, debug and run your applications from
-           the web based IDE or the command line interpreter</p>
-            <!-- p>Messaging is core to many mobile applications, here we have a wide range of experience in the messaging space  
-            developing bespoke high frequency messaging and integrating with existing standards such as HTTP, Websockets, AMQP, STOMP, and many others.</p-->
-            <div class="clear"></div>
-        </div>
-    </div>
-    <div class="span4">
-        <div class="icons-box">
-            <i class="ico-random circle big"></i>
-            <div class="title">
-                <h3>Embedded Solutions</h3>
-            </div>
-            <p>Embedding the language in a larger application can be done with a couple of lines of code, all you need to do is reference a single 
-            tiny library, there are no dependencies, so no bloat</p>            
-            <!-- p>Cloud computing is key to developing a platform and user experience that scales. Access to highly available distributed services            
-                ensures users get a consistent, reliable, and performant service wherever they are across the globe. Let us help you get started on Google Cloud or Amazon EC2.</p-->
-            <div class="clear"></div>
-        </div>
-    </div>
-</div>
+<span class="hljs-keyword">let</span> ascending = [<span class="hljs-number">0</span> to <span class="hljs-number">9</span>]; <span class="hljs-comment">// range of increasing numbers</span>
+<span class="hljs-keyword">let</span> descending = [<span class="hljs-number">0</span> <span class="hljs-keyword">from</span> <span class="hljs-number">9</span>]; <span class="hljs-comment">// range of decreasing numbers</span>
+</code></pre>
+<h3>Operators</h3>
+<p>Operators are special symbols that perform specific operations on a set of operands. The operators
+available are those found in most conventional imperative languages, such as those to perform
+algebra or compare values.</p>
+<h4>Arithmetic Operators</h4>
+<p>Arithmetic operators are used in mathematical expressions in the same way that they are used in algebra.
+These operations can be grouped and order can be specified using braces.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
+<span class="hljs-keyword">let</span> c = a + b; <span class="hljs-comment">// add is 30</span>
+<span class="hljs-keyword">let</span> d = b - a; <span class="hljs-comment">// subtract is 10</span>
+<span class="hljs-keyword">let</span> e = b / a; <span class="hljs-comment">// divide is 2</span>
+<span class="hljs-keyword">let</span> f = a * b; <span class="hljs-comment">// multiply is 200</span>
+<span class="hljs-keyword">let</span> g = b % a; <span class="hljs-comment">// modulus is 0</span>
+<span class="hljs-keyword">let</span> h = a++; <span class="hljs-comment">// a is 11 and h is 10</span>
+<span class="hljs-keyword">let</span> i = b--<span class="hljs-comment">// b is 19 and i is 20</span>
+<span class="hljs-keyword">let</span> j = --a; <span class="hljs-comment">// a is 10 and j is 10</span>
+<span class="hljs-keyword">let</span> k = ++b; <span class="hljs-comment">// b is 20 as is k</span>
+<span class="hljs-keyword">let</span> l = <span class="hljs-number">1</span> / ((a + b) * <span class="hljs-number">10</span>)
+</code></pre>
+<h4>Bitwise Operators</h4>
+<p>Bitwise operators are used to manipulate numbers, typically integers, at the byte level. They do so by change the binary representation of the value.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> a = <span class="hljs-number">0b00111100</span>;
+<span class="hljs-keyword">let</span> b = <span class="hljs-number">0b00001101</span>;
+<span class="hljs-keyword">let</span> c = a &amp; b; <span class="hljs-comment">// bitwise and, c is 00001100</span>
+<span class="hljs-keyword">let</span> d = a | b; <span class="hljs-comment">// bitwise or, d is 00111101</span>
+<span class="hljs-keyword">let</span> e = a &amp; b; <span class="hljs-comment">// bitwise xor, e is 00110001</span>
+<span class="hljs-keyword">let</span> f = ~a; <span class="hljs-comment">// f is 11000011</span>
+<span class="hljs-keyword">let</span> g = f &gt;&gt; <span class="hljs-number">2</span>; <span class="hljs-comment">// f is 00110000</span>
+<span class="hljs-keyword">let</span> h = f &lt;&lt; <span class="hljs-number">2</span>; <span class="hljs-comment">// h is 11000000</span>
+<span class="hljs-keyword">let</span> i = f &gt;&gt;&gt; <span class="hljs-number">2</span>; <span class="hljs-comment">// unsigned shift, i is 00110000</span>
+</code></pre>
+<p>Both the arithmetic and bitwise operators have priority and are evaluated in a specific order if no
+braces are used to group or enforce order. The evaluation order applied is shown in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>**</td>
+<td>Exponential operator</td>
+</tr>
+<tr>
+<td>2</td>
+<td>/</td>
+<td>Divide operator</td>
+</tr>
+<tr>
+<td>3</td>
+<td>*</td>
+<td>Multiply operator</td>
+</tr>
+<tr>
+<td>4</td>
+<td>%</td>
+<td>Modulus operator</td>
+</tr>
+<tr>
+<td>5</td>
+<td>+</td>
+<td>Addition operator</td>
+</tr>
+<tr>
+<td>6</td>
+<td>-</td>
+<td>Subtraction operator</td>
+</tr>
+<tr>
+<td>7</td>
+<td>&gt;&gt;</td>
+<td>Signed shift right operator</td>
+</tr>
+<tr>
+<td>8</td>
+<td>&lt;&lt;</td>
+<td>Shift left operator</td>
+</tr>
+<tr>
+<td>9</td>
+<td>&gt;&gt;&gt;</td>
+<td>Shift right operator</td>
+</tr>
+<tr>
+<td>10</td>
+<td>&amp;</td>
+<td>Bitwise AND operator</td>
+</tr>
+<tr>
+<td>11</td>
+<td>|</td>
+<td>Bitwise OR operator</td>
+</tr>
+<tr>
+<td>12</td>
+<td>^</td>
+<td>Bitwise XOR operator</td>
+</tr>
+</tbody>
+</table>
+<h4>Relational Operators</h4>
+<p>Relational operators are used to make comparisons, such as equal to, not equal to, greater than, less than.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
+<span class="hljs-keyword">let</span> c = a == b <span class="hljs-comment">// equal operator, c is false</span>
+<span class="hljs-keyword">let</span> d = a != b; <span class="hljs-comment">// not equal operator, d is true</span>
+<span class="hljs-keyword">let</span> e = a &gt; b; <span class="hljs-comment">// greater than operator, e is false</span>
+<span class="hljs-keyword">let</span> f = a &lt; b; <span class="hljs-comment">// less than operator, f is true</span>
+<span class="hljs-keyword">let</span> g = a &lt;= b; <span class="hljs-comment">// g is false</span>
+<span class="hljs-keyword">let</span> h = a &gt;= b; <span class="hljs-comment">// h is true</span>
+</code></pre>
+<h4>Logical Operators</h4>
+<p>Logical operators are typically used to combine multiple relational operations in to a single boolean result.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">let</span> b = <span class="hljs-number">3</span>;
+<span class="hljs-keyword">let</span> c = <span class="hljs-literal">true</span>;
+<span class="hljs-keyword">let</span> d = <span class="hljs-literal">false</span>;
+<span class="hljs-keyword">let</span> e = a &amp;&amp; b; <span class="hljs-comment">// e is false</span>
+<span class="hljs-keyword">let</span> f = a || b; <span class="hljs-comment">// f is true</span>
+<span class="hljs-keyword">let</span> g = !d; <span class="hljs-comment">// not operator, g is true</span>
+<span class="hljs-keyword">let</span> h = b &gt; a &amp;&amp; a == <span class="hljs-number">1</span>; <span class="hljs-comment">// logical and of, h is true</span>
+<span class="hljs-keyword">let</span> i = b &gt; a &amp;&amp; a != <span class="hljs-number">1</span>; <span class="hljs-comment">// i is false</span>
+</code></pre>
+<h3>Conditions</h3>
+<p>Conditional statements are used to perform different actions based on different conditions.</p>
+<h4>If Statement</h4>
+<p>The if statement is used to specify a group of statements to execute if a statement is true.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">const</span> a = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">const</span> b = <span class="hljs-number">3</span>;
 
-    <br>
-    <!-- 
-    <hr>
-      <div class="row">
-    <div class="icons-box-vert-container">
-        <div class="span6">
-            <div class="icons-box-vert">
-                <i class="ico-ok ico-color circle-color big"></i>
-                <div class="icons-box-vert-info">
-                    <h3>Easy to use</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-        <div class="span6">
-            <div class="icons-box-vert">
-                <i class="ico-cup  ico-white circle-color-full big-color"></i>
-                <div class="icons-box-vert-info">
-                    <h3>Best choice</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-        <div class="span6">
-            <div class="icons-box-vert">
-                <i class="ico-ipad ico-color circle-color big"></i>
-                <div class="icons-box-vert-info">
-                    <h3>Fully Responsive</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-        <div class="span6">
-            <div class="icons-box-vert">
-                <i class="ico-thumbs-up  ico-white circle-color-full big-color"></i>
-                <div class="icons-box-vert-info">
-                    <h3>Social Network</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-    </div>
-    <div class="clear"></div>
-</div>
-    <hr>
-    -->
-  </div>
-</div> <div id="footer">
-  <div class="container">
-    <div style="margin: auto; max-width: 400px;">
-       <h3 style="text-align: center;">Open Source</h3>
-       <p style="text-align: center;">Snap is fully open source and licenced under the Apache License 2.0, feel free to fork on github.</p>
-    </div>
-  </div>
-</div>
+<span class="hljs-keyword">if</span>(a &lt; b) { <span class="hljs-comment">// true</span>
+   println(<span class="hljs-string">"a &gt; b"</span>); <span class="hljs-comment">// prints as a &lt; b</span>
+}
+</code></pre>
+<h4>Else Statement</h4>
+<p>The else statement is used to specify a group of statements to execute if a statement is false.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">const</span> a = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">const</span> b = <span class="hljs-number">3</span>;
 
-    <!--div id="copyright">
-        <div class="container">
-            <div class="container">
-                <p>Â© 2015, <a href="http://www.zuooh.com/" alt="Zuooh" title="Zuooh">Zuooh</a>. Designed by Zuooh.</p>
-            </div>
-        </div>
-    </div-->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/highlight.pack.js"></script>
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
+<span class="hljs-keyword">if</span>(a &gt;= b) { <span class="hljs-comment">// false</span>
+   println(<span class="hljs-string">"a &gt;= b"</span>);
+} <span class="hljs-keyword">else</span> {
+   println(<span class="hljs-string">"a &lt; b"</span>); <span class="hljs-comment">// prints as a &lt; b</span>
+}
+</code></pre>
+<h4>Unless Statement</h4>
+<p>The unless statement is used to specify a group of statements to execute if a statement is false.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">const</span> a = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">const</span> b = <span class="hljs-number">3</span>;
+
+unless(a &gt; b) { <span class="hljs-comment">// false</span>
+   println(<span class="hljs-string">"a &gt; b"</span>); <span class="hljs-comment">// prints as a &lt; b</span>
+}
+</code></pre>
+<h4>Assert Statement</h4>
+<p>The assert statement is used to determine if an expression evaluates to true or false. If the expression evaluates
+to true the operation has no effect, otherwise an assertion exception is thrown.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">const</span> a = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">const</span> b = <span class="hljs-number">3</span>;
+
+assert a &lt; b;
+assert a &gt; b; <span class="hljs-comment">// assert exception</span>
+</code></pre>
+<h4>Debug Statement</h4>
+<p>The debug statement is used to suspend any attached debugger if and expression evaluates to true. This can be useful
+if there is a specific part of the program that you want to evaluate given a known state of execution. It is similar
+to the debugger statement for JavaScript with the addition of logic predicate the suspension.</p>
+<pre class="hljs language-js"><code>debug a * b &gt; <span class="hljs-number">4</span>; <span class="hljs-comment">// suspend the debugger if true</span>
+</code></pre>
+<h4>Ternary Operator</h4>
+<p>To make statements more concise there is a ternary operator.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> a = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">let</span> b = <span class="hljs-number">3</span>;
+
+println(a &gt;= b ? <span class="hljs-string">"a &gt;= b"</span> : <span class="hljs-string">"a &lt; b"</span>); <span class="hljs-comment">// prints a &lt; b</span>
+</code></pre>
+<h4>Null Coalesce</h4>
+<p>The null coalesce operator is similar to the ternary operator with one exception, the evaluation is whether a value is null.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> a = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">let</span> b = <span class="hljs-number">3</span>;
+
+println(a ?? b); <span class="hljs-comment">// prints b</span>
+</code></pre>
+<h3>Loops</h3>
+<p>Loops are used to perform a group of statements a number of times until a condition has been satisfied.</p>
+<h4>While Statement</h4>
+<p>The while statement is the simplest conditional statement. It repeats a group of statements while the
+condition it evaluates is false.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> n = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">while</span>(n &lt; <span class="hljs-number">10</span>) { <span class="hljs-comment">// conditional loop</span>
+   n++;
+}
+</code></pre>
+<h4>Until Statement</h4>
+<p>The until statement is similar to the while statement but loops while the condition is false. It repeats
+a group of statements until the condition it evaluates is true.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> n = <span class="hljs-number">0</span>;
+
+until(n &gt;= <span class="hljs-number">10</span>) { <span class="hljs-comment">// conditional loop</span>
+   n++;
+}
+</code></pre>
+<h4>For Statement</h4>
+<p>The for statement is typically used to count over a range of numeric values. It contains three parts, a
+declaration, a condition, and an optional statement which is evaluated at the end of the loop.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++){ <span class="hljs-comment">// loops from 1 to 10</span>
+   <span class="hljs-keyword">if</span>(i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// continue loop</span>
+   }
+   println(i);  <span class="hljs-comment">// prints only odd numbers</span>
+}
+</code></pre>
+<h4>For In Statement</h4>
+<p>The for in statement offers a simpler way to iterate over a range of values, a collection, or an array.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> list = [<span class="hljs-number">35</span>, <span class="hljs-number">22</span>, <span class="hljs-number">13</span>, <span class="hljs-number">64</span>, <span class="hljs-number">53</span>];
+
+<span class="hljs-keyword">for</span>(e <span class="hljs-keyword">in</span> list){ <span class="hljs-comment">// iterates over the list</span>
+   println(e);
+}
+
+<span class="hljs-keyword">for</span>(e <span class="hljs-keyword">in</span> <span class="hljs-number">0.</span><span class="hljs-number">.9</span>) { <span class="hljs-comment">// iterates from 0 to 9</span>
+   <span class="hljs-keyword">if</span>(e == <span class="hljs-number">7</span>) {
+      <span class="hljs-keyword">break</span>; <span class="hljs-comment">// exit loop when e is 7</span>
+   }
+   println(e); <span class="hljs-comment">// prints from 0 to 6</span>
+}
+
+<span class="hljs-keyword">for</span>(i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span> to <span class="hljs-number">9</span>) { <span class="hljs-comment">// iterates from 0 to 9</span>
+    println(i);
+}
+
+<span class="hljs-keyword">for</span>(i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span> <span class="hljs-keyword">from</span> <span class="hljs-number">9</span>) { <span class="hljs-comment">// iterates from 9 to 0</span>
+    println(i)
+}
+</code></pre>
+<h4>Loop Statement</h4>
+<p>The loop statement offers a way to specify an infinite loop, it does not evaluate any condition.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> n = <span class="hljs-number">0</span>;
+
+loop { <span class="hljs-comment">// infinite loop</span>
+   <span class="hljs-keyword">if</span>(n++ &gt; <span class="hljs-number">100</span>) {
+      <span class="hljs-keyword">break</span>;
+   }
+}
+</code></pre>
+<h3>Exceptions</h3>
+<p>Exceptions are used to indicate an error has occurred. It offers a simple means to return control to a
+calling function, which can then handle the error. Typically an exception object is thrown, however it is
+possible to throw any type.</p>
+<h4>Catch Statement</h4>
+<p>In order to catch an exception the throwing statement needs to be wrapped in a try catch statement. This
+statement basically allows the program to try to execute a statement or group of statements, if during
+execution an exception is thrown then an error handling block is executed.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">try</span> {
+   <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">"some error"</span>);
+} <span class="hljs-keyword">catch</span>(e: IllegalStateException) {
+   e.printStackTrace();
+}
+</code></pre>
+<h4>Finally Statement</h4>
+<p>The finally statement is a group of statements that are always executed regardless of whether an exception is thrown.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">try</span> {
+   <span class="hljs-keyword">throw</span> <span class="hljs-string">"throw a string value"</span>;
+} <span class="hljs-keyword">catch</span>(e) {
+   println(e);
+} <span class="hljs-keyword">finally</span> {
+   println(<span class="hljs-string">"finally always runs"</span>);
+}
+</code></pre>
+<h3>Functions</h3>
+<p>Functions group together control structures, operations, and method calls. These functions can then be called when needed, and the code contained within them will be run. This makes it very easy to reuse code without having to repeat it within your script.</p>
+<h4>Declaration</h4>
+<p>The most basic type of function is declared with a name and a specific number of parameters. Such a method can then be called using the declared name by passing in a right number of arguments.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> r = max(<span class="hljs-number">11</span>, <span class="hljs-number">3</span>, <span class="hljs-number">67</span>); <span class="hljs-comment">// r is 67</span>
+
+func max(a, b) {
+   <span class="hljs-keyword">return</span> a &gt; b ? a : b;
+}
+
+func max(a, b, c) { <span class="hljs-comment">// function overloading</span>
+   <span class="hljs-keyword">return</span> a &lt; b ? max(a, c) : max(b, c);
+}
+</code></pre>
+<h4>Type Constraints</h4>
+<p>In order to bind invocations to the correct function implementation it can be declared with optional type constraints. These type constraints will ensure that variables of a specific type will be bound to the correct implementation.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> x: Double = <span class="hljs-number">11.2</span>;
+<span class="hljs-keyword">let</span> y: Integer = <span class="hljs-number">11</span>;
+<span class="hljs-keyword">let</span> z: <span class="hljs-built_in">String</span> = <span class="hljs-string">"11"</span>;
+
+f(x); <span class="hljs-comment">// prints double 11.2</span>
+f(y); <span class="hljs-comment">// prints integer 11</span>
+f(z); <span class="hljs-comment">// prints string 11</span>
+f(<span class="hljs-literal">true</span>); <span class="hljs-comment">// type coercion to string, prints string true</span>
+
+func f(x: Integer) {
+   println(<span class="hljs-string">"integer ${x}"</span>);
+}
+
+func f(x: Double) {
+   println(<span class="hljs-string">"double ${x}"</span>);
+}
+
+func f(x: <span class="hljs-built_in">String</span>) {
+   println(<span class="hljs-string">"string ${x}"</span>);
+}
+</code></pre>
+<h4>Variable Arguments</h4>
+<p>At times it can be useful to provide a large number of arguments to a function. To achieve this the last parameter can be declared with a variable argument modifier.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> result = sum(<span class="hljs-number">0</span>, <span class="hljs-number">13</span>, <span class="hljs-number">44</span>, <span class="hljs-number">234</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>); 
+
+func sum(offset, numbers...){ <span class="hljs-comment">// variable arguments</span>
+   <span class="hljs-keyword">let</span> size = numbers.size();
+   <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;
+   
+   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = offset; i &lt; size; i++){
+      sum += number;
+   }
+   <span class="hljs-keyword">return</span> sum;
+}
+</code></pre>
+<h4>Closures</h4>
+<p>A closure is an anonymous function that captures the current scope and can be assigned to a variable. This variable can then act as a function and can be called in the same manner.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">const</span> square = (x) -&gt; x * x;
+<span class="hljs-keyword">const</span> cube = (x) -&gt; square(x) * x;
+
+cube(<span class="hljs-number">2</span>); <span class="hljs-comment">// result is 8</span>
+
+<span class="hljs-keyword">const</span> printAll = (values...) -&gt; {
+   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> e <span class="hljs-keyword">in</span> values) {
+      println(e);
+   }
+}
+
+printAll(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>); <span class="hljs-comment">// print all values</span>
+</code></pre>
+<h4>Function Handles</h4>
+<p>A function handle is simply a way to reference an existing function as a closure. Function handles can represent constructors or functions that are in scope.
+For example take the constructor for a string, it is quite possible to execute the following.</p>
+<pre class="hljs language-js"><code>[<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>].iterator.forEachRemaining(<span class="hljs-keyword">this</span>::println)
+</code></pre>
+<p>Here we are calling the println function with the item passed to the function. This function is represented as a function handle
+that takes a string. A function handle can represent a static or an instance function. For example:</p>
+<pre class="hljs language-js"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Formatter</span> </span>{
+
+    public <span class="hljs-keyword">static</span> upper(s: <span class="hljs-built_in">String</span>) {
+        <span class="hljs-keyword">return</span> s.toUpperCase();
+    }
+}
+
+[<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>].stream().map(Formatter::upper).forEach(<span class="hljs-keyword">this</span>::println);
+</code></pre>
+<h4>Generic Functions</h4>
+<p>Generics can be used to qualify the arguments that can be passed to a function. They are useful when the static analyser verifies the program as it ensures arguments and return types match the declared qualifiers.</p>
+<pre class="hljs language-js"><code>func abs&lt;T: <span class="hljs-built_in">Number</span>&gt;(nums: T): List&lt;T&gt; {
+    <span class="hljs-keyword">let</span> result: List&lt;T&gt;  = [];
+    
+    <span class="hljs-keyword">for</span>(num <span class="hljs-keyword">in</span> nums) {
+        <span class="hljs-keyword">let</span> abs = num.abs();
+        result.add(abs);
+    }
+    <span class="hljs-keyword">return</span> result;
+}
+
+<span class="hljs-keyword">let</span> list: List&lt;Double&gt; = abs&lt;Double&gt;(<span class="hljs-number">-1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">-3.0</span>);
+
+assert list[<span class="hljs-number">0</span>] == <span class="hljs-number">1</span>;
+assert list[<span class="hljs-number">2</span>] == <span class="hljs-number">2</span>;
+</code></pre>
+<h4>Coroutines</h4>
+<p>It is often useful to suspend execution of a function in order to return a result. Typically this requires a great deal of effort from the developer. <a href="https://en.wikipedia.org/wiki/Coroutine">Coroutines</a>
+allow an idiomatic means of suspending the execution of a function which can be resumed at the point of
+suspension. This allows for complex reactive iteration to be performed with minimal effort. For example
+take a Fibonnaci sequence.</p>
+<pre class="hljs language-js"><code>func fib(n){
+   <span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>;
+   <span class="hljs-keyword">let</span> b = <span class="hljs-number">2</span>;
+   
+   until(n-- <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">=</span> <span class="hljs-attr">0</span>) {
+      <span class="hljs-attr">yield</span> <span class="hljs-attr">a</span>; // <span class="hljs-attr">function</span> <span class="hljs-attr">is</span> <span class="hljs-attr">suspended</span> <span class="hljs-attr">here</span>
+      (<span class="hljs-attr">a</span>, <span class="hljs-attr">b</span>) = <span class="hljs-string">(b,</span> <span class="hljs-attr">a</span> + <span class="hljs-attr">b</span>);
+   }
+}
+</span></span></code></pre>
+<h4>Async Await</h4>
+<p>Asynchronous functions can be implemented with the async and await modifiers. This is similar to a standard Coroutine however this paradigm will allow the execution
+of the program to fork in two different threads of execution.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">async</span> loadImage(n: <span class="hljs-built_in">String</span>): <span class="hljs-built_in">Promise</span>&lt;?&gt; {
+    <span class="hljs-keyword">if</span>(!cache.contains(n)) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> ImageIO.read(n); 
+    }
+    <span class="hljs-keyword">return</span> cache.get(n); <span class="hljs-comment">// no need to go async</span>
+}
+</code></pre>
+<p>All async functions can cascade such that if an async function calls another it is suspended until the function
+being called completes, at which point it will resume from the call site. For convenience closures can also
+be asynchronous.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> loadImage = <span class="hljs-keyword">async</span> (n: <span class="hljs-built_in">String</span>) -&gt; ImageIO.read(n);
+</code></pre>
+<p>Here there is no need to specify the await keyword as expression based asynchronous closures have an implicit await.
+For closures that have more than a single expression you must specify which statements are asynchronous.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">let</span> loadImage = <span class="hljs-keyword">async</span> (n: <span class="hljs-built_in">String</span>) -&gt; {
+    <span class="hljs-keyword">if</span>(!cache.contains(n)) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> ImageIO.read(n); 
+    }
+    <span class="hljs-keyword">return</span> cache.get(n); <span class="hljs-comment">// no need to go async</span>
+}
+</code></pre>
+<h4>Blank Parameters</h4>
+<p>Blank parameters allow you to specify an argument that is not needed or can be ignored.</p>
+<pre class="hljs language-js"><code>func create&lt;T&gt;(type: T): T {
+    <span class="hljs-keyword">return</span> cache.computeIfAbsent(type.name, (_) -&gt; <span class="hljs-keyword">new</span> T());
+}
+</code></pre>
+<h3>Types</h3>
+<p>In any object oriented language types are required. A type is basically a way to define and encapsulate variables
+and functions within a named scope. All types can have generic parameters allowing the static analyser to verify
+interactions with the type.</p>
+<p>The type system for Tern is independent to the type system native to the JVM. To integrate with the JVM type
+system ASM byte code generation and Dex code generation are leveraged to create bridges between native
+types and those constructed from the script execution flow.</p>
+<h4>Class</h4>
+<p>A class is the most basic type. It contains variables, and functions that can operate on those variables.
+Once declared a type can be instantiated by calling a special function called a constructor. There are two
+primary categories of class, the abstract class and the concrete class. An abstract class represents
+a generic concept and as such cannot be instantiated. Below is an example of an abstract class.</p>
+<pre class="hljs language-js"><code>abstract <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Shape</span> </span>{
+
+    <span class="hljs-keyword">let</span> origin: Point;
+    
+    <span class="hljs-keyword">new</span>(origin: Point) {
+       <span class="hljs-keyword">this</span>.origin = origin;
+    }
+
+    <span class="hljs-comment">/**
+     * Draw the shape to the provided graphics. Each
+     * shape will be drawn from the origin.
+     *
+     * @param g the graphics to draw with
+     */</span>
+    abstract draw(g: Graphics);
+    
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{ <span class="hljs-comment">// inner class</span>
+    
+        <span class="hljs-keyword">const</span> x;
+        <span class="hljs-keyword">const</span> y;
+        
+        <span class="hljs-keyword">new</span>(x, y) {
+            <span class="hljs-keyword">this</span>.x = x;
+            <span class="hljs-keyword">this</span>.y = y;
+        }
+    }
+}
+</code></pre>
+<p>A concrete class represents an whole object or entity and unlike abstract classes it can be instantiated.
+To leverage methods and state from other classes inheritance is possible. Below we can see how a square
+inherits state and a method from the abstract shape class.</p>
+<pre class="hljs language-js"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Square</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Shape</span> </span>{
+
+    private <span class="hljs-keyword">let</span> width: Integer;
+    private <span class="hljs-keyword">let</span> height: Integer;
+
+    <span class="hljs-keyword">new</span>(origin: Point, <span class="hljs-attr">width</span>: Integer, <span class="hljs-attr">height</span>: Integer): <span class="hljs-keyword">super</span>(origin) {
+        <span class="hljs-keyword">this</span>.width = width;
+        <span class="hljs-keyword">this</span>.height = height;
+    }
+    
+    <span class="hljs-comment">/**
+     * Draw a square at the origin.
+     *
+     * @param g the graphics to draw on
+     */</span>
+    override draw(g: Graphics) {
+        g.drawSquare(origin.x, origin.y, width, height);
+    }
+}
+</code></pre>
+<p>By default functions defined in the body of a class are public. This means any scope where an instance
+of the class is accessible can call this public method. The opposite is true for private methods. Private
+method can be called only within the body of the class.</p>
+<p>Below is a list of the modifiers that can be applied to functions defined within the body of a class.</p>
+<table>
+<thead>
+<tr>
+<th>Modifiers</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>Public functions and variables are visible in all scopes</td>
+</tr>
+<tr>
+<td>private</td>
+<td>Private functions are visible only within the class body</td>
+</tr>
+<tr>
+<td>abstract</td>
+<td>Abstract functions have no implementation</td>
+</tr>
+<tr>
+<td>override</td>
+<td>An override reflects replacing a super class function</td>
+</tr>
+<tr>
+<td>static</td>
+<td>Static methods can be called without an instance</td>
+</tr>
+<tr>
+<td>async</td>
+<td>Async functions can be suspended and resumed concurrently</td>
+</tr>
+</tbody>
+</table>
+<h4>Enumeration</h4>
+<p>An enumeration is a type that specifies a list of constant values. This values are constant and are instances of the enum they are declared in.</p>
+<pre class="hljs language-js"><code>enum Color {
+   RED(<span class="hljs-string">"#ff0000"</span>),
+   BLUE(<span class="hljs-string">"#0000ff"</span>),
+   GREEN(<span class="hljs-string">"#00ff00"</span>);
+   
+   <span class="hljs-keyword">let</span> rgb;
+   
+   <span class="hljs-keyword">new</span>(rgb) {
+      <span class="hljs-keyword">this</span>.rgb = rgb;
+   }
+}
+
+<span class="hljs-keyword">let</span> red = Color.RED;
+<span class="hljs-keyword">let</span> blue = Color.BLUE;
+</code></pre>
+<h4>Trait</h4>
+<p>A trait is similar to a class in that is specifies a list of functions. However, unlike a class a trait
+does not declare any variables and does not have a constructor. It can be used to add functions to a class.</p>
+<pre class="hljs language-js"><code>trait NumberFormat&lt;T: <span class="hljs-built_in">Number</span>&gt; {
+   
+   <span class="hljs-comment">/**
+    * Round to number to a specific number of decimal
+    * places or to an integer.
+    *
+    * @param a places to round to
+    */</span>
+   round(a): T;
+   
+   format(a: T) {
+      <span class="hljs-keyword">return</span> round(a);
+   }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DoubleFormat</span> <span class="hljs-title">with</span> <span class="hljs-title">NumberFormat</span>&lt;<span class="hljs-title">Double</span>&gt; </span>{
+   
+   <span class="hljs-keyword">let</span> places: Integer;
+   
+   <span class="hljs-keyword">new</span>(places: Integer) {
+      <span class="hljs-keyword">this</span>.places = places;
+   }
+   
+   override round(a: Double) {
+      <span class="hljs-keyword">return</span> a.round(places);
+   }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntegerFormat</span> <span class="hljs-title">with</span> <span class="hljs-title">NumberFormat</span>&lt;<span class="hljs-title">Integer</span>&gt; </span>{
+   
+   override round(a: Integer) {
+      <span class="hljs-keyword">return</span> a;
+   }
+}
+</code></pre>
+<h4>Module</h4>
+<p>A module is collection of types, functions, and variables. It is similar to enclosing a script within a named type.
+Modules are useful in providing constructs such as singletons.</p>
+<pre class="hljs language-js"><code><span class="hljs-built_in">module</span> ImageStore {
+
+   private <span class="hljs-keyword">const</span> cache = {:};
+   
+   public find(name) {
+      <span class="hljs-keyword">return</span> cache.get(name);
+   }
+   
+   private cache(name, image) {
+      cache.put(name, image);
+   }
+} 
+</code></pre>
+<h4>Annotations</h4>
+<p>Annotations can be applied to any type and do not need to be declared. These are useful when
+you need to determine the behaviour of a type and its methods through introspection.</p>
+<pre class="hljs language-java"><code><span class="hljs-meta">@ComponentPath</span>(path: <span class="hljs-string">'/images'</span>)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ImageService</span> </span>{
+
+    <span class="hljs-meta">@Path</span>(match = <span class="hljs-string">"/{path}')
+    @Method(verb: 'GET')
+    @ContentType(value: 'image/png')
+    getImage(@Param(name: 'path') path) {
+        return ImageIO.read(path);
+    }
+}
+</span></code></pre>
+<h4>Type Alias</h4>
+<p>It can often be useful to alias types for readability, particularly when generics are involved. An alias is not
+a new type but rather a new name for a known type.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">import</span> util.concurrent.ConcurrentHashMap;
+
+type Bag&lt;T&gt; = ConcurrentHashMap&lt;<span class="hljs-built_in">String</span>, T&gt;();
+
+func bagOf&lt;T: <span class="hljs-built_in">Number</span>&gt;(nums...: T): Bag&lt;T&gt; {
+    <span class="hljs-keyword">let</span> bag: Bag&lt;T&gt; = <span class="hljs-keyword">new</span> Bag&lt;T&gt;();
+    
+    <span class="hljs-keyword">for</span>(num <span class="hljs-keyword">in</span> nums){
+        bag.put(<span class="hljs-string">`<span class="hljs-subst">${num}</span>`</span>, num);
+    }
+    <span class="hljs-keyword">return</span> bag;
+}
+</code></pre>
+<h4>Uniform Access</h4>
+<p>The uniform access principle of computer programming was put forth by Bertrand Meyer
+in his book called <a href="https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction">Object Oriented Software Construction</a>.
+It states all services offered by a module should be available through a uniform notation,
+which does not betray whether they are implemented through storage or through computation.
+An example of this is typical getter and setter property methods but applies to any
+method that does not require arguments.</p>
+<pre class="hljs language-js"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+    
+    private <span class="hljs-keyword">const</span> firstName;
+    private <span class="hljs-keyword">const</span> surname;
+    
+    <span class="hljs-keyword">new</span>(firstName, surname) {
+        <span class="hljs-keyword">this</span>.firstName = firstName;
+        <span class="hljs-keyword">this</span>.surname = surname;
+    }
+    
+    getFullName() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"${firstName} ${surname}"</span>;
+    }
+}
+
+<span class="hljs-keyword">let</span> person = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"John"</span>, <span class="hljs-string">"Doe"</span>);
+
+assert person.fullName == <span class="hljs-string">'John Doe'</span>;
+</code></pre>
+<p>Uniform access applies to all implemented types as well as any external dependencies imported
+regardless of their origin, for example the Java class libraries.</p>
+<h4>Import</h4>
+<p>In order to access the Java types available they can be imported by name. Once imported the type can be instantiated
+and used as if it was a script object. In addition to importing types, functions can also be imported by using a
+static import.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> lang.Math.*; <span class="hljs-comment">// import static functions</span>
+<span class="hljs-keyword">import</span> security.SecureRandom;
+
+<span class="hljs-keyword">const</span> random = <span class="hljs-keyword">new</span> SecureRandom(); <span class="hljs-comment">// create a java type</span>
+<span class="hljs-keyword">const</span> a = random.nextInt(<span class="hljs-number">40</span>);
+<span class="hljs-keyword">const</span> b = random.nextInt(<span class="hljs-number">40</span>);
+<span class="hljs-keyword">const</span> c = max(a, b); <span class="hljs-comment">// Math.max(a, b)</span>
+
+println(c); <span class="hljs-comment">// prints the maximum random</span>
+</code></pre>
+<p>To avoid name collisions it is also possible to import types with aliases. Additionally an imports visibility can
+be encapsulated within a module so that it is only available in that module.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">import</span> util.concurrent.ConcurrentHashMap <span class="hljs-keyword">as</span> Bag;
+
+<span class="hljs-built_in">module</span> ImageStore {
+
+    <span class="hljs-keyword">import</span> aws.image.BufferedImage <span class="hljs-keyword">as</span> Image;
+    <span class="hljs-keyword">import</span> aws.Graphics;
+    
+    public paint(g: Graphics) {
+        <span class="hljs-comment">// ...</span>
+    }
+}
+</code></pre>
+<p>Imports can be grouped from the same package using braces. Below is an example of
+import groups.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">import</span> util.concurrent.{ ConcurrentHashMap, CopyOnWriteArrayList };
+<span class="hljs-keyword">import</span> util.{ <span class="hljs-built_in">Map</span>, <span class="hljs-built_in">Set</span>, List };
+</code></pre>
+<h4>Coercion</h4>
+<p>For interfaces that have only a single method a closure can be coerced to that interface type. This makes for a much simpler and concise syntax similar to that offered by Java closures.</p>
+<pre class="hljs language-js"><code><span class="hljs-keyword">const</span> set = <span class="hljs-keyword">new</span> TreeSet(Double::compare);
+
+set.add(<span class="hljs-number">1.2</span>);
+set.add(<span class="hljs-number">2.3</span>);
+set.add(<span class="hljs-number">33.4</span>);
+set.add(<span class="hljs-number">4.55</span>);
+set.add(<span class="hljs-number">2</span>);
+
+<span class="hljs-keyword">for</span>(entry <span class="hljs-keyword">in</span> set){
+   println(entry);
+}
+</code></pre>
+<h4>Platform Integration</h4>
+<p>To leverage the large array of frameworks and services available on the Java platform any Java type
+can be instantiated, and any Java interface can be implemented.</p>
+<pre class="hljs language-js"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DoubleComparator</span> <span class="hljs-title">with</span> <span class="hljs-title">Comparator</span></span>{
+
+   override compare(a,b){
+      <span class="hljs-keyword">return</span> Double.compare(a,b);
+   }
+}
+
+<span class="hljs-keyword">let</span> comparator = <span class="hljs-keyword">new</span> DoubleComparator();
+<span class="hljs-keyword">let</span> set = <span class="hljs-keyword">new</span> TreeSet(comparator);
+
+set.add(<span class="hljs-number">1.2</span>);
+set.add(<span class="hljs-number">2.3</span>);
+set.add(<span class="hljs-number">33.4</span>);
+set.add(<span class="hljs-number">4.55</span>);
+set.add(<span class="hljs-number">2</span>);
+
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> entry <span class="hljs-keyword">in</span> set){
+   println(entry);
+}
+</code></pre>
+<h2>Tools</h2>
+<p>To be productive in any language there needs to be a way to write, evalute and debug applications. The development
+environment is free to use and can be used in any standard web browser supporting HTML 5. Alternatively this
+development client can be run as a standalone application.</p>
+<h3>Command Line Interpreter</h3>
+<p>To run scripts as a standalone application you can download the interpreter. The interpreter requires Java to
+be installed on the host machine. Once you have downloaded the interpreter you can begin running scripts right
+away. All you need to do is specify the script file relative to the current directory.</p>
+<p>Download - <a href="http://www.snapscript.org/download/snap.zip">http://www.snapscript.org/download/snap.zip</a></p>
+<h3>Development Environment</h3>
+<p>The development environment, Tern Studio, is written with HTML5 and TypeScript. It comes packaged as a standalone application
+leveraging the <a href="https://en.wikipedia.org/wiki/Chromium_Embedded_Framework">Chrome Embedded Framework</a>. Running an application from Tern Studio is as simple has pressing the
+play button. This will initiate a bootstrapping process where the interpreter is downloaded in to a harness once
+this bootstrapping process has completed the source program is downloaded and executed. Stepping through the
+code can be done by setting break points.</p>
+<p>Download - <a href="http://www.snapscript.org/download/snapd.zip">http://www.snapscript.org/download/snapd.zip</a></p>
+<h4>Breakpoints</h4>
+<p>A breakpoint forces the debugger to suspend at a particular line when execution flow arrives at that line. Once
+suspended the developer can step in, out or over the statements.</p>
+<p><img src="https://raw.githubusercontent.com/snapscript/snap-site/master/images/debugger_breakpoints.png" alt="Developer Breakpoints"></p>
+<h4>Console</h4>
+<p>All output from the application is captured in the console and displayed. This console is a scrolling window and
+will keep only the most recent history up to a configurable number of lines.</p>
+<p><img src="https://raw.githubusercontent.com/snapscript/snap-site/master/images/debugger_console.png" alt="Developer Console"></p>
+<h4>Variables</h4>
+<p>When execution is suspended it is possible to evaluate expressions and look at variables on the stack and in
+the surrounding scope. These variables can be navigated by clicking through references.</p>
+<p><img src="https://raw.githubusercontent.com/snapscript/snap-site/master/images/debugger_variables.png" alt="Developer Variables"></p>
+<h4>Threads</h4>
+<p>At any time multiple threads may be suspended. A thread view is provided so that the developer can select the
+thread to debug and also to view the stack frames.</p>
+<p><img src="https://raw.githubusercontent.com/snapscript/snap-site/master/images/debugger_threads.png" alt="Developer Threads"></p>
+<h4>Process View</h4>
+<p>If there are multiple applications running from the development environment focus can only be given to one. It
+is possible to switch focus through the process view. Once focused an application can be debugged or terminated.</p>
+<p><img src="https://raw.githubusercontent.com/snapscript/snap-site/master/images/debugger_agents.png" alt="Developer Debug"></p>
+<h4>Debug Perspective</h4>
+<p>To capture as much relevant information on a single screen the debug perspectived can be used. This will allow
+the developer to see the threads and variables as well as the console.</p>
+<p><img src="https://raw.githubusercontent.com/snapscript/snap-site/master/images/debugger_changelayout.png" alt="Developer Debug Perspective"></p>
+<h4>Full Screen</h4>
+<p>When editing it can be useful to see the full screen. This perspective can be achieved by double clicking on
+the tab in focus.</p>
+<p><img src="https://raw.githubusercontent.com/snapscript/snap-site/master/images/debugger_fullscreen.png" alt="Developer Full Screen"></p>
+<h3>Debug Agent</h3>
+<p>The development environment can act as a debug service. As such it is possible to connect to a debugger and
+push code and debug information. To do this you simple need to embed the debug agent in to your application.</p>
+<h3>Android</h3>
+<p>Full compatibility is provided for Android. A basic JIT is also provided to reduce the overhead of reflection
+and to allow types to be extended.</p>
 </body>
-
-<!-- Mirrored from www.zuooh.com/index by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 23 Sep 2017 16:01:08 GMT -->
 </html>
 
