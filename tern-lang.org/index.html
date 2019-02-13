@@ -1,0 +1,1084 @@
+<html>
+<head>
+  <link rel='stylesheet' href='css/style.css'>
+</head>
+<body>
+<img src='https://raw.githubusercontent.com/tern-lang/tern-site/master/www.tern-lang.org/img/logo-small.png' alt='Tern'>
+<p>Tern is an optionally typed object oriented language with first class functions and coroutines.It borrows concepts and constructs from many sources including Swift, JavaScript, Java, and Scala amongst others. It is interpreted and has no intermediate representation, so there is no need to compile or build your application.</p>
+<p>The interpreter has been built from the ground up, no tools or libraries have been used. As a result theproject is small, fully self contained, and can be either embedded or run as a standalone application. Here you will get an overview on how the interpreter works and the language in addition to the debugger and development environment.</p>
+<p></p>
+
+<ul>
+  <li><a href='#overview'>Overview</a>
+  <ul>
+        <li><a href='#parallel-compilation'>Parallel Compilation</a>
+        <ul>
+                <li><a href='#scanner'>Scanner</a></li>
+                <li><a href='#grammar'>Grammar</a></li>
+                <li><a href='#lexical-analysis'>Lexical Analysis</a></li>
+                <li><a href='#parser'>Parser</a></li>
+                <li><a href='#assembler'>Assembler</a></li>
+        </ul>
+        </li>
+        <li><a href='#static-analysis'>Static Analysis</a></li>
+        <li><a href='#evaluation'>Evaluation</a></li>
+        <li><a href='#command-directive'>Command Directive</a></li>
+        <li><a href='#example-programs'>Example Programs</a>
+        <ul>
+                  <li><a href='#mario'>Mario</a></li>
+                  <li><a href='#flappy-bird'>Flappy Bird</a></li>
+                  <li><a href='#space-invaders'>Space Invaders</a></li>
+                  <li><a href='#tetris'>Tetris</a></li>
+        </ul>
+        </li>
+    <li><a href='#language'>Language</a>
+    <ul>
+          <li><a href='#basic-types'>Basic Types</a>
+          <ul>
+                    <li><a href='#booleans'>Booleans</a></li>
+                    <li><a href='#numbers'>Numbers</a></li>
+                    <li><a href='#strings'>Strings</a></li>
+                    <li><a href='#arrays'>Arrays</a></li>
+                    <li><a href='#collections'>Collections</a></li>
+          </ul>
+          </li>
+          <li><a href='#operators'>Operators</a>
+          <ul>
+                    <li><a href='#arithmetic-operators'>Arithmetic Operators</a></li>
+                    <li><a href='#bitwise-operators'>Bitwise Operators</a></li>
+                    <li><a href='#relational-operators'>Relational Operators</a></li>
+                    <li><a href='#logical-operators'>Logical Operators</a></li>
+          </ul>
+          </li>
+          <li><a href='#conditions'>Conditions</a>
+          <ul>
+                    <li><a href='#if-statement'>If Statement</a></li>
+                    <li><a href='#else-statement'>Else Statement</a></li>
+                    <li><a href='#unless-statement'>Unless Statement</a></li>
+                    <li><a href='#assert-statement'>Assert Statement</a></li>
+                    <li><a href='#debug-statement'>Debug Statement</a></li>
+                    <li><a href='#ternary-operator'>Ternary Operator</a></li>
+                    <li><a href='#null-coalesce'>Null Coalesce</a></li>
+          </ul>
+          </li>
+          <li><a href='#loops'>Loops</a>
+          <ul>
+                    <li><a href='#while-statement'>While Statement</a></li>
+                    <li><a href='#until-statement'>Until Statement</a></li>
+                    <li><a href='#for-statement'>For Statement</a></li>
+                    <li><a href='#for-in-statement'>For In Statement</a></li>
+                    <li><a href='#loop-statement'>Loop Statement</a></li>
+          </ul>
+          </li>
+          <li><a href='#exceptions'>Exceptions</a>
+          <ul>
+                    <li><a href='#catch-statement'>Catch Statement</a></li>
+                    <li><a href='#finally-statement'>Finally Statement</a></li>
+          </ul>
+          </li>
+          <li><a href='#functions'>Functions</a>
+          <ul>
+                    <li><a href='#declaration'>Declaration</a></li>
+                    <li><a href='#type-constraints'>Type Constraints</a></li>
+                    <li><a href='#variable-arguments'>Variable Arguments</a></li>
+                    <li><a href='#closures'>Closures</a></li>
+                    <li><a href='#function-handles'>Function Handles</a></li>
+                    <li><a href='#generic-functions'>Generic Functions</a></li>
+                    <li><a href='#coroutines'>Coroutines</a></li>
+                    <li><a href='#async-await'>Async Await</a></li>
+                    <li><a href='#blank-parameters'>Blank Parameters</a></li>
+          </ul>
+          </li>
+          <li><a href='#types'>Types</a>
+          <ul>
+                    <li><a href='#class'>Class</a></li>
+                    <li><a href='#enumeration'>Enumeration</a></li>
+                    <li><a href='#trait'>Trait</a></li>
+                    <li><a href='#module'>Module</a></li>
+                    <li><a href='#annotations'>Annotations</a></li>
+                    <li><a href='#type-alias'>Type Alias</a></li>
+                    <li><a href='#uniform-access'>Uniform Access</a></li>
+                    <li><a href='#import'>Import</a></li>
+                    <li><a href='#coercion'>Coercion</a></li>
+                    <li><a href='#platform-integration'>Platform Integration</a></li>
+          </ul>
+          </li>
+      <li><a href='#tools'>Tools</a>
+      <ul>
+            <li><a href='#command-line-interpreter'>Command Line Interpreter</a></li>
+            <li><a href='#development-environment'>Development Environment</a>
+            <ul>
+                      <li><a href='#breakpoints'>Breakpoints</a></li>
+                      <li><a href='#console'>Console</a></li>
+                      <li><a href='#variables'>Variables</a></li>
+                      <li><a href='#threads'>Threads</a></li>
+                      <li><a href='#process-view'>Process View</a></li>
+                      <li><a href='#debug-perspective'>Debug Perspective</a></li>
+                      <li><a href='#full-screen'>Full Screen</a></li>
+            </ul>
+            </li>
+            <li><a href='#debug-agent'>Debug Agent</a></li>
+            <li><a href='#android'>Android</a></li>
+      </ul>
+      </li>
+    </ul>
+    </li>
+  </ul>
+  </li>
+</ul>
+</li>
+<p></p>
+<h2><a id='overview'></a>Overview</h2>
+<p>Tern is an optionally typed scripting language for the <a href='https://en.wikipedia.org/wiki/Java_virtual_machine'>JVM</a> and is compatible with all Android variantssuch as <a href='https://en.wikipedia.org/wiki/Dalvik_(software)'>Dalvik</a> and <a href='https://en.wikipedia.org/wiki/Android_Runtime'>ART</a>. The learning curve is small for anyone with experience of Java, JavaScript, or a similar imperative  language. It has excellent integration with the host platform and can leverage the vast ecosystem of the JVM without excessive boilerplate.</p>
+<p>The language is ideal for embedding in to an existing application, and is a fraction of the size of similar languages for the JVM platform. In addition to embedding it can be run as a standalone interpreter and has a development environment which allows scripts to be debugged and profiled.</p>
+<p></p>
+<h3><a id='parallel-compilation'></a>Parallel Compilation</h3>
+<p>Tern programs can be separated in to multiple source files that define the types and functions representing the execution flow. To minimise start times the parsing and assembly of the source is performed in parallel. Once defined the execution graph is joined in to a single executable and static analysis is performed.</p>
+<p>The tools and frameworks required to parse and assemble the source code are all custom and written from the ground up with performance and correctness being the primary goals. In most conventional implementationsa grammar is used to generate the parser, however for flexibility this implementation processes the grammarat runtime as the program starts, the parser has no prior knowledge of the grammar. This architecture simplifies the implementation and makes it language agnostic.</p>
+<p></p>
+<h4><a id='scanner'></a>Scanner</h4>
+<p>In the initial phase of compilation the source is passed through a scanner and compressor. This removes comments and command directives from the source text in addition to whitespace that has no semantic value.When the scanner has completed it emits three segments representing the compressed source text, the linenumbers the source was scanned from, and a type index classifying the source characters.</p>
+<p></p>
+<h4><a id='grammar'></a>Grammar</h4>
+<p>To make sense of the source code a custom grammar is required. The grammar used for compilation ofthe Tern language leverages a custom framework that uses a variant of <a href='https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form'>Bacus Naur Form</a>. It is defined using special rules and literal values that form the basis of a <a href='https://en.wikipedia.org/wiki/Recursive_descent_parser'>Recursive Descendant Parser</a>.</p>
+<p></p>
+<table border='0'>
+    <th> Rule</th>
+    <th>Semantics</th>
+   <tr>
+      <td> &#124;</td>
+      <td>Represents a logical OR</td>
+   </tr>
+   <tr>
+      <td> &#42;</td>
+      <td>Represents one or more</td>
+   </tr>
+   <tr>
+      <td> &#43;</td>
+      <td>Represents at least once</td>
+   </tr>
+   <tr>
+      <td> ?</td>
+      <td>Represents one or none</td>
+   </tr>
+   <tr>
+      <td> &lt;&gt;</td>
+      <td>Define a production</td>
+   </tr>
+   <tr>
+      <td> ()</td>
+      <td>Group productions and literals</td>
+   </tr>
+   <tr>
+      <td> {}</td>
+      <td>Group productions where first match wins</td>
+   </tr>
+   <tr>
+      <td> _</td>
+      <td>Represents whitespace</td>
+   </tr>
+   <tr>
+      <td> []</td>
+      <td>Represents a symbol</td>
+   </tr>
+   <tr>
+      <td> ''</td>
+      <td>Represents a literal text value</td>
+   </tr>
+</table>
+<p>The formal grammar for the language is defined with these rules, it can be modified to extend the languageor tweak existing behaviour. </p>
+<p></p>
+<a href='https://github.com/tern-lang/tern/blob/master/tern-parse/src/main/resources/grammar.txt'>Language Grammar</a><p></p>
+<h4><a id='lexical-analysis'></a>Lexical Analysis</h4>
+<p>The lexical analysis phase indexes the source in to a stream of tokens or lexemes. A token can representone or more primitive character sequences that are known to the parser. For example a quoted string, a decimal number, or perhaps a known keyword defined in the grammar. To categorise the tokens the formalgrammar is indexed in to a sequence of literals. If a token matches a known literal then itis classified as a literal. Any given token can contain a number of separate classifications which enablesthe parser to determine based on the grammar and its context what the token represents.</p>
+<p>When this phase of processing completes there is an ordered sequence of classified tokens. Each tokenwill have the line number it was extracted from in addition to a bitmask describing the classificationsit has received. It is up to the parser to map these tokens to the formal grammar.</p>
+<p></p>
+<h4><a id='parser'></a>Parser</h4>
+<p>The parser consumes the sequence of categorised tokens produced by the lexer. The parser has backtrackingsemantics and is performed in two phases. The first phase is to the map the tokens against the grammar andthe second phase is to produce an <a href='https://en.wikipedia.org/wiki/Abstract_syntax_tree'>Abstract Syntax Tree</a>.</p>
+<p></p>
+<h4><a id='assembler'></a>Assembler</h4>
+<p>The final phase of the compilation process is assembly. This process uses a configured set of instructionsto map top level grammars to nodes within an execution graph. Configuring a set of instructions facilitatesa dependency injection mechanism which is used to build the program. </p>
+<p>The syntax tree is traversed in a depth first manner to determine what the instruction dependencies are needed. As thetraversal retreats back up from the leafs of the tree to the root instructions are assembled. This process issimilar to how many other dependency injection system works.</p>
+<p></p>
+<a href='https://github.com/tern-lang/tern/blob/master/tern-tree/src/main/resources/instruction.txt'>Language Instructions</a><p></p>
+<h3><a id='static-analysis'></a>Static Analysis</h3>
+<p>As a program grows large so to does its complexity. To manage this complexity static analysis is performed across the entire codebase. The level of static analysis performed is up to the developer as types are optional. Access modifiers are also provided to describe intent and visibility of functions and variables.</p>
+<p>When leveraging types further qualification can be given in the form of generics. <a href='https://en.wikipedia.org/wiki/Generic_programming'>Generics</a> allow the developerto describe the types of parameters that can be used for a specific declaration. </p>
+<p></p>
+<h3><a id='evaluation'></a>Evaluation</h3>
+<p>Code evaluation is the process of transforming text to code at runtime. This can be useful when you wantto perform some dynamic task. In languages such as Java the reflection framework allows developers to introspect and execute code in a dynamic way. With evaluation you can achieve similar functionality withoutthe boilerplate. Internally evaluations cache the execution trees they represent which eliminates the performance overheads.</p>
+<p></p>
+<pre>let instance = eval("new " + type + "()");
+</pre><p></p>
+<p></p>
+<h3><a id='command-directive'></a>Command Directive</h3>
+<p>The command directive is used to tell command interpreters where the interpreter for the source is located. This is is often called the <a href='https://en.wikipedia.org/wiki/Shebang_(Unix)'>Shebang</a> directive and is interpreted by common shells like bash. The first line of any Tern source file can contain this command directive.</p>
+<p></p>
+<pre>#!/usr/bin/env snap
+</pre><p></p>
+<h3><a id='example-programs'></a>Example Programs</h3>
+<p>The best way to learn any language is through examples. Below is a collection of examples from applications thathave been written in Tern. The source code for these examples are available on Github and are free to download.</p>
+<p></p>
+<h4><a id='mario'></a>Mario</h4>
+<p>This is a clone of the <a href='https://en.wikipedia.org/wiki/Mario_Bros.'>Mario</a> game comes with the full source code in addition to the images and sounds. It hasbeen written twice, once with full static typing and one with dynamic typing. Below is a YouTube video of the program being run and debugged with Tern Studio.</p>
+<p></p>
+<p><a href='https://www.youtube.com/watch?v=6vo2y83unG0' rel='nofollow'><img alt='Debug Desktop Game' src='http://img.youtube.com/vi/6vo2y83unG0/0.jpg' style='max-width:100%;'></a></p><p></p>
+<h5><a id='statically-typed'></a>Statically Typed</h5>
+<p>The statically typed implementation performs type checking throughout.</p>
+<p></p>
+<a href='https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/demo/games/src/mario'>Source Code</a><p></p>
+<h5><a id='dynamically-typed'></a>Dynamically Typed</h5>
+<p>The dynamically typed implementation is identical to the statically typed implementation without typeconstraints.</p>
+<p></p>
+<a href='https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/games/mario/src/mario'>Source Code</a><p></p>
+<h5><a id='android'></a>Android</h5>
+<p>In order to run on Android a framework was required to perform double buffering and map useractions to program behaviour. The Android game framework can be found on Github within this profile.</p>
+<p></p>
+<a href='https://github.com/tern-lang/tern-studio/blob/master/tern-studio/work/android/mario/src/mario'>Source Code</a><p></p>
+<h4><a id='flappy-bird'></a>Flappy Bird</h4>
+<p>This is a clone of the <a href='https://en.wikipedia.org/wiki/Flappy_Bird'>Flappy Bird</a> game and is targeted for Android. Below is a YouTube vide of the applicationbeing run and debugged remotely with Tern Studio.</p>
+<p></p>
+<p><a href='https://www.youtube.com/watch?v=w-baBQbZ5dI' rel='nofollow'><img alt='Debug Android Game' src='http://img.youtube.com/vi/w-baBQbZ5dI/0.jpg' style='max-width:100%;'></a></p><p></p>
+<a href='https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/android/flappybird/src/flappybird'>Source Code</a><p></p>
+<h4><a id='space-invaders'></a>Space Invaders</h4>
+<p>This is a very basic clone of the classic <a href='https://en.wikipedia.org/wiki/Space_Invaders'>Space Invaders</a> game. The implementation is short but leverages someof the more interesting language features such as async await.</p>
+<p></p>
+<a href='https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/demo/games/src/spaceinvaders'>Source Code</a><p></p>
+<h4><a id='tetris'></a>Tetris</h4>
+<p>This is a very basic clone of the classic <a href='https://en.wikipedia.org/wiki/Tetris'>Tetris</a> game. The implementation does not leverage graphics or sounds andshapes are painted on the screen with AWT primitives.</p>
+<p></p>
+<a href='https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/demo/games/src/tetris'>Source Code</a><p></p>
+<h3><a id='language'></a>Language</h3>
+<p>Learning how to code applications with Tern is easy, particularly if you have experience with Java, Javascript, or a similar language. Below you will find various sections illustrating the basics, where you will learn about types, functions, and the various statements and expressions that can be used. </p>
+<p></p>
+<h4><a id='basic-types'></a>Basic Types</h4>
+<p>For programs to be useful, we need to be able to work with some of the simplest units of data such as numbers, strings, structures, boolean values, and the like. Support for these basic types is much the same as you would expected for Java, with some additional features such as string templates, map, set, and list literals.</p>
+<p>In order to reference values they must be associated with a variable. Variables are declared with the keyword <span style='font-family: monospace'>let</span> or <span style='font-family: monospace'>const</span>. A variable can have an optional constraint by declaring a type. If constrained a variable can only reference values of the declared type.</p>
+<p></p>
+<pre>let v = 22; // v can reference any type
+let i: Integer = 22; // i can only reference integers
+let d: Double = 22.0; // d can only reference doubles
+const c = 1.23; // c is constant, it cannot change
+</pre><p></p>
+<h5><a id='booleans'></a>Booleans</h5>
+<p>The most basic type is the simple true or false value, which is called a boolean value.</p>
+<p></p>
+<pre>let a = true; // value a is true
+let b = false; // false
+let c = Boolean.FALSE; // type constraint of Boolean
+let d: Boolean = Boolean.TRUE; // like Boolean d = Boolean.TRUE
+let e = Boolean.FALSE; // like Object e = Boolean.FALSE
+</pre><p></p>
+<h5><a id='numbers'></a>Numbers</h5>
+<p>The most basic type is the simple true or false value, which is called a 'boolean' value.</p>
+<p></p>
+<pre>let binary = 0b0111011; // binary literal
+let hex = 0xffe16; // hexidecimal literal
+let int = 11;
+let real = 2.13;
+let typed: Integer = 22; // integer value 22
+let coercion: Double = "1.234e2"; // coercion of string to double
+</pre><p></p>
+<h5><a id='strings'></a>Strings</h5>
+<p>A fundamental part of creating programs is working with textual data. As in other languages, we use the type string to refer to these textual types. Strings are represented by characters between a single quote, a double quote, or a backtick. When characters are between double quotes or backticks they are interpolated, meaning they have expressions evaluated within them. These expressions start with the dollar character. All strings can span multiple lines.</p>
+<p></p>
+<pre>let string = 'Hello World!'; // literal string
+let template = "The sum of 1 and 2 is ${1 + 2}"; // interpolated string
+let concat = "The sum of 1 and 2 is " + (1 + 2); // concatenation
+
+let multiline = "Details
+    a) This is a new line
+    b) This is another new line";
+    
+let backtick = `A backtick can contain "quotes" and ${expressions}
+    and can span multiple lines`;    
+</pre><p></p>
+<h5><a id='arrays'></a>Arrays</h5>
+<p>To allocate an contiguous sequence of memory an array is required. An array can be created fromany type, however arrays of numbers or bytes are created as primitive arrays internally. Theseprimitive arrays provide better integration with streams and buffers. </p>
+<p></p>
+<pre>let array = new String[10]; // array of strings
+let bytes = new Byte[11]; // primitive byte[11]
+let byte = array[1]; // reference element in array
+let matrix = new Long[10][22]; // multidimensional long[10][22];
+let long = matrix[2][3]; // reference multidimensional
+</pre><p></p>
+<h4><a id='collections'></a>Collections</h4>
+<p>Complex data structures can be represented with a simple and straight forward syntax. Collection types found in Java such as maps, sets, and lists can be represented as follows.</p>
+<p></p>
+<pre>let set = {1, 2, "x", "y"}; // creates a LinkedHashSet
+let list = [1, 2, 3]; // creates an ArrayList
+let map = {"a": 1, "b": 2}; // creates a LinkedHashSet
+let empty = {:}; // creates an empty map
+let mix = [1, 2, {"a": {"a", "b", [55, 66]}}]; // mix collection types
+
+let multiline = {
+    name: "John Doe",
+    address: {
+        city: "Unknown",
+        state: "California"
+    },
+    age: 33
+};
+
+let ascending = [0 to 9]; // range of increasing numbers
+let descending = [0 from 9]; // range of decreasing numbers
+</pre><p></p>
+<h3><a id='operators'></a>Operators</h3>
+<p>Operators are special symbols that perform specific operations on a set of operands. The operatorsavailable are those found in most conventional imperative languages, such as those to performalgebra or compare values. </p>
+<p></p>
+<p></p>
+<h4><a id='arithmetic-operators'></a>Arithmetic Operators</h4>
+<p>Arithmetic operators are used in mathematical expressions in the same way that they are used in algebra.These operations can be grouped and order can be specified using braces.</p>
+<p></p>
+<pre>let a = 10;
+let b = 20;
+let c = a + b; // add is 30
+let d = b - a; // subtract is 10
+let e = b / a; // divide is 2
+let f = a * b; // multiply is 200
+let g = b % a; // modulus is 0
+let h = a++; // a is 11 and h is 10
+let i = b--// b is 19 and i is 20
+let j = --a; // a is 10 and j is 10
+let k = ++b; // b is 20 as is k
+let l = 1 / ((a + b) * 10)
+</pre><p></p>
+<h4><a id='bitwise-operators'></a>Bitwise Operators</h4>
+<p>Bitwise operators are used to manipulate numbers, typically integers, at the byte level. They do so by change the binary representation of the value.</p>
+<p></p>
+<pre>let a = 0b00111100;
+let b = 0b00001101;
+let c = a & b; // bitwise and, c is 00001100
+let d = a | b; // bitwise or, d is 00111101
+let e = a & b; // bitwise xor, e is 00110001
+let f = ~a; // f is 11000011
+let g = f >> 2; // f is 00110000
+let h = f << 2; // h is 11000000
+let i = f >>> 2; // unsigned shift, i is 00110000
+</pre><p>Both the arithmetic and bitwise operators have priority and are evaluated in a specific order if nobraces are used to group or enforce order. The evaluation order applied is shown in the table below.</p>
+<p></p>
+<table border='0'>
+    <th>Order</th>
+    <th>Operator</th>
+    <th>Description</th>
+   <tr>
+      <td>1</td>
+      <td>&#42;&#42;</td>
+      <td>Exponential operator</td>
+   </tr>
+   <tr>
+      <td>2</td>
+      <td>/</td>
+      <td>Divide operator</td>
+   </tr>
+   <tr>
+      <td>3</td>
+      <td>&#42;</td>
+      <td>Multiply operator</td>
+   </tr>
+   <tr>
+      <td>4</td>
+      <td>%</td>
+      <td>Modulus operator</td>
+   </tr>
+   <tr>
+      <td>5</td>
+      <td>+</td>
+      <td>Addition operator</td>
+   </tr>
+   <tr>
+      <td>6</td>
+      <td>-</td>
+      <td>Subtraction operator</td>
+   </tr>
+   <tr>
+      <td>7</td>
+      <td>&gt;&gt;</td>
+      <td>Signed shift right operator</td>
+   </tr>
+   <tr>
+      <td>8</td>
+      <td>&lt;&lt;</td>
+      <td>Shift left operator</td>
+   </tr>
+   <tr>
+      <td>9</td>
+      <td>&gt;&gt;&gt;</td>
+      <td>Shift right operator</td>
+   </tr>
+   <tr>
+      <td>10</td>
+      <td>&</td>
+      <td>Bitwise AND operator</td>
+   </tr>
+   <tr>
+      <td>11</td>
+      <td>&#124;</td>
+      <td>Bitwise OR operator</td>
+   </tr>
+   <tr>
+      <td>12</td>
+      <td>^</td>
+      <td>Bitwise XOR operator</td>
+   </tr>
+</table>
+<p></p>
+<p></p>
+<h4><a id='relational-operators'></a>Relational Operators</h4>
+<p>Relational operators are used to make comparisons, such as equal to, not equal to, greater than, less than.</p>
+<p></p>
+<pre>let a = 10;
+let b = 20;
+let c = a == b // equal operator, c is false
+let d = a != b; // not equal operator, d is true
+let e = a > b; // greater than operator, e is false
+let f = a < b; // less than operator, f is true
+let g = a <= b; // g is false
+let h = a >= b; // h is true
+</pre><p></p>
+<h4><a id='logical-operators'></a>Logical Operators</h4>
+<p>Logical operators are typically used to combine multiple relational operations in to a single boolean result.</p>
+<p></p>
+<pre>let a = 1;
+let b = 3;
+let c = true;
+let d = false;
+let e = a && b; // e is false
+let f = a || b; // f is true
+let g = !d; // not operator, g is true
+let h = b > a && a == 1; // logical and of, h is true
+let i = b > a && a != 1; // i is false
+</pre><p></p>
+<h3><a id='conditions'></a>Conditions</h3>
+<p>Conditional statements are used to perform different actions based on different conditions.</p>
+<p></p>
+<p></p>
+<h4><a id='if-statement'></a>If Statement</h4>
+<p>The if statement is used to specify a group of statements to execute if a statement is true.</p>
+<p></p>
+<pre>const a = 2;
+const b = 3;
+
+if(a < b) { // true
+   println("a > b"); // prints as a < b
+}
+</pre><p></p>
+<h4><a id='else-statement'></a>Else Statement</h4>
+<p>The else statement is used to specify a group of statements to execute if a statement is false.</p>
+<p></p>
+<pre>const a = 2;
+const b = 3;
+
+if(a >= b) { // false
+   println("a >= b");
+} else {
+   println("a < b"); // prints as a < b
+}
+</pre><p></p>
+<h4><a id='unless-statement'></a>Unless Statement</h4>
+<p>The unless statement is used to specify a group of statements to execute if a statement is false.</p>
+<p></p>
+<pre>const a = 2;
+const b = 3;
+
+unless(a > b) { // false
+   println("a > b"); // prints as a < b
+}
+</pre><p></p>
+<h4><a id='assert-statement'></a>Assert Statement</h4>
+<p>The assert statement is used to determine if an expression evaluates to true or false. If the expression evaluates to true the operation has no effect, otherwise an assertion exception is thrown.</p>
+<p></p>
+<pre>const a = 2;
+const b = 3;
+
+assert a < b;
+assert a > b; // assert exception
+</pre><p></p>
+<h4><a id='debug-statement'></a>Debug Statement</h4>
+<p>The debug statement is used to suspend any attached debugger if and expression evaluates to true. This can be usefulif there is a specific part of the program that you want to evaluate given a known state of execution. It is similarto the debugger statement for JavaScript with the addition of logic predicate the suspension.</p>
+<p></p>
+<pre>debug a * b > 4; // suspend the debugger if true
+</pre><p></p>
+<h4><a id='ternary-operator'></a>Ternary Operator</h4>
+<p>To make statements more concise there is a ternary operator.</p>
+<p></p>
+<pre>let a = 2;
+let b = 3;
+
+println(a >= b ? "a >= b" : "a < b"); // prints a < b
+</pre><p></p>
+<h4><a id='null-coalesce'></a>Null Coalesce</h4>
+<p>The null coalesce operator is similar to the ternary operator with one exception, the evaluation is whether a value is null.</p>
+<p></p>
+<pre>let a = null;
+let b = 3;
+
+println(a ?? b); // prints b
+</pre><p></p>
+<h3><a id='loops'></a>Loops</h3>
+<p>Loops are used to perform a group of statements a number of times until a condition has been satisfied.</p>
+<p></p>
+<h4><a id='while-statement'></a>While Statement</h4>
+<p>The while statement is the simplest conditional statement. It repeats a group of statements while the condition it evaluates is false.</p>
+<p></p>
+<pre>let n = 0;
+
+while(n < 10) { // conditional loop
+   n++;
+}
+</pre><h4><a id='until-statement'></a>Until Statement</h4>
+<p>The until statement is similar to the while statement but loops while the condition is false. It repeats a group of statements until the condition it evaluates is true.</p>
+<p></p>
+<pre>let n = 0;
+
+until(n >= 10) { // conditional loop
+   n++;
+}
+</pre><h4><a id='for-statement'></a>For Statement</h4>
+<p>The for statement is typically used to count over a range of numeric values. It contains three parts, a declaration, a condition, and an optional statement which is evaluated at the end of the loop.</p>
+<p></p>
+<pre>for(let i = 0; i < 10; i++){ // loops from 1 to 10
+   if(i % 2 == 0) {
+      continue; // continue loop
+   }
+   println(i);  // prints only odd numbers
+}
+</pre><p></p>
+<h4><a id='for-in-statement'></a>For In Statement</h4>
+<p>The for in statement offers a simpler way to iterate over a range of values, a collection, or an array.</p>
+<p></p>
+<pre>let list = [35, 22, 13, 64, 53];
+
+for(e in list){ // iterates over the list
+   println(e);
+}
+
+for(e in 0..9) { // iterates from 0 to 9
+   if(e == 7) {
+      break; // exit loop when e is 7
+   }
+   println(e); // prints from 0 to 6
+}
+
+for(i in 0 to 9) { // iterates from 0 to 9
+    println(i);
+}
+
+for(i in 0 from 9) { // iterates from 9 to 0
+    println(i)
+}
+</pre><h4><a id='loop-statement'></a>Loop Statement</h4>
+<p>The loop statement offers a way to specify an infinite loop, it does not evaluate any condition.</p>
+<p></p>
+<pre>let n = 0;
+
+loop { // infinite loop
+   if(n++ > 100) {
+      break;
+   }
+}
+</pre><p></p>
+<h3><a id='exceptions'></a>Exceptions</h3>
+<p>Exceptions are used to indicate an error has occurred. It offers a simple means to return control to a calling function, which can then handle the error. Typically an exception object is thrown, however it is possible to throw any type.</p>
+<p></p>
+<h4><a id='catch-statement'></a>Catch Statement</h4>
+<p>In order to catch an exception the throwing statement needs to be wrapped in a try catch statement. This statement basically allows the program to try to execute a statement or group of statements, if during execution an exception is thrown then an error handling block is executed.</p>
+<p></p>
+<pre>try {
+   throw new IllegalStateException("some error");
+} catch(e: IllegalStateException) {
+   e.printStackTrace();
+}
+</pre><p></p>
+<h4><a id='finally-statement'></a>Finally Statement</h4>
+<p>The finally statement is a group of statements that are always executed regardless of whether an exception is thrown.</p>
+<p></p>
+<pre>try {
+   throw "throw a string value";
+} catch(e) {
+   println(e);
+} finally {
+   println("finally always runs");
+}
+</pre><p></p>
+<h3><a id='functions'></a>Functions</h3>
+<p>Functions group together control structures, operations, and method calls. These functions can then be called when needed, and the code contained within them will be run. This makes it very easy to reuse code without having to repeat it within your script.</p>
+<p></p>
+<h4><a id='declaration'></a>Declaration</h4>
+<p>The most basic type of function is declared with a name and a specific number of parameters. Such a method can then be called using the declared name by passing in a right number of arguments.</p>
+<p></p>
+<pre>let r = max(11, 3, 67); // r is 67
+
+func max(a, b) {
+   return a > b ? a : b;
+}
+
+func max(a, b, c) { // function overloading
+   return a < b ? max(a, c) : max(b, c);
+}
+</pre><p></p>
+<h4><a id='type-constraints'></a>Type Constraints</h4>
+<p>In order to bind invocations to the correct function implementation it can be declared with optional type constraints. These type constraints will ensure that variables of a specific type will be bound to the correct implementation.</p>
+<p></p>
+<pre>let x: Double = 11.2;
+let y: Integer = 11;
+let z: String = "11";
+
+f(x); // prints double 11.2
+f(y); // prints integer 11
+f(z); // prints string 11
+f(true); // type coercion to string, prints string true
+
+func f(x: Integer) {
+   println("integer ${x}");
+}
+
+func f(x: Double) {
+   println("double ${x}");
+}
+
+func f(x: String) {
+   println("string ${x}");
+}
+</pre><p></p>
+<h4><a id='variable-arguments'></a>Variable Arguments</h4>
+<p>At times it can be useful to provide a large number of arguments to a function. To achieve this the last parameter can be declared with a variable argument modifier.</p>
+<p></p>
+<pre>let result = sum(0, 13, 44, 234, 1, 3); 
+
+func sum(offset, numbers...){ // variable arguments
+   let size = numbers.size();
+   let sum = 0;
+   
+   for(let i = offset; i < size; i++){
+      sum += number;
+   }
+   return sum;
+}
+</pre><p></p>
+<h4><a id='closures'></a>Closures</h4>
+<p>A closure is an anonymous function that captures the current scope and can be assigned to a variable. This variable can then act as a function and can be called in the same manner.</p>
+<p></p>
+<pre>const square = (x) -> x * x;
+const cube = (x) -> square(x) * x;
+
+cube(2); // result is 8
+
+const printAll = (values...) -> {
+   for(var e in values) {
+      println(e);
+   }
+}
+
+printAll(1, 2, 3, 4); // print all values
+</pre><p></p>
+<h4><a id='function-handles'></a>Function Handles</h4>
+<p>A function handle is simply a way to reference an existing function as a closure. Function handles can represent constructors or functions that are in scope.For example take the constructor for a string, it is quite possible to execute the following.</p>
+<p></p>
+<pre>['a', 'b', 'c'].iterator.forEachRemaining(this::println)
+</pre><p>Here we are calling the println function with the item passed to the function. This function is represented as a function handlethat takes a string. A function handle can represent a static or an instance function. For example:</p>
+<p></p>
+<pre>class Formatter {
+
+    public static upper(s: String) {
+        return s.toUpperCase();
+    }
+}
+
+['a', 'b', 'c'].stream().map(Formatter::upper).forEach(this::println);
+</pre><p></p>
+<h4><a id='generic-functions'></a>Generic Functions</h4>
+<p>Generics can be used to qualify the arguments that can be passed to a function. They are useful when the static analyser verifies the program as it ensures arguments and return types match the declared qualifiers.</p>
+<p></p>
+<pre>func abs<T: Number>(nums: T): List<T> {
+    let result: List<T>  = [];
+    
+    for(num in nums) {
+        let abs = num.abs();
+        result.add(abs);
+    }
+    return result;
+}
+
+let list: List<Double> = abs<Double>(-1.0, 2.0, -3.0);
+
+assert list[0] == 1;
+assert list[2] == 2;
+</pre><p></p>
+<h4><a id='coroutines'></a>Coroutines</h4>
+<p>It is often useful to suspend execution of a function in order to return a result. Typically this requires a great deal of effort from the developer. <a href='https://en.wikipedia.org/wiki/Coroutine'>Coroutines</a> allow an idiomatic means of suspending the execution of a function which can be resumed at the point of suspension. This allows for complex reactive iteration to be performed with minimal effort. For example take a Fibonnaci sequence.</p>
+<p></p>
+<pre>func fib(n){
+   let a = 1;
+   let b = 2;
+   
+   until(n-- <= 0) {
+      yield a; // function is suspended here
+      (a, b) = (b, a + b);
+   }
+}
+</pre><p></p>
+<h4><a id='async-await'></a>Async Await</h4>
+<p>Asynchronous functions can be implemented with the async and await modifiers. This is similar to a standard Coroutine however this paradigm will allow the executionof the program to fork in two different threads of execution.</p>
+<p></p>
+<pre>async loadImage(n: String): Promise<?> {
+    if(!cache.contains(n)) {
+        return await ImageIO.read(n); 
+    }
+    return cache.get(n); // no need to go async
+}
+</pre><p>All async functions can cascade such that if an async function calls another it is suspended until the functionbeing called completes, at which point it will resume from the call site. For convenience closures can alsobe asynchronous.</p>
+<p></p>
+<pre>let loadImage = async (n: String) -> ImageIO.read(n);
+</pre><p>Here there is no need to specify the await keyword as expression based asynchronous closures have an implicit await.For closures that have more than a single expression you must specify which statements are asynchronous.</p>
+<p></p>
+<pre>let loadImage = async (n: String) -> {
+    if(!cache.contains(n)) {
+        return await ImageIO.read(n); 
+    }
+    return cache.get(n); // no need to go async
+}
+</pre><p></p>
+<h4><a id='blank-parameters'></a>Blank Parameters</h4>
+<p>Blank parameters allow you to specify an argument that is not needed or can be ignored.</p>
+<p></p>
+<pre>func create<T>(type: T): T {
+    return cache.computeIfAbsent(type.name, (_) -> new T());
+}
+</pre><p></p>
+<h3><a id='types'></a>Types</h3>
+<p>In any object oriented language types are required. A type is basically a way to define and encapsulate variables and functions within a named scope. All types can have generic parameters allowing the static analyser to verifyinteractions with the type.</p>
+<p>The type system for Tern is independent to the type system native to the JVM. To integrate with the JVM typesystem ASM byte code generation and Dex code generation are leveraged to create bridges between nativetypes and those constructed from the script execution flow.</p>
+<p></p>
+<h4><a id='class'></a>Class</h4>
+<p>A class is the most basic type. It contains variables, and functions that can operate on those variables. Once declared a type can be instantiated by calling a special function called a constructor. There are twoprimary categories of class, the abstract class and the concrete class. An abstract class representsa generic concept and as such cannot be instantiated. Below is an example of an abstract class.</p>
+<p></p>
+<pre>abstract class Shape {
+
+    let origin: Point;
+    
+    new(origin: Point) {
+       this.origin = origin;
+    }
+
+    /**
+     * Draw the shape to the provided graphics. Each
+     * shape will be drawn from the origin.
+     *
+     * @param g the graphics to draw with
+     */
+    abstract draw(g: Graphics);
+    
+    class Point { // inner class
+    
+        const x;
+        const y;
+        
+        new(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+}
+</pre><p>A concrete class represents an whole object or entity and unlike abstract classes it can be instantiated.To leverage methods and state from other classes inheritance is possible. Below we can see how a squareinherits state and a method from the abstract shape class. </p>
+<p></p>
+<pre>class Square extends Shape {
+
+    private let width: Integer;
+    private let height: Integer;
+
+    new(origin: Point, width: Integer, height: Integer): super(origin) {
+        this.width = width;
+        this.height = height;
+    }
+    
+    /**
+     * Draw a square at the origin.
+     *
+     * @param g the graphics to draw on
+     */
+    override draw(g: Graphics) {
+        g.drawSquare(origin.x, origin.y, width, height);
+    }
+}
+</pre><p>By default functions defined in the body of a class are public. This means any scope where an instanceof the class is accessible can call this public method. The opposite is true for private methods. Privatemethod can be called only within the body of the class. </p>
+<p>Below is a list of the modifiers that can be applied to functions defined within the body of a class.</p>
+<p></p>
+<table border='0'>
+    <th> Modifiers</th>
+    <th>Description</th>
+   <tr>
+      <td>public</td>
+      <td>Public functions and variables are visible in all scopes</td>
+   </tr>
+   <tr>
+      <td>private</td>
+      <td>Private functions are visible only within the class body</td>
+   </tr>
+   <tr>
+      <td>abstract</td>
+      <td>Abstract functions have no implementation</td>
+   </tr>
+   <tr>
+      <td>override</td>
+      <td>An override reflects replacing a super class function</td>
+   </tr>
+   <tr>
+      <td>static</td>
+      <td>Static methods can be called without an instance</td>
+   </tr>
+   <tr>
+      <td>async</td>
+      <td>Async functions can be suspended and resumed concurrently</td>
+   </tr>
+</table>
+<p></p>
+<p></p>
+<h4><a id='enumeration'></a>Enumeration</h4>
+<p>An enumeration is a type that specifies a list of constant values. This values are constant and are instances of the enum they are declared in.</p>
+<p></p>
+<pre>enum Color {
+   RED("#ff0000"),
+   BLUE("#0000ff"),
+   GREEN("#00ff00");
+   
+   let rgb;
+   
+   new(rgb) {
+      this.rgb = rgb;
+   }
+}
+
+let red = Color.RED;
+let blue = Color.BLUE;
+</pre><p></p>
+<h4><a id='trait'></a>Trait</h4>
+<p>A trait is similar to a class in that is specifies a list of functions. However, unlike a class a trait does not declare any variables and does not have a constructor. It can be used to add functions to a class.</p>
+<p></p>
+<pre>trait NumberFormat<T: Number> {
+   
+   /**
+    * Round to number to a specific number of decimal
+    * places or to an integer.
+    *
+    * @param a places to round to
+    */
+   round(a): T;
+   
+   format(a: T) {
+      return round(a);
+   }
+}
+
+class DoubleFormat with NumberFormat<Double> {
+   
+   let places: Integer;
+   
+   new(places: Integer) {
+      this.places = places;
+   }
+   
+   override round(a: Double) {
+      return a.round(places);
+   }
+}
+
+class IntegerFormat with NumberFormat<Integer> {
+   
+   override round(a: Integer) {
+      return a;
+   }
+}
+</pre><p></p>
+<h4><a id='module'></a>Module</h4>
+<p>A module is collection of types, functions, and variables. It is similar to enclosing a script within a named type. Modules are useful in providing constructs such as singletons.</p>
+<p></p>
+<pre>module ImageStore {
+
+   private const cache = {:};
+   
+   public find(name) {
+      return cache.get(name);
+   }
+   
+   private cache(name, image) {
+      cache.put(name, image);
+   }
+} 
+</pre><p></p>
+<h4><a id='annotations'></a>Annotations</h4>
+<p>Annotations can be applied to any type and do not need to be declared. These are useful whenyou need to determine the behaviour of a type and its methods through introspection.</p>
+<p></p>
+<pre>@ComponentPath(path: '/images')
+class ImageService {
+
+    @Path(match = "/{path}')
+    @Method(verb: 'GET')
+    @ContentType(value: 'image/png')
+    getImage(@Param(name: 'path') path) {
+        return ImageIO.read(path);
+    }
+}
+</pre><p></p>
+<h4><a id='type-alias'></a>Type Alias</h4>
+<p>It can often be useful to alias types for readability, particularly when generics are involved. An alias is nota new type but rather a new name for a known type. </p>
+<p></p>
+<pre>import util.concurrent.ConcurrentHashMap;
+
+type Bag<T> = ConcurrentHashMap<String, T>();
+
+func bagOf<T: Number>(nums...: T): Bag<T> {
+    let bag: Bag<T> = new Bag<T>();
+    
+    for(num in nums){
+        bag.put(`${num}`, num);
+    }
+    return bag;
+}
+</pre><p></p>
+<h4><a id='uniform-access'></a>Uniform Access</h4>
+<p>The uniform access principle of computer programming was put forth by Bertrand Meyerin his book called <a href='https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction'>Object Oriented Software Construction</a>. It states all services offered by a module should be available through a uniform notation, which does not betray whether they are implemented through storage or through computation.An example of this is typical getter and setter property methods but applies to anymethod that does not require arguments.</p>
+<p></p>
+<pre>class Person {
+    
+    private const firstName;
+    private const surname;
+    
+    new(firstName, surname) {
+        this.firstName = firstName;
+        this.surname = surname;
+    }
+    
+    getFullName() {
+        return "${firstName} ${surname}";
+    }
+}
+
+let person = new Person("John", "Doe");
+
+assert person.fullName == 'John Doe';
+</pre><p></p>
+<h4><a id='import'></a>Import</h4>
+<p>In order to access the Java types available they can be imported by name. Once imported the type can be instantiated and used as if it was a script object. In addition to importing types, functions can also be imported by using a static import.</p>
+<p></p>
+<pre>import static lang.Math.*; // import static functions
+import security.SecureRandom;
+
+const random = new SecureRandom(); // create a java type
+const a = random.nextInt(40);
+const b = random.nextInt(40);
+const c = max(a, b); // Math.max(a, b)
+
+println(c); // prints the maximum random
+</pre><p>To avoid name collisions it is also possible to import types with aliases. Additionally an imports visibility canbe encapsulated within a module so that it is only available in that module. </p>
+<p></p>
+<pre>import util.concurrent.ConcurrentHashMap as Bag;
+
+module ImageStore {
+
+    import aws.image.BufferedImage as Image;
+    import aws.Graphics;
+    
+    public paint(g: Graphics) {
+        // ...
+    }
+}
+</pre><p>Imports can be grouped from the same package using braces. Below is an example of import groups.</p>
+<p></p>
+<pre>import util.concurrent.{ ConcurrentHashMap, CopyOnWriteArrayList };
+import util.{ Map, Set, List };
+</pre><p></p>
+<p></p>
+<h4><a id='coercion'></a>Coercion</h4>
+<p>For interfaces that have only a single method a closure can be coerced to that interface type. This makes for a much simpler and concise syntax similar to that offered by Java closures.</p>
+<p></p>
+<pre>const set = new TreeSet(Double::compare);
+
+set.add(1.2);
+set.add(2.3);
+set.add(33.4);
+set.add(4.55);
+set.add(2);
+
+for(entry in set){
+   println(entry);
+}
+</pre><p></p>
+<h4><a id='platform-integration'></a>Platform Integration</h4>
+<p>To leverage the large array of frameworks and services available on the Java platform any Java type can be instantiated, and any Java interface can be implemented.</p>
+<p></p>
+<pre>class DoubleComparator with Comparator{
+
+   override compare(a,b){
+      return Double.compare(a,b);
+   }
+}
+
+let comparator = new DoubleComparator();
+let set = new TreeSet(comparator);
+
+set.add(1.2);
+set.add(2.3);
+set.add(33.4);
+set.add(4.55);
+set.add(2);
+
+for(let entry in set){
+   println(entry);
+}
+</pre><p></p>
+<h2><a id='tools'></a>Tools</h2>
+<p>To be productive in any language there needs to be a way to write, evalute and debug applications. The development environment is free to use and can be used in any standard web browser supporting HTML 5. Alternatively this development client can be run as a standalone application.</p>
+<p></p>
+<h3><a id='command-line-interpreter'></a>Command Line Interpreter</h3>
+<p>To run scripts as a standalone application you can download the interpreter. The interpreter requires Java to be installed on the host machine. Once you have downloaded the interpreter you can begin running scripts right away. All you need to do is specify the script file relative to the current directory.</p>
+<p>Download - <a href='http://tern-lang.org/tern.zip'>http://tern-lang.org/tern.zip</a></p>
+<p></p>
+<h3><a id='development-environment'></a>Development Environment</h3>
+<p>The development environment, Tern Studio, is written with HTML5 and TypeScript. It comes packaged as a standalone application leveraging the <a href='https://en.wikipedia.org/wiki/Chromium_Embedded_Framework'>Chrome Embedded Framework</a>. Running an application from Tern Studio is as simple has pressing the play button. This will initiate a bootstrapping process where the interpreter is downloaded in to a harness oncethis bootstrapping process has completed the source program is downloaded and executed. Stepping through thecode can be done by setting break points.</p>
+<p>Download - <a href='http://tern-lang.org/ternd.zip'>http://tern-lang.org/ternd.zip</a></p>
+<p></p>
+<h4><a id='breakpoints'></a>Breakpoints</h4>
+<p>A breakpoint forces the debugger to suspend at a particular line when execution flow arrives at that line. Oncesuspended the developer can step in, out or over the statements.</p>
+<p></p>
+<img src='https://raw.githubusercontent.com/tern-lang/tern-site/master/www.tern-lang.org/img/screenshots/debugger_breakpoints.png' alt='Developer Breakpoints'>
+<p></p>
+<h4><a id='console'></a>Console</h4>
+<p>All output from the application is captured in the console and displayed. This console is a scrolling window andwill keep only the most recent history up to a configurable number of lines.</p>
+<p></p>
+<img src='https://raw.githubusercontent.com/tern-lang/tern-site/master/www.tern-lang.org/img/screenshots/debugger_console.png' alt='Developer Console'>
+<p></p>
+<h4><a id='variables'></a>Variables</h4>
+<p>When execution is suspended it is possible to evaluate expressions and look at variables on the stack and inthe surrounding scope. These variables can be navigated by clicking through references.</p>
+<p></p>
+<img src='https://raw.githubusercontent.com/tern-lang/tern-site/master/www.tern-lang.org/img/screenshots/debugger_variables.png' alt='Developer Variables'>
+<p></p>
+<h4><a id='threads'></a>Threads</h4>
+<p>At any time multiple threads may be suspended. A thread view is provided so that the developer can select thethread to debug and also to view the stack frames.</p>
+<p></p>
+<img src='https://raw.githubusercontent.com/tern-lang/tern-site/master/www.tern-lang.org/img/screenshots/debugger_threads.png' alt='Developer Threads'>
+<p></p>
+<h4><a id='process-view'></a>Process View</h4>
+<p>If there are multiple applications running from the development environment focus can only be given to one. Itis possible to switch focus through the process view. Once focused an application can be debugged or terminated.</p>
+<p></p>
+<img src='https://raw.githubusercontent.com/tern-lang/tern-site/master/www.tern-lang.org/img/screenshots/debugger_agents.png' alt='Developer Debug'>
+<p></p>
+<h4><a id='debug-perspective'></a>Debug Perspective</h4>
+<p>To capture as much relevant information on a single screen the debug perspectived can be used. This will allowthe developer to see the threads and variables as well as the console.</p>
+<p></p>
+<img src='https://raw.githubusercontent.com/tern-lang/tern-site/master/www.tern-lang.org/img/screenshots/debugger_changelayout.png' alt='Developer Debug Perspective'>
+<p></p>
+<h4><a id='full-screen'></a>Full Screen</h4>
+<p>When editing it can be useful to see the full screen. This perspective can be achieved by double clicking onthe tab in focus.</p>
+<p></p>
+<img src='https://raw.githubusercontent.com/tern-lang/tern-site/master/www.tern-lang.org/img/screenshots/debugger_fullscreen.png' alt='Developer Full Screen'>
+<p></p>
+<h3><a id='debug-agent'></a>Debug Agent</h3>
+<p>The development environment can act as a debug service. As such it is possible to connect to a debugger and push code and debug information. To do this you simple need to embed the debug agent in to your application.</p>
+<p></p>
+<h3><a id='android'></a>Android</h3>
+<p>Full compatibility is provided for Android. A basic JIT is also provided to reduce the overhead of reflectionand to allow types to be extended.</p>
+<p></p>
+<p></p>
+</body>
+</html>
