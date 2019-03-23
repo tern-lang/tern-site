@@ -136,8 +136,8 @@
 </li>
 <p></p>
 <h2><a id='overview'></a>Overview</h2>
-<p>Tern is an optionally typed scripting language for the <a href='https://en.wikipedia.org/wiki/Java_virtual_machine'>JVM</a>  and is compatible with all Android variants such as <a href='https://en.wikipedia.org/wiki/Dalvik_(software)'>Dalvik</a> and <a href='https://en.wikipedia.org/wiki/Android_Runtime'>ART</a>. The learning curve is small for anyone with experience of Java, JavaScript, or a similar  imperative  language. It has excellent integration with the host platform and can  leverage the vast ecosystem of the JVM without excessive boilerplate. </p>
-<p>The language is ideal for embedding in to an existing application, and is a fraction of the size  of similar languages for the JVM platform. In addition to embedding it can be run as a standalone  interpreter and has a development environment which allows scripts to be debugged and profiled. </p>
+<p>Tern is an optionally typed programming language for the <a href='https://en.wikipedia.org/wiki/Java_virtual_machine'>JVM</a>  and is compatible with all Android variants such as <a href='https://en.wikipedia.org/wiki/Dalvik_(software)'>Dalvik</a> and <a href='https://en.wikipedia.org/wiki/Android_Runtime'>ART</a>. The learning curve is small for anyone with experience of Java, JavaScript, or a similar  imperative  language. It has excellent integration with the host platform and can  leverage the vast ecosystem of the JVM without excessive boilerplate. </p>
+<p>The language is ideal for embedding in to an existing application, and is a fraction of the size  of similar languages for the JVM platform. In addition to embedding it can be run as a standalone  interpreter and has a development environment which allows programs to be debugged and profiled. </p>
 <p></p>
 <h3><a id='parallel-compilation'></a>Parallel Compilation</h3>
 <p>Tern programs can be separated in to multiple source files that define the types and functions representing  the execution flow. To minimise start times the parsing and assembly of the source is performed in parallel.  Once defined the execution graph is joined in to a single executable and static analysis is performed. </p>
@@ -280,11 +280,11 @@ let e = Boolean.FALSE; // like Object e = Boolean.FALSE
 <p>The most basic type is the simple true or false value, which is called a 'boolean' value. </p>
 <p></p>
 <pre>let binary = 0b0111011; // binary literal
-let hex = 0xffe16; // hexidecimal literal
+let hex = 0xffe16; // hexadecimal literal
 let int = 11;
 let real = 2.13;
 let typed: Integer = 22; // integer value 22
-let coercion: Double = "1.234e2"; // coercion of string to double
+let exponent: Double = 1.234e-2; // double with exponent
 </pre><p></p>
 <h5><a id='strings'></a>Strings</h5>
 <p>A fundamental part of creating programs is working with textual data. As in other languages,  we use the type string to refer to these textual types. Strings are represented by characters  between a single quote, a double quote, or a backtick. When characters are between double quotes  or backticks they are interpolated, meaning they have expressions evaluated within them. These  expressions start with the dollar character. All strings can span multiple lines. </p>
@@ -755,7 +755,7 @@ assert list[2] == 2;
 </pre><p></p>
 <h3><a id='types'></a>Types</h3>
 <p>In any object oriented language types are required. A type is basically a way to define and encapsulate variables  and functions within a named scope. All types can have generic parameters allowing the static analyser to verify interactions with the type. </p>
-<p>The type system for Tern is independent to the type system native to the JVM. To integrate with the JVM type system ASM byte code generation and Dex code generation are leveraged to create bridges between native types and those constructed from the script execution flow. </p>
+<p>The type system for Tern is independent to the type system native to the JVM. To integrate with the JVM type system ASM byte code generation and Dex code generation are leveraged to create bridges between native types and those constructed from the program execution flow. </p>
 <p></p>
 <h4><a id='class'></a>Class</h4>
 <p>A class is the most basic type. It contains variables, and functions that can operate on those variables.  Once declared a type can be instantiated by calling a special function called a constructor. There are two primary categories of class, the abstract class and the concrete class. An abstract class represents a generic concept and as such cannot be instantiated. Below is an example of an abstract class. </p>
