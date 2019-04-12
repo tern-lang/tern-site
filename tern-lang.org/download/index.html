@@ -1,0 +1,102 @@
+<html>
+      <head>
+        <title>Tern Programming Language</title>        
+        <link rel='stylesheet' href='/css/style.css'>
+        <meta property='og:url' content='http://tern-lang.org/'/>
+        <meta property='og:type' content='website'/>
+        <meta property='og:description' content='Tern Programming Language' />
+        <meta property='og:site_name' content='Tern Programming Language' />
+        <meta property='og:image' content='http://tern-lang.org/img/tern.png' />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+          <script type="text/javascript">
+              (function() {
+                  var link_element = document.createElement("link"),
+                      s = document.getElementsByTagName("script")[0];
+                  link_element.href = "http://fonts.googleapis.com/css?family=Droid+Sans:400,700";
+                  link_element.rel = "stylesheet";
+                  link_element.type = "text/css";
+                  s.parentNode.insertBefore(link_element, s);
+              })();
+          </script>
+          <script type="text/javascript">
+              (function() {
+                  var link_element = document.createElement("link"),
+                      s = document.getElementsByTagName("script")[0];
+                  link_element.href = "http://fonts.googleapis.com/css?family=Asap:400italic,400,700italic,700";
+                  link_element.rel = "stylesheet";
+                  link_element.type = "text/css";
+                  s.parentNode.insertBefore(link_element, s);
+              })();
+          </script>
+      </head>
+      <body>
+      <div style="margin-top: 0px">
+         <table class="header-table" border="0" cellpadding="0" cellspacing="0">
+            <tr valign="top" style="padding: 0px">
+               <td style="border: 0px; padding: 5px;" valign="top">
+                  <img src='/img/logo-header.png' alt='Tern'>
+               </td>
+               <td width="120" align="center" valign="top" class="header-row" onclick="location = '/'">
+         <table height="100%" width="100%" class="header-table" border="0" cellpadding="0" cellspacing="0">
+            <tr class="header-row-banner">
+               <td class="header-cell-banner"></td>
+            </tr>
+            <tr height="100%" class="header-row">
+               <td valign="center" class="header-cell">
+                  <br>
+                  <span class="header-text" onclick="location = '/'">Home<br>&nbsp;</span>
+               </td>
+            </tr>
+         </table>
+      </td> 
+               <td width="120" align="center" valign="top" class="header-row" onclick="location = '/videos'">
+         <table height="100%" width="100%" class="header-table" border="0" cellpadding="0" cellspacing="0">
+            <tr class="header-row-banner">
+               <td class="header-cell-banner"></td>
+            </tr>
+            <tr height="100%" class="header-row">
+               <td valign="center" class="header-cell">
+                  <br>
+                  <span class="header-text" onclick="location = '/videos'">Guide<br>&nbsp;</span>
+               </td>
+            </tr>
+         </table>
+      </td> 
+               <td width="120" align="center" valign="top" class="header-row" onclick="location = '/download'">
+         <table height="100%" width="100%" class="header-table" border="0" cellpadding="0" cellspacing="0">
+            <tr class="header-row-banner-highlight">
+               <td class="header-cell-banner-highlight"></td>
+            </tr>
+            <tr height="100%" class="header-row-highlight">
+               <td valign="center" class="header-cell-highlight">
+                  <br>
+                  <span class="header-text-highlight" onclick="location = '/download'">Download<br>&nbsp;</span>
+               </td>
+            </tr>
+         </table>
+      </td> 
+            </tr>
+         </table>
+      </div>
+      <style>#forkongithub a{background:#666666;color:#fff;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#ffb600;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:0px 0px 0px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/tern-lang/tern">Fork me on GitHub</a></span>
+      <br>
+<p>To be productive in any language there needs to be a way to write, evalute and debug applications. The development  environment is free to use and can be used in any standard web browser supporting HTML 5. Alternatively this  development client can be run as a standalone application. </p>
+<p></p>
+<h3><a id='command-line-interpreter'></a>Command Line Interpreter</h3>
+<p>To run scripts as a standalone application you can download the interpreter. The interpreter requires Java to  be installed on the host machine. Once you have downloaded the interpreter you can begin running scripts right  away. All you need to do is specify the script file relative to the current directory. </p>
+<p>Download - <a href='http://tern-lang.org/tern.zip'>http://tern-lang.org/tern.zip</a> </p>
+<p></p>
+<h3><a id='development-environment'></a>Development Environment</h3>
+<p>The development environment, Tern Studio, is written with HTML5 and TypeScript. It comes packaged as a standalone application  leveraging the <a href='https://en.wikipedia.org/wiki/Chromium_Embedded_Framework'>Chrome Embedded Framework</a>. Running an application from Tern Studio is as simple has pressing the  play button. This will initiate a bootstrapping process where the interpreter is downloaded in to a harness once this bootstrapping process has completed the source program is downloaded and executed. Stepping through the code can be done by setting break points. </p>
+<p>Download - <a href='http://tern-lang.org/ternd.zip'>http://tern-lang.org/ternd.zip</a> </p>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138155960-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'UA-138155960-1');
+      </script>
+      </body>
+      </html>

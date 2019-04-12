@@ -1,0 +1,149 @@
+<html>
+      <head>
+        <title>Tern Programming Language</title>        
+        <link rel='stylesheet' href='/css/style.css'>
+        <meta property='og:url' content='http://tern-lang.org/'/>
+        <meta property='og:type' content='website'/>
+        <meta property='og:description' content='Tern Programming Language' />
+        <meta property='og:site_name' content='Tern Programming Language' />
+        <meta property='og:image' content='http://tern-lang.org/img/tern.png' />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+          <script type="text/javascript">
+              (function() {
+                  var link_element = document.createElement("link"),
+                      s = document.getElementsByTagName("script")[0];
+                  link_element.href = "http://fonts.googleapis.com/css?family=Droid+Sans:400,700";
+                  link_element.rel = "stylesheet";
+                  link_element.type = "text/css";
+                  s.parentNode.insertBefore(link_element, s);
+              })();
+          </script>
+          <script type="text/javascript">
+              (function() {
+                  var link_element = document.createElement("link"),
+                      s = document.getElementsByTagName("script")[0];
+                  link_element.href = "http://fonts.googleapis.com/css?family=Asap:400italic,400,700italic,700";
+                  link_element.rel = "stylesheet";
+                  link_element.type = "text/css";
+                  s.parentNode.insertBefore(link_element, s);
+              })();
+          </script>
+      </head>
+      <body>
+      <div style="margin-top: 0px">
+         <table class="header-table" border="0" cellpadding="0" cellspacing="0">
+            <tr valign="top" style="padding: 0px">
+               <td style="border: 0px; padding: 5px;" valign="top">
+                  <img src='/img/logo-header.png' alt='Tern'>
+               </td>
+               <td width="120" align="center" valign="top" class="header-row" onclick="location = '/'">
+         <table height="100%" width="100%" class="header-table" border="0" cellpadding="0" cellspacing="0">
+            <tr class="header-row-banner">
+               <td class="header-cell-banner"></td>
+            </tr>
+            <tr height="100%" class="header-row">
+               <td valign="center" class="header-cell">
+                  <br>
+                  <span class="header-text" onclick="location = '/'">Home<br>&nbsp;</span>
+               </td>
+            </tr>
+         </table>
+      </td> 
+               <td width="120" align="center" valign="top" class="header-row" onclick="location = '/videos'">
+         <table height="100%" width="100%" class="header-table" border="0" cellpadding="0" cellspacing="0">
+            <tr class="header-row-banner-highlight">
+               <td class="header-cell-banner-highlight"></td>
+            </tr>
+            <tr height="100%" class="header-row-highlight">
+               <td valign="center" class="header-cell-highlight">
+                  <br>
+                  <span class="header-text-highlight" onclick="location = '/videos'">Guide<br>&nbsp;</span>
+               </td>
+            </tr>
+         </table>
+      </td> 
+               <td width="120" align="center" valign="top" class="header-row" onclick="location = '/download'">
+         <table height="100%" width="100%" class="header-table" border="0" cellpadding="0" cellspacing="0">
+            <tr class="header-row-banner">
+               <td class="header-cell-banner"></td>
+            </tr>
+            <tr height="100%" class="header-row">
+               <td valign="center" class="header-cell">
+                  <br>
+                  <span class="header-text" onclick="location = '/download'">Download<br>&nbsp;</span>
+               </td>
+            </tr>
+         </table>
+      </td> 
+            </tr>
+         </table>
+      </div>
+      <style>#forkongithub a{background:#666666;color:#fff;text-decoration:none;font-family:arial,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#ffb600;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:0px 0px 0px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/tern-lang/tern">Fork me on GitHub</a></span>
+      <br>
+<p>This guide illustrates how to get started with developing in the Tern language. Short video clips are used to provide an overview of how to use the command line interpreter as well as the development environment. </p>
+<p></p>
+
+<ul>
+  <li><a href='#getting-started'>Getting Started</a>
+  <ul>
+        <li><a href='#command-line-interpreter'>Command Line Interpreter</a></li>
+        <li><a href='#development-environment'>Development Environment</a></li>
+        <li><a href='#web-development-environment'>Web Development Environment</a></li>
+  </ul>
+  </li>
+ <li><a href='#example-programs'>Example Programs</a>
+ <ul>
+       <li><a href='#mario'>Mario</a></li>
+       <li><a href='#space-invaders'>Space Invaders</a></li>
+       <li><a href='#flappy-bird'>Flappy Bird</a></li>
+ </ul>
+ </li>
+</ul>
+</li>
+<p></p>
+<p></p>
+<h2><a id='getting-started'></a>Getting Started</h2>
+<p>To get started you will first need to download the command line interpreter and if require the development environment. This section provides some very short clips of how to dowload both of these tools and runs through some example code to clarify how to use them. </p>
+<p></p>
+<h3><a id='command-line-interpreter'></a>Command Line Interpreter</h3>
+<p>The command line interpreter is the most basic tool available for running Tern programs. It has several options to specify  the search path to use in order to locate scripts and assets. However all that is needed is a single argument specifying the location of the script to run. </p>
+<p></p>
+<p><a href='https://www.youtube.com/watch?v=MG27d-g2iSI' rel='nofollow'><img alt='Command Line Interpreter' src='http://img.youtube.com/vi/MG27d-g2iSI/0.jpg' style='max-width:100%;'></a></p><p></p>
+<p></p>
+<h3><a id='development-environment'></a>Development Environment</h3>
+<p>In order to develop sophisticated applications it is often necessary to debug various parts of the code. The following short clip shows how to download and run the development environment. Several examples are provided for further clarification. </p>
+<p></p>
+<p><a href='https://www.youtube.com/watch?v=jx1vFXRpW_I' rel='nofollow'><img alt='Development Environment' src='http://img.youtube.com/vi/jx1vFXRpW_I/0.jpg' style='max-width:100%;'></a></p><p></p>
+<h3><a id='web-development-environment'></a>Web Development Environment</h3>
+<p>The standalone development environment is essentially a web application wrapped with the <a href='https://en.wikipedia.org/wiki/Chromium_Embedded_Framework'>Chrome Embedded Framework</a>. To run in server mode you can specify the port to connect to and debug with a conventional web browser. </p>
+<p></p>
+<p><a href='https://www.youtube.com/watch?v=t0BHpvCC9gw' rel='nofollow'><img alt='Web Development Environment' src='http://img.youtube.com/vi/t0BHpvCC9gw/0.jpg' style='max-width:100%;'></a></p><p></p>
+<p></p>
+<h2><a id='example-programs'></a>Example Programs</h2>
+<p>The best way to learn any language is through examples. Below is a collection of examples from applications that have been written in Tern. The source code for these examples are available on Github and are free to download. </p>
+<p></p>
+<h3><a id='mario'></a>Mario</h3>
+<p>This is a clone of the <a href='https://en.wikipedia.org/wiki/Mario_Bros.'>Mario</a> game comes with the full source code in addition to the images and sounds. It has been written twice, once with full static typing and one with dynamic typing. Below is a YouTube video of the  program being run and debugged with Tern Studio. </p>
+<p></p>
+<p><a href='https://www.youtube.com/watch?v=yK4ZyIS3w9o' rel='nofollow'><img alt='Debug Desktop Game' src='http://img.youtube.com/vi/yK4ZyIS3w9o/0.jpg' style='max-width:100%;'></a></p><p></p>
+<a href='https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/demo/games/src/mario'>Source Code</a><p></p>
+<h3><a id='space-invaders'></a>Space Invaders</h3>
+<p>This is a very basic clone of the classic <a href='https://en.wikipedia.org/wiki/Space_Invaders'>Space Invaders</a> game. The implementation is short but leverages some of the more interesting language features such as async await. </p>
+<p></p>
+<p><a href='https://www.youtube.com/watch?v=SXc0eNvrAZs' rel='nofollow'><img alt='Debug Desktop Game' src='http://img.youtube.com/vi/SXc0eNvrAZs/0.jpg' style='max-width:100%;'></a></p><p></p>
+<a href='https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/demo/games/src/spaceinvaders'>Source Code</a><p></p>
+<h3><a id='flappy-bird'></a>Flappy Bird</h3>
+<p>This is a clone of the <a href='https://en.wikipedia.org/wiki/Flappy_Bird'>Flappy Bird</a> game and is targeted for Android. Below is a YouTube vide of the application being run and debugged remotely with Tern Studio. </p>
+<p></p>
+<p><a href='https://www.youtube.com/watch?v=w-baBQbZ5dI' rel='nofollow'><img alt='Debug Android Game' src='http://img.youtube.com/vi/w-baBQbZ5dI/0.jpg' style='max-width:100%;'></a></p><p></p>
+<a href='https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/android/flappybird/src/flappybird'>Source Code</a><!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138155960-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'UA-138155960-1');
+      </script>
+      </body>
+      </html>
