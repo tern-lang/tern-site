@@ -89,6 +89,7 @@
         <li><a href='#command-line-interpreter'>Command Line Interpreter</a></li>
         <li><a href='#development-environment'>Development Environment</a></li>
         <li><a href='#web-development-environment'>Web Development Environment</a></li>
+        <li><a href='#debug-remote-process'>Debug Remote Process</a></li>
   </ul>
   </li>
  <li><a href='#example-programs'>Example Programs</a>
@@ -108,16 +109,188 @@
 <h3><a id='command-line-interpreter'></a>Command Line Interpreter</h3>
 <p>The command line interpreter is the most basic tool available for running Tern programs. It has several options to specify  the search path to use in order to locate scripts and assets. However all that is needed is a single argument specifying the location of the script to run. </p>
 <p></p>
-<p><a href='https://www.youtube.com/watch?v=MG27d-g2iSI' rel='nofollow'><img alt='Command Line Interpreter' src='http://img.youtube.com/vi/MG27d-g2iSI/0.jpg' style='max-width:100%;'></a></p><p></p>
+<p><iframe width='850' height='480' src='https://www.youtube.com/embed/MG27d-g2iSI?VQ=HD1080'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p>The following options can be specified with the command line interpreter. </p>
+<p></p>
+<table border='0'>
+    <th>Short</th>
+    <th>Long</th>
+    <th>Description</th>
+   <tr>
+      <td>--d</td>
+      <td>--directory</td>
+      <td>Specify directory to execute in</td>
+   </tr>
+   <tr>
+      <td>--u</td>
+      <td>--url</td>
+      <td>Specify a URL to download sources from</td>
+   </tr>
+   <tr>
+      <td>--s</td>
+      <td>--script</td>
+      <td>Script to execute</td>
+   </tr>
+   <tr>
+      <td>--e</td>
+      <td>--expression</td>
+      <td>Expression to evaluate</td>
+   </tr>
+   <tr>
+      <td>--cp</td>
+      <td>--classpath</td>
+      <td>Optional classpath file</td>
+   </tr>
+   <tr>
+      <td>--v</td>
+      <td>--verbose</td>
+      <td>Enable verbose logging</td>
+   </tr>
+   <tr>
+      <td>--c</td>
+      <td>--check</td>
+      <td>Compile script only</td>
+   </tr>
+   <tr>
+      <td>--p</td>
+      <td>--port</td>
+      <td>Debug port</td>
+   </tr>
+   <tr>
+      <td>--w</td>
+      <td>--wait</td>
+      <td>Wait for debugger</td>
+   </tr>
+   <tr>
+      <td>--ve</td>
+      <td>--version</td>
+      <td>Implementation version</td>
+   </tr>
+</table>
+<p></p>
 <p></p>
 <h3><a id='development-environment'></a>Development Environment</h3>
 <p>In order to develop sophisticated applications it is often necessary to debug various parts of the code. The following short clip shows how to download and run the development environment. Several examples are provided for further clarification. </p>
 <p></p>
-<p><a href='https://www.youtube.com/watch?v=jx1vFXRpW_I' rel='nofollow'><img alt='Development Environment' src='http://img.youtube.com/vi/jx1vFXRpW_I/0.jpg' style='max-width:100%;'></a></p><p></p>
+<p><iframe width='850' height='480' src='https://www.youtube.com/embed/jx1vFXRpW_I?VQ=HD1080'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p>The following key bindings are available for the development environment. </p>
+<p></p>
+<table border='0'>
+    <th> Key Binding</th>
+    <th>Description</th>
+   <tr>
+      <td> Alt-Left</td>
+      <td>Navigate Back</td>
+   </tr>
+   <tr>
+      <td> Alt-Right</td>
+      <td>Navigate Forward</td>
+   </tr>
+   <tr>
+      <td> Ctrl-N</td>
+      <td>New File</td>
+   </tr>
+   <tr>
+      <td> Ctrl-S</td>
+      <td>Save File</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Q</td>
+      <td>Close File</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Shift-S</td>
+      <td>Search Types</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Shift-O</td>
+      <td>Search Outline</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Tab</td>
+      <td>Format Source</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Shift-E</td>
+      <td>Evaluate Expression</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Shift-M</td>
+      <td>Toggle Full Screen</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Shift-L</td>
+      <td>Switch Layout</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Shift-P</td>
+      <td>Switch Project</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Shift-G</td>
+      <td>Find Files</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Shift-H</td>
+      <td>Global Search & Replace</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Shift-F</td>
+      <td>Global Search</td>
+   </tr>
+   <tr>
+      <td> Ctrl-H</td>
+      <td>Search & Replace</td>
+   </tr>
+   <tr>
+      <td> Ctrl-F</td>
+      <td>Search</td>
+   </tr>
+   <tr>
+      <td> Ctrl-R</td>
+      <td>Run Script</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Shift-R</td>
+      <td>Run Script With Arguments</td>
+   </tr>
+   <tr>
+      <td> Ctrl-B</td>
+      <td>Debug Script</td>
+   </tr>
+   <tr>
+      <td> Ctrl-Shift-B</td>
+      <td>Debug Script With Arguments</td>
+   </tr>
+   <tr>
+      <td> Ctrl-K</td>
+      <td>Debug Remote Script</td>
+   </tr>
+   <tr>
+      <td> F8</td>
+      <td>Resume Script</td>
+   </tr>
+   <tr>
+      <td> F5</td>
+      <td>Step In</td>
+   </tr>
+   <tr>
+      <td> F7</td>
+      <td>Step Out</td>
+   </tr>
+   <tr>
+      <td> F6</td>
+      <td>Step Over</td>
+   </tr>
+</table>
+<p></p>
+<p></p>
 <h3><a id='web-development-environment'></a>Web Development Environment</h3>
 <p>The standalone development environment is essentially a web application wrapped with the <a href='https://en.wikipedia.org/wiki/Chromium_Embedded_Framework'>Chrome Embedded Framework</a>. To run in server mode you can specify the port to connect to and debug with a conventional web browser. </p>
 <p></p>
-<p><a href='https://www.youtube.com/watch?v=t0BHpvCC9gw' rel='nofollow'><img alt='Web Development Environment' src='http://img.youtube.com/vi/t0BHpvCC9gw/0.jpg' style='max-width:100%;'></a></p><p></p>
+<p><iframe width='850' height='480' src='https://www.youtube.com/embed/t0BHpvCC9gw?VQ=HD1080'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p></p>
+<h3><a id='debug-remote-process'></a>Debug Remote Process</h3>
+<p>During the development process it is useful to be able to debug an application. There are also obvious benefits in the ability to attach the development environment to a remote process that could be running on another machine. In order to enable remote debugging you need to specify a debug port that the process will listen on. You can also specify whether the application should wait to start running until the debugger is attached. The following video shows how to attach the development environment to a running process. </p>
+<p></p>
+<p><iframe width='850' height='480' src='https://www.youtube.com/embed/JuFA5ZZdOwc?VQ=HD1080'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p>A key benefit to this remote debugging process is that the running application can push its sources to the debugger. You do not need to have the sources locally. This allows you to see exactly what is running and avoids any issues that can occur when local source code does not match that of the running process. </p>
 <p></p>
 <h2><a id='example-programs'></a>Example Programs</h2>
 <p>The best way to learn any language is through examples. Below is a collection of examples from applications that have been written in Tern. The source code for these examples are available on Github and are free to download. </p>
@@ -125,17 +298,17 @@
 <h3><a id='mario'></a>Mario</h3>
 <p>This is a clone of the <a href='https://en.wikipedia.org/wiki/Mario_Bros.'>Mario</a> game comes with the full source code in addition to the images and sounds. It has been written twice, once with full static typing and one with dynamic typing. Below is a YouTube video of the  program being run and debugged with Tern Studio. </p>
 <p></p>
-<p><a href='https://www.youtube.com/watch?v=yK4ZyIS3w9o' rel='nofollow'><img alt='Debug Desktop Game' src='http://img.youtube.com/vi/yK4ZyIS3w9o/0.jpg' style='max-width:100%;'></a></p><p></p>
+<p><iframe width='850' height='480' src='https://www.youtube.com/embed/yK4ZyIS3w9o?VQ=HD1080'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p></p>
 <a href='https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/demo/games/src/mario'>Source Code</a><p></p>
 <h3><a id='space-invaders'></a>Space Invaders</h3>
 <p>This is a very basic clone of the classic <a href='https://en.wikipedia.org/wiki/Space_Invaders'>Space Invaders</a> game. The implementation is short but leverages some of the more interesting language features such as async await. </p>
 <p></p>
-<p><a href='https://www.youtube.com/watch?v=SXc0eNvrAZs' rel='nofollow'><img alt='Debug Desktop Game' src='http://img.youtube.com/vi/SXc0eNvrAZs/0.jpg' style='max-width:100%;'></a></p><p></p>
+<p><iframe width='850' height='480' src='https://www.youtube.com/embed/SXc0eNvrAZs?VQ=HD1080'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p></p>
 <a href='https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/demo/games/src/spaceinvaders'>Source Code</a><p></p>
 <h3><a id='flappy-bird'></a>Flappy Bird</h3>
 <p>This is a clone of the <a href='https://en.wikipedia.org/wiki/Flappy_Bird'>Flappy Bird</a> game and is targeted for Android. Below is a YouTube vide of the application being run and debugged remotely with Tern Studio. </p>
 <p></p>
-<p><a href='https://www.youtube.com/watch?v=w-baBQbZ5dI' rel='nofollow'><img alt='Debug Android Game' src='http://img.youtube.com/vi/w-baBQbZ5dI/0.jpg' style='max-width:100%;'></a></p><p></p>
+<p><iframe width='850' height='480' src='https://www.youtube.com/embed/oJoTgxaNs8I?VQ=HD1080'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p></p>
 <a href='https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/android/flappybird/src/flappybird'>Source Code</a><!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138155960-1"></script>
       <script>
