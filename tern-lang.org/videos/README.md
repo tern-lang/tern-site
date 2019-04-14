@@ -5,13 +5,20 @@ are used to provide an overview of how to use the command line interpreter as we
 
   * [Getting Started](#getting-started)  
       * [Command Line Interpreter](#command-line-interpreter)      
-      * [Development Environment](#development-environment)  
-      * [Web Development Environment](#web-development-environment)  
-      * [Debug Remote Process](#debug-remote-process) 
- * [Example Programs](#example-programs)
+      * [Development Environment](#development-environment)
+         * [Debugging](#debugging)
+            * [Browser Debugging](#browser-debugging)   
+            * [Conditional Debugging](#conditional-debugging)
+            * [Debug Coroutines](#debug-coroutines)   
+            * [Debug Remote Process](#debug-remote-process)
+            * [Reverse Debugging](#reverse-debugging)
+         * [Code Completion](#code-completion) 
+         * [Error Detection](#error-detection)
+  * [Example Programs](#example-programs)
       * [Mario](#mario)      
-      * [Space Invaders](#space-invaders)  
-      * [Flappy Bird](#flappy-bird)  
+      * [Space Invaders](#space-invaders) 
+      * [Android](#android)
+         * [Flappy Bird](#flappy-bird)  
 
 
 ## Getting Started
@@ -39,6 +46,7 @@ The following options can be specified with the command line interpreter.
 |--cp |  --classpath |   Optional classpath file|
 |--v  |  --verbose   |   Enable verbose logging|
 |--c  |  --check     |   Compile script only|
+|--n  |  --notify    |   Specify the URL for debug notifications |
 |--p  |  --port      |   Debug port|
 |--w  |  --wait      |   Wait for debugger|
 |--ve |  --version   |   Implementation version|
@@ -82,15 +90,38 @@ The following key bindings are available for the development environment.
 | F7	 |  Step Out|
 | F6	 |  Step Over|
 
+### Debugging
 
-### Web Development Environment
+The development environment comes with a wide array of features that enable you to step through your application and inspect variables. 
+The environment itself is a HTML 5 application written with TypeScript and CSS so it is possible to debug applications through the
+standalone application or through a web browser. In addition to standard debug actions there are additional capabilities such as
+conditional and remote debugging.
+
+## Browser Debugging
 
 The standalone development environment is essentially a web application wrapped with the [Chrome Embedded Framework](https://en.wikipedia.org/wiki/Chromium_Embedded_Framework). To run in server mode you can specify
 the port to connect to and debug with a conventional web browser.
 
 [![Web Development Environment](http://img.youtube.com/vi/t0BHpvCC9gw/0.jpg)](https://www.youtube.com/watch?v=t0BHpvCC9gw)
 
-### Debug Remote Process
+#### Conditional Debugging
+
+It can often be useful when debugging large complex applications to set a breakpoint that suspends execution when a specific condition
+has been satisfied. For simplicity a debug statement is available in the Tern language. This is similar to the debugger statement in
+JavaScript only that it can accept any conditional expression. This debug statement will always be executed for consistency, however it will suspend
+execution only when the application is running within the debugger.
+
+[![Conditional Debugging](http://img.youtube.com/vi/Y-1a86jziMc/0.jpg)](https://www.youtube.com/watch?v=Y-1a86jziMc)
+
+#### Debug Coroutines
+
+When a function contains a yield expression it becomes a coroutine. It is useful to think of a coroutine as a cursor that will suspend
+the execution of the function when something has been yielded from it. This cursor will resume execution after the yield statement with
+the same stack variables and execution pointer. 
+
+[![Debug Coroutines](http://img.youtube.com/vi/57vPgs0xNJI/0.jpg)](https://www.youtube.com/watch?v=57vPgs0xNJI)
+
+#### Debug Remote Process
 
 During the development process it is useful to be able to debug an application. There are also obvious benefits in the ability to attach
 the development environment to a remote process that could be running on another machine. In order to enable remote debugging you need
@@ -102,6 +133,30 @@ the debugger is attached. The following video shows how to attach the developmen
 A key benefit to this remote debugging process is that the running application can push its sources to the debugger. You do not need
 to have the sources locally. This allows you to see exactly what is running and avoids any issues that can occur when local source
 code does not match that of the running process.
+
+#### Reverse Debugging
+
+There are often cases where an application may have an issue that is difficult to replicate. In such scenarios it would be much easier
+if the application could notify a debug service when the issue has occured and suspend execution. With reverse debugging you can specify
+the URL of the debugger to be notified when a debug statement evaluates to true. When suspended you can navigate through the whole
+application and have the debug agent push the sources to the debugger.
+
+[![Reverse Debugging](http://img.youtube.com/vi/BmgmMrOfP0c/0.jpg)](https://www.youtube.com/watch?v=BmgmMrOfP0c)
+
+### Code Completion
+
+For productivity code completion is provided from the development environment editor. It supports import completion as well as variable,
+function, and type completion. Below is a short example of these features.
+
+[![Code Completion](http://img.youtube.com/vi/RZVid8GfXAM/0.jpg)](https://www.youtube.com/watch?v=RZVid8GfXAM)
+
+### Error Detection
+
+When a language supports static analysis it is useful to report where there is a code error, either through an incorrect control
+flow or through a syntax error. The development environment will highlight the sources and the offending lines of code when such
+an error occurs.
+
+[![Error Detection](http://img.youtube.com/vi/6wZS9vyyptU/0.jpg)](https://www.youtube.com/watch?v=6wZS9vyyptU)
 
 ## Example Programs
 
@@ -126,7 +181,15 @@ of the more interesting language features such as async await.
 
 [Source Code](https://github.com/tern-lang/tern-studio/tree/master/tern-studio/work/demo/games/src/spaceinvaders)
 
-### Flappy Bird
+### Android
+
+The primary target for this language when it was written was Android. Building, dexing, and uploading APK files to an enumlator is
+a very unproductive and frustrating process. Tern is 100% compatible with very early versions of Android and the development 
+experience is very simple. To run a Tern application you simply need to include the debug agent in to your application and 
+specify the URL for the development environment. The application will connect to the debugger and you can then push and execute
+your applications on to the Android device.
+
+#### Flappy Bird
 
 This is a clone of the [Flappy Bird](https://en.wikipedia.org/wiki/Flappy_Bird) game and is targeted for Android. Below is a YouTube vide of the application
 being run and debugged remotely with Tern Studio.
