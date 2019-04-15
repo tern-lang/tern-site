@@ -173,6 +173,7 @@
                   <li><a href='#enumeration'>Enumeration</a></li>
                   <li><a href='#trait'>Trait</a></li>
                   <li><a href='#module'>Module</a></li>
+                  <li><a href='#generics'>Generics</a></li>
                   <li><a href='#annotations'>Annotations</a></li>
                   <li><a href='#type-alias'>Type Alias</a></li>
                   <li><a href='#uniform-access'>Uniform Access</a></li>
@@ -284,13 +285,13 @@
 <h3><a id='evaluation'></a>Evaluation</h3>
 <p>Code evaluation is the process of transforming text to code at runtime. This can be useful when you want to perform some dynamic task. In languages such as Java the reflection framework allows developers to  introspect and execute code in a dynamic way. With evaluation you can achieve similar functionality without the boilerplate. Internally evaluations cache the execution trees they represent which eliminates  the performance overheads. </p>
 <p></p>
-<pre>let instance = eval("new " + type + "()");
+<pre style='border: 1px solid #dfe2e5'>let instance = eval("new " + type + "()");
 </pre><p></p>
 <p></p>
 <h3><a id='command-directive'></a>Command Directive</h3>
 <p>The command directive is used to tell command interpreters where the interpreter for the source is located. This is  is often called the <a href='https://en.wikipedia.org/wiki/Shebang_(Unix)'>Shebang</a> directive and is interpreted by common shells like bash. The first line of any Tern  source file can contain this command directive. </p>
 <p></p>
-<pre>#!/usr/bin/env snap
+<pre style='border: 1px solid #dfe2e5'>#!/usr/bin/env snap
 </pre><p></p>
 <h3><a id='example-programs'></a>Example Programs</h3>
 <p>The best way to learn any language is through examples. Below is a collection of examples from applications that have been written in Tern. The source code for these examples are available on Github and are free to download. </p>
@@ -331,7 +332,7 @@
 <p>For programs to be useful, we need to be able to work with some of the simplest units of data such as numbers,  strings, structures, boolean values, and the like. Support for these basic types is much the same as you would  expected for Java, with some additional features such as string templates, map, set, and list literals. </p>
 <p>In order to reference values they must be associated with a variable. Variables are declared with the  keyword <span style='font-family: monospace'>let</span> or <span style='font-family: monospace'>const</span>. A variable can have an optional constraint by declaring a type. If constrained a  variable can only reference values of the declared type. </p>
 <p></p>
-<pre>let v = 22; // v can reference any type
+<pre style='border: 1px solid #dfe2e5'>let v = 22; // v can reference any type
 let i: Integer = 22; // i can only reference integers
 let d: Double = 22.0; // d can only reference doubles
 const c = 1.23; // c is constant, it cannot change
@@ -339,7 +340,7 @@ const c = 1.23; // c is constant, it cannot change
 <h5><a id='booleans'></a>Booleans</h5>
 <p>The most basic type is the simple true or false value, which is called a boolean value. </p>
 <p></p>
-<pre>let a = true; // value a is true
+<pre style='border: 1px solid #dfe2e5'>let a = true; // value a is true
 let b = false; // false
 let c = Boolean.FALSE; // type constraint of Boolean
 let d: Boolean = Boolean.TRUE; // like Boolean d = Boolean.TRUE
@@ -348,7 +349,7 @@ let e = Boolean.FALSE; // like Object e = Boolean.FALSE
 <h5><a id='numbers'></a>Numbers</h5>
 <p>The most basic type is the simple true or false value, which is called a 'boolean' value. </p>
 <p></p>
-<pre>let binary = 0b0111011; // binary literal
+<pre style='border: 1px solid #dfe2e5'>let binary = 0b0111011; // binary literal
 let hex = 0xffe16; // hexadecimal literal
 let int = 11;
 let real = 2.13;
@@ -358,7 +359,7 @@ let exponent: Double = 1.234e-2; // double with exponent
 <h5><a id='strings'></a>Strings</h5>
 <p>A fundamental part of creating programs is working with textual data. As in other languages,  we use the type string to refer to these textual types. Strings are represented by characters  between a single quote, a double quote, or a backtick. When characters are between double quotes  or backticks they are interpolated, meaning they have expressions evaluated within them. These  expressions start with the dollar character. All strings can span multiple lines. </p>
 <p></p>
-<pre>let string = 'Hello World!'; // literal string
+<pre style='border: 1px solid #dfe2e5'>let string = 'Hello World!'; // literal string
 let template = "The sum of 1 and 2 is ${1 + 2}"; // interpolated string
 let concat = "The sum of 1 and 2 is " + (1 + 2); // concatenation
 
@@ -372,7 +373,7 @@ let backtick = `A backtick can contain "quotes" and ${expressions}
 <h5><a id='arrays'></a>Arrays</h5>
 <p>To allocate an contiguous sequence of memory an array is required. An array can be created from any type, however arrays of numbers or bytes are created as primitive arrays internally. These primitive arrays provide better integration with streams and buffers.  </p>
 <p></p>
-<pre>let array = new String[10]; // array of strings
+<pre style='border: 1px solid #dfe2e5'>let array = new String[10]; // array of strings
 let bytes = new Byte[11]; // primitive byte[11]
 let byte = array[1]; // reference element in array
 let matrix = new Long[10][22]; // multidimensional long[10][22];
@@ -381,7 +382,7 @@ let long = matrix[2][3]; // reference multidimensional
 <h4><a id='collections'></a>Collections</h4>
 <p>Complex data structures can be represented with a simple and straight forward syntax. Collection  types found in Java such as maps, sets, and lists can be represented as follows. </p>
 <p></p>
-<pre>let set = {1, 2, "x", "y"}; // creates a LinkedHashSet
+<pre style='border: 1px solid #dfe2e5'>let set = {1, 2, "x", "y"}; // creates a LinkedHashSet
 let list = [1, 2, 3]; // creates an ArrayList
 let map = {"a": 1, "b": 2}; // creates a LinkedHashSet
 let empty = {:}; // creates an empty map
@@ -406,7 +407,7 @@ let descending = [0 from 9]; // range of decreasing numbers
 <h4><a id='arithmetic-operators'></a>Arithmetic Operators</h4>
 <p>Arithmetic operators are used in mathematical expressions in the same way that they are used in algebra. These operations can be grouped and order can be specified using braces. </p>
 <p></p>
-<pre>let a = 10;
+<pre style='border: 1px solid #dfe2e5'>let a = 10;
 let b = 20;
 let c = a + b; // add is 30
 let d = b - a; // subtract is 10
@@ -422,7 +423,7 @@ let l = 1 / ((a + b) * 10)
 <h4><a id='bitwise-operators'></a>Bitwise Operators</h4>
 <p>Bitwise operators are used to manipulate numbers, typically integers, at the byte level. They do so by change the binary representation of the value. </p>
 <p></p>
-<pre>let a = 0b00111100;
+<pre style='border: 1px solid #dfe2e5'>let a = 0b00111100;
 let b = 0b00001101;
 let c = a & b; // bitwise and, c is 00001100
 let d = a | b; // bitwise or, d is 00111101
@@ -503,7 +504,7 @@ let i = f &gt;&gt;&gt; 2; // unsigned shift, i is 00110000
 <h4><a id='relational-operators'></a>Relational Operators</h4>
 <p>Relational operators are used to make comparisons, such as equal to, not equal to, greater than, less than. </p>
 <p></p>
-<pre>let a = 10;
+<pre style='border: 1px solid #dfe2e5'>let a = 10;
 let b = 20;
 let c = a == b // equal operator, c is false
 let d = a != b; // not equal operator, d is true
@@ -515,7 +516,7 @@ let h = a &gt;= b; // h is true
 <h4><a id='logical-operators'></a>Logical Operators</h4>
 <p>Logical operators are typically used to combine multiple relational operations in to a single boolean result. </p>
 <p></p>
-<pre>let a = 1;
+<pre style='border: 1px solid #dfe2e5'>let a = 1;
 let b = 3;
 let c = true;
 let d = false;
@@ -532,7 +533,7 @@ let i = b &gt; a && a != 1; // i is false
 <h4><a id='if-statement'></a>If Statement</h4>
 <p>The if statement is used to specify a group of statements to execute if a statement is true. </p>
 <p></p>
-<pre>const a = 2;
+<pre style='border: 1px solid #dfe2e5'>const a = 2;
 const b = 3;
 
 if(a &lt; b) { // true
@@ -542,7 +543,7 @@ if(a &lt; b) { // true
 <h4><a id='else-statement'></a>Else Statement</h4>
 <p>The else statement is used to specify a group of statements to execute if a statement is false. </p>
 <p></p>
-<pre>const a = 2;
+<pre style='border: 1px solid #dfe2e5'>const a = 2;
 const b = 3;
 
 if(a &gt;= b) { // false
@@ -554,7 +555,7 @@ if(a &gt;= b) { // false
 <h4><a id='unless-statement'></a>Unless Statement</h4>
 <p>The unless statement is used to specify a group of statements to execute if a statement is false. </p>
 <p></p>
-<pre>const a = 2;
+<pre style='border: 1px solid #dfe2e5'>const a = 2;
 const b = 3;
 
 unless(a &gt; b) { // false
@@ -564,7 +565,7 @@ unless(a &gt; b) { // false
 <h4><a id='assert-statement'></a>Assert Statement</h4>
 <p>The assert statement is used to determine if an expression evaluates to true or false. If the expression evaluates  to true the operation has no effect, otherwise an assertion exception is thrown. </p>
 <p></p>
-<pre>const a = 2;
+<pre style='border: 1px solid #dfe2e5'>const a = 2;
 const b = 3;
 
 assert a &lt; b;
@@ -573,12 +574,12 @@ assert a &gt; b; // assert exception
 <h4><a id='debug-statement'></a>Debug Statement</h4>
 <p>The debug statement is used to suspend any attached debugger if and expression evaluates to true. This can be useful if there is a specific part of the program that you want to evaluate given a known state of execution. It is similar to the debugger statement for JavaScript with the addition of logic predicate the suspension. </p>
 <p></p>
-<pre>debug a * b &gt; 4; // suspend the debugger if true
+<pre style='border: 1px solid #dfe2e5'>debug a * b &gt; 4; // suspend the debugger if true
 </pre><p></p>
 <h4><a id='ternary-operator'></a>Ternary Operator</h4>
 <p>To make statements more concise there is a ternary operator. </p>
 <p></p>
-<pre>let a = 2;
+<pre style='border: 1px solid #dfe2e5'>let a = 2;
 let b = 3;
 
 println(a &gt;= b ? "a &gt;= b" : "a &lt; b"); // prints a &lt; b
@@ -586,7 +587,7 @@ println(a &gt;= b ? "a &gt;= b" : "a &lt; b"); // prints a &lt; b
 <h4><a id='null-coalesce'></a>Null Coalesce</h4>
 <p>The null coalesce operator is similar to the ternary operator with one exception, the evaluation is whether a value is null. </p>
 <p></p>
-<pre>let a = null;
+<pre style='border: 1px solid #dfe2e5'>let a = null;
 let b = 3;
 
 println(a ?? b); // prints b
@@ -597,7 +598,7 @@ println(a ?? b); // prints b
 <h4><a id='while-statement'></a>While Statement</h4>
 <p>The while statement is the simplest conditional statement. It repeats a group of statements while the  condition it evaluates is false. </p>
 <p></p>
-<pre>let n = 0;
+<pre style='border: 1px solid #dfe2e5'>let n = 0;
 
 while(n &lt; 10) { // conditional loop
    n++;
@@ -605,7 +606,7 @@ while(n &lt; 10) { // conditional loop
 </pre><h4><a id='until-statement'></a>Until Statement</h4>
 <p>The until statement is similar to the while statement but loops while the condition is false. It repeats  a group of statements until the condition it evaluates is true. </p>
 <p></p>
-<pre>let n = 0;
+<pre style='border: 1px solid #dfe2e5'>let n = 0;
 
 until(n &gt;= 10) { // conditional loop
    n++;
@@ -613,7 +614,7 @@ until(n &gt;= 10) { // conditional loop
 </pre><h4><a id='for-statement'></a>For Statement</h4>
 <p>The for statement is typically used to count over a range of numeric values. It contains three parts, a  declaration, a condition, and an optional statement which is evaluated at the end of the loop. </p>
 <p></p>
-<pre>for(let i = 0; i &lt; 10; i++){ // loops from 1 to 10
+<pre style='border: 1px solid #dfe2e5'>for(let i = 0; i &lt; 10; i++){ // loops from 1 to 10
    if(i % 2 == 0) {
       continue; // continue loop
    }
@@ -623,7 +624,7 @@ until(n &gt;= 10) { // conditional loop
 <h4><a id='for-in-statement'></a>For In Statement</h4>
 <p>The for in statement offers a simpler way to iterate over a range of values, a collection, or an array. </p>
 <p></p>
-<pre>let list = [35, 22, 13, 64, 53];
+<pre style='border: 1px solid #dfe2e5'>let list = [35, 22, 13, 64, 53];
 
 for(e in list){ // iterates over the list
    println(e);
@@ -646,7 +647,7 @@ for(i in 0 from 9) { // iterates from 9 to 0
 </pre><h4><a id='loop-statement'></a>Loop Statement</h4>
 <p>The loop statement offers a way to specify an infinite loop, it does not evaluate any condition. </p>
 <p></p>
-<pre>let n = 0;
+<pre style='border: 1px solid #dfe2e5'>let n = 0;
 
 loop { // infinite loop
    if(n++ &gt; 100) {
@@ -660,7 +661,7 @@ loop { // infinite loop
 <h4><a id='catch-statement'></a>Catch Statement</h4>
 <p>In order to catch an exception the throwing statement needs to be wrapped in a try catch statement. This  statement basically allows the program to try to execute a statement or group of statements, if during  execution an exception is thrown then an error handling block is executed. </p>
 <p></p>
-<pre>try {
+<pre style='border: 1px solid #dfe2e5'>try {
    throw new IllegalStateException("some error");
 } catch(e: IllegalStateException) {
    e.printStackTrace();
@@ -669,7 +670,7 @@ loop { // infinite loop
 <h4><a id='finally-statement'></a>Finally Statement</h4>
 <p>The finally statement is a group of statements that are always executed regardless of whether an exception is thrown. </p>
 <p></p>
-<pre>try {
+<pre style='border: 1px solid #dfe2e5'>try {
    throw "throw a string value";
 } catch(e) {
    println(e);
@@ -683,7 +684,7 @@ loop { // infinite loop
 <h4><a id='declaration'></a>Declaration</h4>
 <p>The most basic type of function is declared with a name and a specific number of parameters. Such a method can then be called using the declared name by passing in a right number of arguments. </p>
 <p></p>
-<pre>let r = max(11, 3, 67); // r is 67
+<pre style='border: 1px solid #dfe2e5'>let r = max(11, 3, 67); // r is 67
 
 func max(a, b) {
    return a &gt; b ? a : b;
@@ -696,7 +697,7 @@ func max(a, b, c) { // function overloading
 <h4><a id='type-constraints'></a>Type Constraints</h4>
 <p>In order to bind invocations to the correct function implementation it can be declared with optional type constraints. These type constraints will ensure that variables of a specific type will be bound to the correct implementation. </p>
 <p></p>
-<pre>let x: Double = 11.2;
+<pre style='border: 1px solid #dfe2e5'>let x: Double = 11.2;
 let y: Integer = 11;
 let z: String = "11";
 
@@ -720,7 +721,7 @@ func f(x: String) {
 <h4><a id='variable-arguments'></a>Variable Arguments</h4>
 <p>At times it can be useful to provide a large number of arguments to a function. To achieve this the last parameter can be declared with a variable argument modifier. </p>
 <p></p>
-<pre>let result = sum(0, 13, 44, 234, 1, 3); 
+<pre style='border: 1px solid #dfe2e5'>let result = sum(0, 13, 44, 234, 1, 3); 
 
 func sum(offset, numbers...){ // variable arguments
    let size = numbers.size();
@@ -735,7 +736,7 @@ func sum(offset, numbers...){ // variable arguments
 <h4><a id='closures'></a>Closures</h4>
 <p>A closure is an anonymous function that captures the current scope and can be assigned to a variable. This variable can then act as a function and can be called in the same manner. </p>
 <p></p>
-<pre>const square = (x) -&gt; x * x;
+<pre style='border: 1px solid #dfe2e5'>const square = (x) -&gt; x * x;
 const cube = (x) -&gt; square(x) * x;
 
 cube(2); // result is 8
@@ -751,10 +752,10 @@ printAll(1, 2, 3, 4); // print all values
 <h4><a id='function-handles'></a>Function Handles</h4>
 <p>A function handle is simply a way to reference an existing function as a closure. Function handles can represent constructors or functions that are in scope. For example take the constructor for a string, it is quite possible to execute the following. </p>
 <p></p>
-<pre>['a', 'b', 'c'].iterator.forEachRemaining(this::println)
+<pre style='border: 1px solid #dfe2e5'>['a', 'b', 'c'].iterator.forEachRemaining(this::println)
 </pre><p>Here we are calling the println function with the item passed to the function. This function is represented as a function handle that takes a string. A function handle can represent a static or an instance function. For example: </p>
 <p></p>
-<pre>class Formatter {
+<pre style='border: 1px solid #dfe2e5'>class Formatter {
 
     public static upper(s: String) {
         return s.toUpperCase();
@@ -766,7 +767,7 @@ printAll(1, 2, 3, 4); // print all values
 <h4><a id='generic-functions'></a>Generic Functions</h4>
 <p>Generics can be used to qualify the arguments that can be passed to a function. They are useful when the static analyser verifies the program as it ensures arguments and return types match the declared qualifiers. </p>
 <p></p>
-<pre>func abs&lt;T: Number&gt;(nums: T): List&lt;T&gt; {
+<pre style='border: 1px solid #dfe2e5'>func abs&lt;T: Number&gt;(nums: T): List&lt;T&gt; {
     let result: List&lt;T&gt;  = [];
     
     for(num in nums) {
@@ -784,7 +785,7 @@ assert list[2] == 2;
 <h4><a id='coroutines'></a>Coroutines</h4>
 <p>It is often useful to suspend execution of a function in order to return a result. Typically this requires a great deal of effort from the developer. <a href='https://en.wikipedia.org/wiki/Coroutine'>Coroutines</a>  allow an idiomatic means of suspending the execution of a function which can be resumed at the point of  suspension. This allows for complex reactive iteration to be performed with minimal effort. For example  take a Fibonnaci sequence. </p>
 <p></p>
-<pre>func fib(n){
+<pre style='border: 1px solid #dfe2e5'>func fib(n){
    let a = 1;
    let b = 2;
    
@@ -797,7 +798,7 @@ assert list[2] == 2;
 <h4><a id='async-await'></a>Async Await</h4>
 <p>Asynchronous functions can be implemented with the async and await modifiers. This is similar to a standard Coroutine however this paradigm will allow the execution of the program to fork in two different threads of execution. </p>
 <p></p>
-<pre>async loadImage(n: String): Promise&lt;?&gt; {
+<pre style='border: 1px solid #dfe2e5'>async loadImage(n: String): Promise&lt;?&gt; {
     if(!cache.contains(n)) {
         return await ImageIO.read(n); 
     }
@@ -805,10 +806,10 @@ assert list[2] == 2;
 }
 </pre><p>All async functions can cascade such that if an async function calls another it is suspended until the function being called completes, at which point it will resume from the call site. For convenience closures can also be asynchronous. </p>
 <p></p>
-<pre>let loadImage = async (n: String) -&gt; ImageIO.read(n);
+<pre style='border: 1px solid #dfe2e5'>let loadImage = async (n: String) -&gt; ImageIO.read(n);
 </pre><p>Here there is no need to specify the await keyword as expression based asynchronous closures have an implicit await. For closures that have more than a single expression you must specify which statements are asynchronous. </p>
 <p></p>
-<pre>let loadImage = async (n: String) -&gt; {
+<pre style='border: 1px solid #dfe2e5'>let loadImage = async (n: String) -&gt; {
     if(!cache.contains(n)) {
         return await ImageIO.read(n); 
     }
@@ -818,7 +819,7 @@ assert list[2] == 2;
 <h4><a id='blank-parameters'></a>Blank Parameters</h4>
 <p>Blank parameters allow you to specify an argument that is not needed or can be ignored. </p>
 <p></p>
-<pre>func create&lt;T&gt;(type: T): T {
+<pre style='border: 1px solid #dfe2e5'>func create&lt;T&gt;(type: T): T {
     return cache.computeIfAbsent(type.name, (_) -&gt; new T());
 }
 </pre><p></p>
@@ -829,7 +830,7 @@ assert list[2] == 2;
 <h4><a id='class'></a>Class</h4>
 <p>A class is the most basic type. It contains variables, and functions that can operate on those variables.  Once declared a type can be instantiated by calling a special function called a constructor. There are two primary categories of class, the abstract class and the concrete class. An abstract class represents a generic concept and as such cannot be instantiated. Below is an example of an abstract class. </p>
 <p></p>
-<pre>abstract class Shape {
+<pre style='border: 1px solid #dfe2e5'>abstract class Shape {
 
     let origin: Point;
     
@@ -858,7 +859,7 @@ assert list[2] == 2;
 }
 </pre><p>A concrete class represents an whole object or entity and unlike abstract classes it can be instantiated. To leverage methods and state from other classes inheritance is possible. Below we can see how a square inherits state and a method from the abstract shape class.  </p>
 <p></p>
-<pre>class Square extends Shape {
+<pre style='border: 1px solid #dfe2e5'>class Square extends Shape {
 
     private let width: Integer;
     private let height: Integer;
@@ -913,7 +914,7 @@ assert list[2] == 2;
 <h4><a id='enumeration'></a>Enumeration</h4>
 <p>An enumeration is a type that specifies a list of constant values. This values are constant and are instances of the enum they are declared in. </p>
 <p></p>
-<pre>enum Color {
+<pre style='border: 1px solid #dfe2e5'>enum Color {
    RED("#ff0000"),
    BLUE("#0000ff"),
    GREEN("#00ff00");
@@ -931,7 +932,7 @@ let blue = Color.BLUE;
 <h4><a id='trait'></a>Trait</h4>
 <p>A trait is similar to a class in that is specifies a list of functions. However, unlike a class a trait  does not declare any variables and does not have a constructor. It can be used to add functions to a class. </p>
 <p></p>
-<pre>trait NumberFormat&lt;T: Number&gt; {
+<pre style='border: 1px solid #dfe2e5'>trait NumberFormat&lt;T: Number&gt; {
    
    /**
     * Round to number to a specific number of decimal
@@ -969,7 +970,7 @@ class IntegerFormat with NumberFormat&lt;Integer&gt; {
 <h4><a id='module'></a>Module</h4>
 <p>A module is collection of types, functions, and variables. It is similar to enclosing a script within a named type.  Modules are useful in providing constructs such as singletons. </p>
 <p></p>
-<pre>module ImageStore {
+<pre style='border: 1px solid #dfe2e5'>module ImageStore {
 
    private const cache = {:};
    
@@ -982,10 +983,51 @@ class IntegerFormat with NumberFormat&lt;Integer&gt; {
    }
 } 
 </pre><p></p>
+<h4><a id='generics'></a>Generics</h4>
+<p>All types and functions can accept generic parameters. Geenerics in are basically additional parameters than can be  applied to a function or type in order to improve static analysis. The static analyser will perform projections on any  generic entity to determine types when generics cascade. Below is an example of how generic parameters applied to  a hash map can enable the compiler to perform projections to determine the actual types from a stream of values. </p>
+<p></p>
+<pre style='border: 1px solid #dfe2e5'>let map: Map&lt;?, Number&gt; = HashMap&lt;?, Number&gt;();
+
+map.get('x').iterator(); // compile error
+map.get('x').intValue(); // success
+
+map.values().stream().findFirst().get().toUpperCase(); // compile error
+map.values().stream().findFirst().get().doubleValue(); // success
+</pre><p>Generic projections are also performed on type hierarchies such that it is possible to determine the actual types for all functions and properties. Below is an example of how static analysis can use a generic declaration to determine the  actual types for the functions invoked. </p>
+<p></p>
+<pre style='border: 1px solid #dfe2e5'>trait Repository&lt;A, B&gt; {
+   findOne(key: A): B;
+   findAll(): Map&lt;A, B&gt;;
+}
+
+class Person {
+   const name: String;
+   const address: String;
+
+   new(name: String, address: String) {
+      this.name = name;
+      this.address = address;
+   }
+
+   getName() {
+      return name;
+   }
+}
+
+trait PersonRepository&lt;A&gt; with Repository&lt;A, List&lt;Person&gt;&gt; {
+   findPerson(key: A): List&lt;Person&gt;;
+}
+
+let repo: PersonRepository&lt;String&gt; = // ... 
+
+repo.findAll().values().stream().findFirst().get().getName(); // compile error
+repo.findAll().values().stream().findFirst().get().stream().findFirst().get().getName(); // success
+repo.findPerson("john").stream().findFirst().get().getName(); // success
+</pre><p></p>
 <h4><a id='annotations'></a>Annotations</h4>
 <p>Annotations can be applied to any type and do not need to be declared. These are useful when you need to determine the behaviour of a type and its methods through introspection. </p>
 <p></p>
-<pre>@ComponentPath(path: '/images')
+<pre style='border: 1px solid #dfe2e5'>@ComponentPath(path: '/images')
 class ImageService {
 
     @Path(match = "/{path}')
@@ -999,7 +1041,7 @@ class ImageService {
 <h4><a id='type-alias'></a>Type Alias</h4>
 <p>It can often be useful to alias types for readability, particularly when generics are involved. An alias is not a new type but rather a new name for a known type.  </p>
 <p></p>
-<pre>import util.concurrent.ConcurrentHashMap;
+<pre style='border: 1px solid #dfe2e5'>import util.concurrent.ConcurrentHashMap;
 
 type Bag&lt;T&gt; = ConcurrentHashMap&lt;String, T&gt;();
 
@@ -1015,7 +1057,7 @@ func bagOf&lt;T: Number&gt;(nums...: T): Bag&lt;T&gt; {
 <h4><a id='uniform-access'></a>Uniform Access</h4>
 <p>The uniform access principle of computer programming was put forth by Bertrand Meyer in his book called <a href='https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction'>Object Oriented Software Construction</a>.  It states all services offered by a module should be available through a uniform notation,  which does not betray whether they are implemented through storage or through computation. An example of this is typical getter and setter property methods but applies to any method that does not require arguments. </p>
 <p></p>
-<pre>class Person {
+<pre style='border: 1px solid #dfe2e5'>class Person {
     
     private const firstName;
     private const surname;
@@ -1037,7 +1079,7 @@ assert person.fullName == 'John Doe';
 <h4><a id='import'></a>Import</h4>
 <p>In order to access the Java types available they can be imported by name. Once imported the type can be instantiated  and used as if it was a script object. In addition to importing types, functions can also be imported by using a  static import. </p>
 <p></p>
-<pre>import static lang.Math.*; // import static functions
+<pre style='border: 1px solid #dfe2e5'>import static lang.Math.*; // import static functions
 import security.SecureRandom;
 
 const random = new SecureRandom(); // create a java type
@@ -1048,7 +1090,7 @@ const c = max(a, b); // Math.max(a, b)
 println(c); // prints the maximum random
 </pre><p>To avoid name collisions it is also possible to import types with aliases. Additionally an imports visibility can be encapsulated within a module so that it is only available in that module.  </p>
 <p></p>
-<pre>import util.concurrent.ConcurrentHashMap as Bag;
+<pre style='border: 1px solid #dfe2e5'>import util.concurrent.ConcurrentHashMap as Bag;
 
 module ImageStore {
 
@@ -1061,14 +1103,14 @@ module ImageStore {
 }
 </pre><p>Imports can be grouped from the same package using braces. Below is an example of  import groups. </p>
 <p></p>
-<pre>import util.concurrent.{ ConcurrentHashMap, CopyOnWriteArrayList };
+<pre style='border: 1px solid #dfe2e5'>import util.concurrent.{ ConcurrentHashMap, CopyOnWriteArrayList };
 import util.{ Map, Set, List };
 </pre><p></p>
 <p></p>
 <h4><a id='coercion'></a>Coercion</h4>
 <p>For interfaces that have only a single method a closure can be coerced to that interface type. This makes for a much simpler and concise syntax similar to that offered by Java closures. </p>
 <p></p>
-<pre>const set = new TreeSet(Double::compare);
+<pre style='border: 1px solid #dfe2e5'>const set = new TreeSet(Double::compare);
 
 set.add(1.2);
 set.add(2.3);
@@ -1083,7 +1125,7 @@ for(entry in set){
 <h4><a id='platform-integration'></a>Platform Integration</h4>
 <p>To leverage the large array of frameworks and services available on the Java platform any Java type  can be instantiated, and any Java interface can be implemented. </p>
 <p></p>
-<pre>class DoubleComparator with Comparator{
+<pre style='border: 1px solid #dfe2e5'>class DoubleComparator with Comparator{
 
    override compare(a,b){
       return Double.compare(a,b);
