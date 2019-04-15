@@ -428,9 +428,9 @@ let c = a & b; // bitwise and, c is 00001100
 let d = a | b; // bitwise or, d is 00111101
 let e = a & b; // bitwise xor, e is 00110001
 let f = ~a; // f is 11000011
-let g = f >> 2; // f is 00110000
-let h = f << 2; // h is 11000000
-let i = f >>> 2; // unsigned shift, i is 00110000
+let g = f &gt;&gt; 2; // f is 00110000
+let h = f &lt;&lt; 2; // h is 11000000
+let i = f &gt;&gt;&gt; 2; // unsigned shift, i is 00110000
 </pre><p>Both the arithmetic and bitwise operators have priority and are evaluated in a specific order if no braces are used to group or enforce order. The evaluation order applied is shown in the table below. </p>
 <p></p>
 <table border='0'>
@@ -507,10 +507,10 @@ let i = f >>> 2; // unsigned shift, i is 00110000
 let b = 20;
 let c = a == b // equal operator, c is false
 let d = a != b; // not equal operator, d is true
-let e = a > b; // greater than operator, e is false
-let f = a < b; // less than operator, f is true
-let g = a <= b; // g is false
-let h = a >= b; // h is true
+let e = a &gt; b; // greater than operator, e is false
+let f = a &lt; b; // less than operator, f is true
+let g = a &lt;= b; // g is false
+let h = a &gt;= b; // h is true
 </pre><p></p>
 <h4><a id='logical-operators'></a>Logical Operators</h4>
 <p>Logical operators are typically used to combine multiple relational operations in to a single boolean result. </p>
@@ -522,8 +522,8 @@ let d = false;
 let e = a && b; // e is false
 let f = a || b; // f is true
 let g = !d; // not operator, g is true
-let h = b > a && a == 1; // logical and of, h is true
-let i = b > a && a != 1; // i is false
+let h = b &gt; a && a == 1; // logical and of, h is true
+let i = b &gt; a && a != 1; // i is false
 </pre><p></p>
 <h3><a id='conditions'></a>Conditions</h3>
 <p>Conditional statements are used to perform different actions based on different conditions. </p>
@@ -535,8 +535,8 @@ let i = b > a && a != 1; // i is false
 <pre>const a = 2;
 const b = 3;
 
-if(a < b) { // true
-   println("a > b"); // prints as a < b
+if(a &lt; b) { // true
+   println("a &gt; b"); // prints as a &lt; b
 }
 </pre><p></p>
 <h4><a id='else-statement'></a>Else Statement</h4>
@@ -545,10 +545,10 @@ if(a < b) { // true
 <pre>const a = 2;
 const b = 3;
 
-if(a >= b) { // false
-   println("a >= b");
+if(a &gt;= b) { // false
+   println("a &gt;= b");
 } else {
-   println("a < b"); // prints as a < b
+   println("a &lt; b"); // prints as a &lt; b
 }
 </pre><p></p>
 <h4><a id='unless-statement'></a>Unless Statement</h4>
@@ -557,8 +557,8 @@ if(a >= b) { // false
 <pre>const a = 2;
 const b = 3;
 
-unless(a > b) { // false
-   println("a > b"); // prints as a < b
+unless(a &gt; b) { // false
+   println("a &gt; b"); // prints as a &lt; b
 }
 </pre><p></p>
 <h4><a id='assert-statement'></a>Assert Statement</h4>
@@ -567,13 +567,13 @@ unless(a > b) { // false
 <pre>const a = 2;
 const b = 3;
 
-assert a < b;
-assert a > b; // assert exception
+assert a &lt; b;
+assert a &gt; b; // assert exception
 </pre><p></p>
 <h4><a id='debug-statement'></a>Debug Statement</h4>
 <p>The debug statement is used to suspend any attached debugger if and expression evaluates to true. This can be useful if there is a specific part of the program that you want to evaluate given a known state of execution. It is similar to the debugger statement for JavaScript with the addition of logic predicate the suspension. </p>
 <p></p>
-<pre>debug a * b > 4; // suspend the debugger if true
+<pre>debug a * b &gt; 4; // suspend the debugger if true
 </pre><p></p>
 <h4><a id='ternary-operator'></a>Ternary Operator</h4>
 <p>To make statements more concise there is a ternary operator. </p>
@@ -581,7 +581,7 @@ assert a > b; // assert exception
 <pre>let a = 2;
 let b = 3;
 
-println(a >= b ? "a >= b" : "a < b"); // prints a < b
+println(a &gt;= b ? "a &gt;= b" : "a &lt; b"); // prints a &lt; b
 </pre><p></p>
 <h4><a id='null-coalesce'></a>Null Coalesce</h4>
 <p>The null coalesce operator is similar to the ternary operator with one exception, the evaluation is whether a value is null. </p>
@@ -599,7 +599,7 @@ println(a ?? b); // prints b
 <p></p>
 <pre>let n = 0;
 
-while(n < 10) { // conditional loop
+while(n &lt; 10) { // conditional loop
    n++;
 }
 </pre><h4><a id='until-statement'></a>Until Statement</h4>
@@ -607,13 +607,13 @@ while(n < 10) { // conditional loop
 <p></p>
 <pre>let n = 0;
 
-until(n >= 10) { // conditional loop
+until(n &gt;= 10) { // conditional loop
    n++;
 }
 </pre><h4><a id='for-statement'></a>For Statement</h4>
 <p>The for statement is typically used to count over a range of numeric values. It contains three parts, a  declaration, a condition, and an optional statement which is evaluated at the end of the loop. </p>
 <p></p>
-<pre>for(let i = 0; i < 10; i++){ // loops from 1 to 10
+<pre>for(let i = 0; i &lt; 10; i++){ // loops from 1 to 10
    if(i % 2 == 0) {
       continue; // continue loop
    }
@@ -649,7 +649,7 @@ for(i in 0 from 9) { // iterates from 9 to 0
 <pre>let n = 0;
 
 loop { // infinite loop
-   if(n++ > 100) {
+   if(n++ &gt; 100) {
       break;
    }
 }
@@ -686,11 +686,11 @@ loop { // infinite loop
 <pre>let r = max(11, 3, 67); // r is 67
 
 func max(a, b) {
-   return a > b ? a : b;
+   return a &gt; b ? a : b;
 }
 
 func max(a, b, c) { // function overloading
-   return a < b ? max(a, c) : max(b, c);
+   return a &lt; b ? max(a, c) : max(b, c);
 }
 </pre><p></p>
 <h4><a id='type-constraints'></a>Type Constraints</h4>
@@ -726,7 +726,7 @@ func sum(offset, numbers...){ // variable arguments
    let size = numbers.size();
    let sum = 0;
    
-   for(let i = offset; i < size; i++){
+   for(let i = offset; i &lt; size; i++){
       sum += number;
    }
    return sum;
@@ -735,12 +735,12 @@ func sum(offset, numbers...){ // variable arguments
 <h4><a id='closures'></a>Closures</h4>
 <p>A closure is an anonymous function that captures the current scope and can be assigned to a variable. This variable can then act as a function and can be called in the same manner. </p>
 <p></p>
-<pre>const square = (x) -> x * x;
-const cube = (x) -> square(x) * x;
+<pre>const square = (x) -&gt; x * x;
+const cube = (x) -&gt; square(x) * x;
 
 cube(2); // result is 8
 
-const printAll = (values...) -> {
+const printAll = (values...) -&gt; {
    for(var e in values) {
       println(e);
    }
@@ -766,8 +766,8 @@ printAll(1, 2, 3, 4); // print all values
 <h4><a id='generic-functions'></a>Generic Functions</h4>
 <p>Generics can be used to qualify the arguments that can be passed to a function. They are useful when the static analyser verifies the program as it ensures arguments and return types match the declared qualifiers. </p>
 <p></p>
-<pre>func abs<T: Number>(nums: T): List<T> {
-    let result: List<T>  = [];
+<pre>func abs&lt;T: Number&gt;(nums: T): List&lt;T&gt; {
+    let result: List&lt;T&gt;  = [];
     
     for(num in nums) {
         let abs = num.abs();
@@ -776,7 +776,7 @@ printAll(1, 2, 3, 4); // print all values
     return result;
 }
 
-let list: List<Double> = abs<Double>(-1.0, 2.0, -3.0);
+let list: List&lt;Double&gt; = abs&lt;Double&gt;(-1.0, 2.0, -3.0);
 
 assert list[0] == 1;
 assert list[2] == 2;
@@ -788,7 +788,7 @@ assert list[2] == 2;
    let a = 1;
    let b = 2;
    
-   until(n-- <= 0) {
+   until(n-- &lt;= 0) {
       yield a; // function is suspended here
       (a, b) = (b, a + b);
    }
@@ -797,7 +797,7 @@ assert list[2] == 2;
 <h4><a id='async-await'></a>Async Await</h4>
 <p>Asynchronous functions can be implemented with the async and await modifiers. This is similar to a standard Coroutine however this paradigm will allow the execution of the program to fork in two different threads of execution. </p>
 <p></p>
-<pre>async loadImage(n: String): Promise<?> {
+<pre>async loadImage(n: String): Promise&lt;?&gt; {
     if(!cache.contains(n)) {
         return await ImageIO.read(n); 
     }
@@ -805,10 +805,10 @@ assert list[2] == 2;
 }
 </pre><p>All async functions can cascade such that if an async function calls another it is suspended until the function being called completes, at which point it will resume from the call site. For convenience closures can also be asynchronous. </p>
 <p></p>
-<pre>let loadImage = async (n: String) -> ImageIO.read(n);
+<pre>let loadImage = async (n: String) -&gt; ImageIO.read(n);
 </pre><p>Here there is no need to specify the await keyword as expression based asynchronous closures have an implicit await. For closures that have more than a single expression you must specify which statements are asynchronous. </p>
 <p></p>
-<pre>let loadImage = async (n: String) -> {
+<pre>let loadImage = async (n: String) -&gt; {
     if(!cache.contains(n)) {
         return await ImageIO.read(n); 
     }
@@ -818,8 +818,8 @@ assert list[2] == 2;
 <h4><a id='blank-parameters'></a>Blank Parameters</h4>
 <p>Blank parameters allow you to specify an argument that is not needed or can be ignored. </p>
 <p></p>
-<pre>func create<T>(type: T): T {
-    return cache.computeIfAbsent(type.name, (_) -> new T());
+<pre>func create&lt;T&gt;(type: T): T {
+    return cache.computeIfAbsent(type.name, (_) -&gt; new T());
 }
 </pre><p></p>
 <h3><a id='types'></a>Types</h3>
@@ -931,7 +931,7 @@ let blue = Color.BLUE;
 <h4><a id='trait'></a>Trait</h4>
 <p>A trait is similar to a class in that is specifies a list of functions. However, unlike a class a trait  does not declare any variables and does not have a constructor. It can be used to add functions to a class. </p>
 <p></p>
-<pre>trait NumberFormat<T: Number> {
+<pre>trait NumberFormat&lt;T: Number&gt; {
    
    /**
     * Round to number to a specific number of decimal
@@ -946,7 +946,7 @@ let blue = Color.BLUE;
    }
 }
 
-class DoubleFormat with NumberFormat<Double> {
+class DoubleFormat with NumberFormat&lt;Double&gt; {
    
    let places: Integer;
    
@@ -959,7 +959,7 @@ class DoubleFormat with NumberFormat<Double> {
    }
 }
 
-class IntegerFormat with NumberFormat<Integer> {
+class IntegerFormat with NumberFormat&lt;Integer&gt; {
    
    override round(a: Integer) {
       return a;
@@ -1001,10 +1001,10 @@ class ImageService {
 <p></p>
 <pre>import util.concurrent.ConcurrentHashMap;
 
-type Bag<T> = ConcurrentHashMap<String, T>();
+type Bag&lt;T&gt; = ConcurrentHashMap&lt;String, T&gt;();
 
-func bagOf<T: Number>(nums...: T): Bag<T> {
-    let bag: Bag<T> = new Bag<T>();
+func bagOf&lt;T: Number&gt;(nums...: T): Bag&lt;T&gt; {
+    let bag: Bag&lt;T&gt; = new Bag&lt;T&gt;();
     
     for(num in nums){
         bag.put(`${num}`, num);
