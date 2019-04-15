@@ -33,7 +33,7 @@ The command line interpreter is the most basic tool available for running Tern p
 the search path to use in order to locate scripts and assets. However all that is needed is a single argument specifying
 the location of the script to run.
 
-[![Command Line Interpreter](http://img.youtube.com/vi/MG27d-g2iSI/0.jpg)](https://www.youtube.com/watch?v=MG27d-g2iSI)
+[![Command Line Interpreter](http://img.youtube.com/vi/_jJHeyFPBu4/0.jpg)](https://www.youtube.com/watch?v=_jJHeyFPBu4)
 
 The following options can be specified with the command line interpreter.
 
