@@ -28,6 +28,16 @@
                   s.parentNode.insertBefore(link_element, s);
               })();
           </script>
+          <script type="text/javascript">
+              (function() {
+                  var link_element = document.createElement("link"),
+                      s = document.getElementsByTagName("script")[0];
+                  link_element.href = "http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700";
+                  link_element.rel = "stylesheet";
+                  link_element.type = "text/css";
+                  s.parentNode.insertBefore(link_element, s);
+              })();
+          </script>          
       </head>
       <body>
       <div style="margin-top: 0px">
@@ -285,7 +295,7 @@
 <h3><a id='evaluation'></a>Evaluation</h3>
 <p>Code evaluation is the process of transforming text to code at runtime. This can be useful when you want to perform some dynamic task. In languages such as Java the reflection framework allows developers to  introspect and execute code in a dynamic way. With evaluation you can achieve similar functionality without the boilerplate. Internally evaluations cache the execution trees they represent which eliminates  the performance overheads. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let instance = eval("new " + type + "()");
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> instance = eval(<span style='color: #C82829'>"&#110;&#101;&#119; "</span> + &#116;ype + <span style='color: #C82829'>"()"</span>);
 </pre><p></p>
 <p></p>
 <h3><a id='command-directive'></a>Command Directive</h3>
@@ -332,73 +342,73 @@
 <p>For programs to be useful, we need to be able to work with some of the simplest units of data such as numbers,  strings, structures, boolean values, and the like. Support for these basic types is much the same as you would  expected for Java, with some additional features such as string templates, map, set, and list literals. </p>
 <p>In order to reference values they must be associated with a variable. Variables are declared with the  keyword <span style='font-family: monospace'>let</span> or <span style='font-family: monospace'>const</span>. A variable can have an optional constraint by declaring a type. If constrained a  variable can only reference values of the declared type. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let v = 22; // v can reference any type
-let i: Integer = 22; // i can only reference integers
-let d: Double = 22.0; // d can only reference doubles
-const c = 1.23; // c is constant, it cannot change
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> v = 22; <span style='color: #718C00'>&#47;&#47; &#118; &#99;&#97;&#110; &#114;&#101;&#102;&#101;&#114;&#101;&#110;&#99;&#101; &#97;&#110;&#121; &#116;&#121;&#112;&#101;</span>
+<span style='color: #8959A8'>let</span> i: Integer = 22; <span style='color: #718C00'>&#47;&#47; &#105; &#99;&#97;&#110; &#111;&#110;&#108;&#121; &#114;&#101;&#102;&#101;&#114;&#101;&#110;&#99;&#101; &#105;&#110;&#116;&#101;&#103;&#101;&#114;&#115;</span>
+<span style='color: #8959A8'>let</span> d: Double = 22.0; <span style='color: #718C00'>&#47;&#47; &#100; &#99;&#97;&#110; &#111;&#110;&#108;&#121; &#114;&#101;&#102;&#101;&#114;&#101;&#110;&#99;&#101; &#100;&#111;&#117;&#98;&#108;&#101;&#115;</span>
+<span style='color: #8959A8'>const</span> c = 1.23; <span style='color: #718C00'>&#47;&#47; &#99; &#105;&#115; &#99;&#111;&#110;&#115;&#116;&#97;&#110;&#116;, &#105;&#116; &#99;&#97;&#110;&#110;&#111;&#116; &#99;&#104;&#97;&#110;&#103;&#101;</span>
 </pre><p></p>
 <h5><a id='booleans'></a>Booleans</h5>
 <p>The most basic type is the simple true or false value, which is called a boolean value. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let a = true; // value a is true
-let b = false; // false
-let c = Boolean.FALSE; // type constraint of Boolean
-let d: Boolean = Boolean.TRUE; // like Boolean d = Boolean.TRUE
-let e = Boolean.FALSE; // like Object e = Boolean.FALSE
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> a = <span style='color: #8959A8'>true</span>; <span style='color: #718C00'>&#47;&#47; &#118;&#97;&#108;&#117;&#101; &#97; &#105;&#115; &#116;&#114;&#117;&#101;</span>
+<span style='color: #8959A8'>let</span> b = <span style='color: #8959A8'>false</span>; <span style='color: #718C00'>&#47;&#47; &#102;&#97;&#108;&#115;&#101;</span>
+<span style='color: #8959A8'>let</span> c = Boolean.FALSE; <span style='color: #718C00'>&#47;&#47; &#116;&#121;&#112;&#101; &#99;&#111;&#110;&#115;&#116;&#114;&#97;&#105;&#110;&#116; &#111;&#102; &#66;&#111;&#111;&#108;&#101;&#97;&#110;</span>
+<span style='color: #8959A8'>let</span> d: Boolean = Boolean.TRUE; <span style='color: #718C00'>&#47;&#47; &#108;&#105;&#107;&#101; &#66;&#111;&#111;&#108;&#101;&#97;&#110; &#100; = &#66;&#111;&#111;&#108;&#101;&#97;&#110;.&#84;&#82;&#85;&#69;</span>
+<span style='color: #8959A8'>let</span> e = Boolean.FALSE; <span style='color: #718C00'>&#47;&#47; &#108;&#105;&#107;&#101; &#79;&#98;&#106;&#101;&#99;&#116; &#101; = &#66;&#111;&#111;&#108;&#101;&#97;&#110;.&#70;&#65;&#76;&#83;&#69;</span>
 </pre><p></p>
 <h5><a id='numbers'></a>Numbers</h5>
 <p>The most basic type is the simple true or false value, which is called a 'boolean' value. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let binary = 0b0111011; // binary literal
-let hex = 0xffe16; // hexadecimal literal
-let int = 11;
-let real = 2.13;
-let typed: Integer = 22; // integer value 22
-let exponent: Double = 1.234e-2; // double with exponent
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> binary = 0b0111011; <span style='color: #718C00'>&#47;&#47; &#98;&#105;&#110;&#97;&#114;&#121; &#108;&#105;&#116;&#101;&#114;&#97;&#108;</span>
+<span style='color: #8959A8'>let</span> hex = 0xffe16; <span style='color: #718C00'>&#47;&#47; &#104;&#101;&#120;&#97;&#100;&#101;&#99;&#105;&#109;&#97;&#108; &#108;&#105;&#116;&#101;&#114;&#97;&#108;</span>
+<span style='color: #8959A8'>let</span> int = 11;
+<span style='color: #8959A8'>let</span> real = 2.13;
+<span style='color: #8959A8'>let</span> typed: Integer = 22; <span style='color: #718C00'>&#47;&#47; &#105;&#110;&#116;&#101;&#103;&#101;&#114; &#118;&#97;&#108;&#117;&#101; 22</span>
+<span style='color: #8959A8'>let</span> exponent: Double = 1.234e-2; <span style='color: #718C00'>&#47;&#47; &#100;&#111;&#117;&#98;&#108;&#101; &#119;&#105;&#116;&#104; &#101;&#120;&#112;&#111;&#110;&#101;&#110;&#116;</span>
 </pre><p></p>
 <h5><a id='strings'></a>Strings</h5>
 <p>A fundamental part of creating programs is working with textual data. As in other languages,  we use the type string to refer to these textual types. Strings are represented by characters  between a single quote, a double quote, or a backtick. When characters are between double quotes  or backticks they are interpolated, meaning they have expressions evaluated within them. These  expressions start with the dollar character. All strings can span multiple lines. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let string = 'Hello World!'; // literal string
-let template = "The sum of 1 and 2 is ${1 + 2}"; // interpolated string
-let concat = "The sum of 1 and 2 is " + (1 + 2); // concatenation
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> string = <span style='color: #C82829'>'&#72;&#101;&#108;&#108;&#111; &#87;&#111;&#114;&#108;&#100;!'</span>; <span style='color: #718C00'>&#47;&#47; &#108;&#105;&#116;&#101;&#114;&#97;&#108; &#115;&#116;&#114;&#105;&#110;&#103;</span>
+<span style='color: #8959A8'>let</span> template = <span style='color: #C82829'>"&#84;&#104;&#101; &#115;&#117;&#109; &#111;&#102; 1 &#97;&#110;&#100; 2 &#105;&#115; ${1 + 2}"</span>; <span style='color: #718C00'>&#47;&#47; &#105;&#110;&#116;&#101;&#114;&#112;&#111;&#108;&#97;&#116;&#101;&#100; &#115;&#116;&#114;&#105;&#110;&#103;</span>
+<span style='color: #8959A8'>let</span> concat = <span style='color: #C82829'>"&#84;&#104;&#101; &#115;&#117;&#109; &#111;&#102; 1 &#97;&#110;&#100; 2 &#105;&#115; "</span> + (1 + 2); <span style='color: #718C00'>&#47;&#47; &#99;&#111;&#110;&#99;&#97;&#116;&#101;&#110;&#97;&#116;&#105;&#111;&#110;</span>
 
-let multiline = "Details
-    a) This is a new line
-    b) This is another new line";
+<span style='color: #8959A8'>let</span> multiline = <span style='color: #C82829'>"&#68;&#101;&#116;&#97;&#105;&#108;&#115;
+    &#97;) &#84;&#104;&#105;&#115; &#105;&#115; &#97;&#110; &#97;&#100;&#100;&#105;&#116;&#105;&#111;&#110;&#97;&#108; &#108;&#105;&#110;&#101;
+    &#98;) &#84;&#104;&#105;&#115; &#105;&#115; &#97;&#110;&#111;&#116;&#104;&#101;&#114; &#97;&#100;&#100;&#105;&#116;&#105;&#111;&#110;&#97;&#108; &#108;&#105;&#110;&#101;"</span>;
     
-let backtick = `A backtick can contain "quotes" and ${expressions}
-    and can span multiple lines`;    
+<span style='color: #8959A8'>let</span> backtick = <span style='color: #C82829'>`&#65; &#98;&#97;&#99;&#107;&#116;&#105;&#99;&#107; &#99;&#97;&#110; &#99;&#111;&#110;&#116;&#97;&#105;&#110; "&#113;&#117;&#111;&#116;&#101;&#115;" &#97;&#110;&#100; ${&#101;&#120;&#112;&#114;&#101;&#115;&#115;&#105;&#111;&#110;&#115;}
+    &#97;&#110;&#100; &#99;&#97;&#110; &#115;&#112;&#97;&#110; &#109;&#117;&#108;&#116;&#105;&#112;&#108;&#101; &#108;&#105;&#110;&#101;&#115;`</span>;    
 </pre><p></p>
 <h5><a id='arrays'></a>Arrays</h5>
 <p>To allocate an contiguous sequence of memory an array is required. An array can be created from any type, however arrays of numbers or bytes are created as primitive arrays internally. These primitive arrays provide better integration with streams and buffers.  </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let array = new String[10]; // array of strings
-let bytes = new Byte[11]; // primitive byte[11]
-let byte = array[1]; // reference element in array
-let matrix = new Long[10][22]; // multidimensional long[10][22];
-let long = matrix[2][3]; // reference multidimensional
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> array = <span style='color: #8959A8'>new</span> String[10]; <span style='color: #718C00'>&#47;&#47; &#97;&#114;&#114;&#97;&#121; &#111;&#102; &#115;&#116;&#114;&#105;&#110;&#103;&#115;</span>
+<span style='color: #8959A8'>let</span> bytes = <span style='color: #8959A8'>new</span> Byte[11]; <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#109;&#105;&#116;&#105;&#118;&#101; &#98;&#121;&#116;&#101;[11]</span>
+<span style='color: #8959A8'>let</span> byte = array[1]; <span style='color: #718C00'>&#47;&#47; &#114;&#101;&#102;&#101;&#114;&#101;&#110;&#99;&#101; &#101;&#108;&#101;&#109;&#101;&#110;&#116; &#105;&#110; &#97;&#114;&#114;&#97;&#121;</span>
+<span style='color: #8959A8'>let</span> matrix = <span style='color: #8959A8'>new</span> Long[10][22]; <span style='color: #718C00'>&#47;&#47; &#109;&#117;&#108;&#116;&#105;&#100;&#105;&#109;&#101;&#110;&#115;&#105;&#111;&#110;&#97;&#108; &#108;&#111;&#110;&#103;[10][22];</span>
+<span style='color: #8959A8'>let</span> long = matrix[2][3]; <span style='color: #718C00'>&#47;&#47; &#114;&#101;&#102;&#101;&#114;&#101;&#110;&#99;&#101; &#109;&#117;&#108;&#116;&#105;&#100;&#105;&#109;&#101;&#110;&#115;&#105;&#111;&#110;&#97;&#108;</span>
 </pre><p></p>
 <h4><a id='collections'></a>Collections</h4>
 <p>Complex data structures can be represented with a simple and straight forward syntax. Collection  types found in Java such as maps, sets, and lists can be represented as follows. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let set = {1, 2, "x", "y"}; // creates a LinkedHashSet
-let list = [1, 2, 3]; // creates an ArrayList
-let map = {"a": 1, "b": 2}; // creates a LinkedHashSet
-let empty = {:}; // creates an empty map
-let mix = [1, 2, {"a": {"a", "b", [55, 66]}}]; // mix collection types
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> set = {1, 2, <span style='color: #C82829'>"&#120;"</span>, <span style='color: #C82829'>"&#121;"</span>}; <span style='color: #718C00'>&#47;&#47; &#99;&#114;&#101;&#97;&#116;&#101;&#115; &#97; &#76;&#105;&#110;&#107;&#101;&#100;&#72;&#97;&#115;&#104;&#83;&#101;&#116;</span>
+<span style='color: #8959A8'>let</span> list = [1, 2, 3]; <span style='color: #718C00'>&#47;&#47; &#99;&#114;&#101;&#97;&#116;&#101;&#115; &#97;&#110; &#65;&#114;&#114;&#97;&#121;&#76;&#105;&#115;&#116;</span>
+<span style='color: #8959A8'>let</span> map = {<span style='color: #C82829'>"&#97;"</span>: 1, <span style='color: #C82829'>"&#98;"</span>: 2}; <span style='color: #718C00'>&#47;&#47; &#99;&#114;&#101;&#97;&#116;&#101;&#115; &#97; &#76;&#105;&#110;&#107;&#101;&#100;&#72;&#97;&#115;&#104;&#83;&#101;&#116;</span>
+<span style='color: #8959A8'>let</span> empty = {:}; <span style='color: #718C00'>&#47;&#47; &#99;&#114;&#101;&#97;&#116;&#101;&#115; &#97;&#110; &#101;&#109;&#112;&#116;&#121; &#109;&#97;&#112;</span>
+<span style='color: #8959A8'>let</span> mix = [1, 2, {<span style='color: #C82829'>"&#97;"</span>: {<span style='color: #C82829'>"&#97;"</span>, <span style='color: #C82829'>"&#98;"</span>, [55, 66]}}]; <span style='color: #718C00'>&#47;&#47; &#109;&#105;&#120; &#99;&#111;&#108;&#108;&#101;&#99;&#116;&#105;&#111;&#110; &#116;&#121;&#112;&#101;&#115;</span>
 
-let multiline = {
-    name: "John Doe",
+<span style='color: #8959A8'>let</span> multiline = {
+    name: <span style='color: #C82829'>"&#74;&#111;&#104;&#110; &#68;&#111;&#101;"</span>,
     address: {
-        city: "Unknown",
-        state: "California"
+        city: <span style='color: #C82829'>"&#85;&#110;&#107;&#110;&#111;&#119;&#110;"</span>,
+        state: <span style='color: #C82829'>"&#67;&#97;&#108;&#105;&#102;&#111;&#114;&#110;&#105;&#97;"</span>
     },
     age: 33
 };
 
-let ascending = [0 to 9]; // range of increasing numbers
-let descending = [0 from 9]; // range of decreasing numbers
+<span style='color: #8959A8'>let</span> ascending = [0 <span style='color: #8959A8'>to</span> 9]; <span style='color: #718C00'>&#47;&#47; &#114;&#97;&#110;&#103;&#101; &#111;&#102; &#105;&#110;&#99;&#114;&#101;&#97;&#115;&#105;&#110;&#103; &#110;&#117;&#109;&#98;&#101;&#114;&#115;</span>
+<span style='color: #8959A8'>let</span> descending = [0 <span style='color: #8959A8'>from</span> 9]; <span style='color: #718C00'>&#47;&#47; &#114;&#97;&#110;&#103;&#101; &#111;&#102; &#100;&#101;&#99;&#114;&#101;&#97;&#115;&#105;&#110;&#103; &#110;&#117;&#109;&#98;&#101;&#114;&#115;</span>
 </pre><p></p>
 <h3><a id='operators'></a>Operators</h3>
 <p>Operators are special symbols that perform specific operations on a set of operands. The operators available are those found in most conventional imperative languages, such as those to perform algebra or compare values.  </p>
@@ -407,31 +417,31 @@ let descending = [0 from 9]; // range of decreasing numbers
 <h4><a id='arithmetic-operators'></a>Arithmetic Operators</h4>
 <p>Arithmetic operators are used in mathematical expressions in the same way that they are used in algebra. These operations can be grouped and order can be specified using braces. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let a = 10;
-let b = 20;
-let c = a + b; // add is 30
-let d = b - a; // subtract is 10
-let e = b / a; // divide is 2
-let f = a * b; // multiply is 200
-let g = b % a; // modulus is 0
-let h = a++; // a is 11 and h is 10
-let i = b--// b is 19 and i is 20
-let j = --a; // a is 10 and j is 10
-let k = ++b; // b is 20 as is k
-let l = 1 / ((a + b) * 10)
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> a = 10;
+<span style='color: #8959A8'>let</span> b = 20;
+<span style='color: #8959A8'>let</span> c = a + b; <span style='color: #718C00'>&#47;&#47; &#97;&#100;&#100; &#105;&#115; 30</span>
+<span style='color: #8959A8'>let</span> d = b - a; <span style='color: #718C00'>&#47;&#47; &#115;&#117;&#98;&#116;&#114;&#97;&#99;&#116; &#105;&#115; 10</span>
+<span style='color: #8959A8'>let</span> e = b / a; <span style='color: #718C00'>&#47;&#47; &#100;&#105;&#118;&#105;&#100;&#101; &#105;&#115; 2</span>
+<span style='color: #8959A8'>let</span> f = a * b; <span style='color: #718C00'>&#47;&#47; &#109;&#117;&#108;&#116;&#105;&#112;&#108;&#121; &#105;&#115; 200</span>
+<span style='color: #8959A8'>let</span> g = b % a; <span style='color: #718C00'>&#47;&#47; &#109;&#111;&#100;&#117;&#108;&#117;&#115; &#105;&#115; 0</span>
+<span style='color: #8959A8'>let</span> h = a++; <span style='color: #718C00'>&#47;&#47; &#97; &#105;&#115; 11 &#97;&#110;&#100; &#104; &#105;&#115; 10</span>
+<span style='color: #8959A8'>let</span> i = b--<span style='color: #718C00'>&#47;&#47; &#98; &#105;&#115; 19 &#97;&#110;&#100; &#105; &#105;&#115; 20</span>
+<span style='color: #8959A8'>let</span> j = --a; <span style='color: #718C00'>&#47;&#47; &#97; &#105;&#115; 10 &#97;&#110;&#100; &#106; &#105;&#115; 10</span>
+<span style='color: #8959A8'>let</span> k = ++b; <span style='color: #718C00'>&#47;&#47; &#98; &#105;&#115; 20 &#97;&#115; &#105;&#115; &#107;</span>
+<span style='color: #8959A8'>let</span> l = 1 / ((a + b) * 10)
 </pre><p></p>
 <h4><a id='bitwise-operators'></a>Bitwise Operators</h4>
 <p>Bitwise operators are used to manipulate numbers, typically integers, at the byte level. They do so by change the binary representation of the value. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let a = 0b00111100;
-let b = 0b00001101;
-let c = a & b; // bitwise and, c is 00001100
-let d = a | b; // bitwise or, d is 00111101
-let e = a & b; // bitwise xor, e is 00110001
-let f = ~a; // f is 11000011
-let g = f &gt;&gt; 2; // f is 00110000
-let h = f &lt;&lt; 2; // h is 11000000
-let i = f &gt;&gt;&gt; 2; // unsigned shift, i is 00110000
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> a = 0b00111100;
+<span style='color: #8959A8'>let</span> b = 0b00001101;
+<span style='color: #8959A8'>let</span> c = a & b; <span style='color: #718C00'>&#47;&#47; &#98;&#105;&#116;&#119;&#105;&#115;&#101; &#97;&#110;&#100;, &#99; &#105;&#115; 00001100</span>
+<span style='color: #8959A8'>let</span> d = a | b; <span style='color: #718C00'>&#47;&#47; &#98;&#105;&#116;&#119;&#105;&#115;&#101; &#111;&#114;, &#100; &#105;&#115; 00111101</span>
+<span style='color: #8959A8'>let</span> e = a & b; <span style='color: #718C00'>&#47;&#47; &#98;&#105;&#116;&#119;&#105;&#115;&#101; &#120;&#111;&#114;, &#101; &#105;&#115; 00110001</span>
+<span style='color: #8959A8'>let</span> f = ~a; <span style='color: #718C00'>&#47;&#47; &#102; &#105;&#115; 11000011</span>
+<span style='color: #8959A8'>let</span> g = f &gt;&gt; 2; <span style='color: #718C00'>&#47;&#47; &#102; &#105;&#115; 00110000</span>
+<span style='color: #8959A8'>let</span> h = f &lt;&lt; 2; <span style='color: #718C00'>&#47;&#47; &#104; &#105;&#115; 11000000</span>
+<span style='color: #8959A8'>let</span> i = f &gt;&gt;&gt; 2; <span style='color: #718C00'>&#47;&#47; &#117;&#110;&#115;&#105;&#103;&#110;&#101;&#100; &#115;&#104;&#105;&#102;&#116;, &#105; &#105;&#115; 00110000</span>
 </pre><p>Both the arithmetic and bitwise operators have priority and are evaluated in a specific order if no braces are used to group or enforce order. The evaluation order applied is shown in the table below. </p>
 <p></p>
 <table border='0'>
@@ -504,27 +514,27 @@ let i = f &gt;&gt;&gt; 2; // unsigned shift, i is 00110000
 <h4><a id='relational-operators'></a>Relational Operators</h4>
 <p>Relational operators are used to make comparisons, such as equal to, not equal to, greater than, less than. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let a = 10;
-let b = 20;
-let c = a == b // equal operator, c is false
-let d = a != b; // not equal operator, d is true
-let e = a &gt; b; // greater than operator, e is false
-let f = a &lt; b; // less than operator, f is true
-let g = a &lt;= b; // g is false
-let h = a &gt;= b; // h is true
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> a = 10;
+<span style='color: #8959A8'>let</span> b = 20;
+<span style='color: #8959A8'>let</span> c = a == b <span style='color: #718C00'>&#47;&#47; &#101;&#113;&#117;&#97;&#108; &#111;&#112;&#101;&#114;&#97;&#116;&#111;&#114;, &#99; &#105;&#115; &#102;&#97;&#108;&#115;&#101;</span>
+<span style='color: #8959A8'>let</span> d = a != b; <span style='color: #718C00'>&#47;&#47; &#110;&#111;&#116; &#101;&#113;&#117;&#97;&#108; &#111;&#112;&#101;&#114;&#97;&#116;&#111;&#114;, &#100; &#105;&#115; &#116;&#114;&#117;&#101;</span>
+<span style='color: #8959A8'>let</span> e = a &gt; b; <span style='color: #718C00'>&#47;&#47; &#103;&#114;&#101;&#97;&#116;&#101;&#114; &#116;&#104;&#97;&#110; &#111;&#112;&#101;&#114;&#97;&#116;&#111;&#114;, &#101; &#105;&#115; &#102;&#97;&#108;&#115;&#101;</span>
+<span style='color: #8959A8'>let</span> f = a &lt; b; <span style='color: #718C00'>&#47;&#47; &#108;&#101;&#115;&#115; &#116;&#104;&#97;&#110; &#111;&#112;&#101;&#114;&#97;&#116;&#111;&#114;, &#102; &#105;&#115; &#116;&#114;&#117;&#101;</span>
+<span style='color: #8959A8'>let</span> g = a &lt;= b; <span style='color: #718C00'>&#47;&#47; &#103; &#105;&#115; &#102;&#97;&#108;&#115;&#101;</span>
+<span style='color: #8959A8'>let</span> h = a &gt;= b; <span style='color: #718C00'>&#47;&#47; &#104; &#105;&#115; &#116;&#114;&#117;&#101;</span>
 </pre><p></p>
 <h4><a id='logical-operators'></a>Logical Operators</h4>
 <p>Logical operators are typically used to combine multiple relational operations in to a single boolean result. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let a = 1;
-let b = 3;
-let c = true;
-let d = false;
-let e = a && b; // e is false
-let f = a || b; // f is true
-let g = !d; // not operator, g is true
-let h = b &gt; a && a == 1; // logical and of, h is true
-let i = b &gt; a && a != 1; // i is false
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> a = 1;
+<span style='color: #8959A8'>let</span> b = 3;
+<span style='color: #8959A8'>let</span> c = <span style='color: #8959A8'>true</span>;
+<span style='color: #8959A8'>let</span> d = <span style='color: #8959A8'>false</span>;
+<span style='color: #8959A8'>let</span> e = a && b; <span style='color: #718C00'>&#47;&#47; &#101; &#105;&#115; &#102;&#97;&#108;&#115;&#101;</span>
+<span style='color: #8959A8'>let</span> f = a || b; <span style='color: #718C00'>&#47;&#47; &#102; &#105;&#115; &#116;&#114;&#117;&#101;</span>
+<span style='color: #8959A8'>let</span> g = !d; <span style='color: #718C00'>&#47;&#47; &#110;&#111;&#116; &#111;&#112;&#101;&#114;&#97;&#116;&#111;&#114;, &#103; &#105;&#115; &#116;&#114;&#117;&#101;</span>
+<span style='color: #8959A8'>let</span> h = b &gt; a && a == 1; <span style='color: #718C00'>&#47;&#47; &#108;&#111;&#103;&#105;&#99;&#97;&#108; &#97;&#110;&#100; &#111;&#102;, &#104; &#105;&#115; &#116;&#114;&#117;&#101;</span>
+<span style='color: #8959A8'>let</span> i = b &gt; a && a != 1; <span style='color: #718C00'>&#47;&#47; &#105; &#105;&#115; &#102;&#97;&#108;&#115;&#101;</span>
 </pre><p></p>
 <h3><a id='conditions'></a>Conditions</h3>
 <p>Conditional statements are used to perform different actions based on different conditions. </p>
@@ -533,64 +543,64 @@ let i = b &gt; a && a != 1; // i is false
 <h4><a id='if-statement'></a>If Statement</h4>
 <p>The if statement is used to specify a group of statements to execute if a statement is true. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>const a = 2;
-const b = 3;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>const</span> a = 2;
+<span style='color: #8959A8'>const</span> b = 3;
 
-if(a &lt; b) { // true
-   println("a &gt; b"); // prints as a &lt; b
+<span style='color: #8959A8'>if</span>(a &lt; b) { <span style='color: #718C00'>&#47;&#47; &#116;&#114;&#117;&#101;</span>
+   println(<span style='color: #C82829'>"&#97; &#62; &#98;"</span>); <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116;&#115; &#97;&#115; &#97; &#60; &#98;</span>
 }
 </pre><p></p>
 <h4><a id='else-statement'></a>Else Statement</h4>
 <p>The else statement is used to specify a group of statements to execute if a statement is false. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>const a = 2;
-const b = 3;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>const</span> a = 2;
+<span style='color: #8959A8'>const</span> b = 3;
 
-if(a &gt;= b) { // false
-   println("a &gt;= b");
-} else {
-   println("a &lt; b"); // prints as a &lt; b
+<span style='color: #8959A8'>if</span>(a &gt;= b) { <span style='color: #718C00'>&#47;&#47; &#102;&#97;&#108;&#115;&#101;</span>
+   println(<span style='color: #C82829'>"&#97; &#62;= &#98;"</span>);
+} <span style='color: #8959A8'>else</span> {
+   println(<span style='color: #C82829'>"&#97; &#60; &#98;"</span>); <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116;&#115; &#97;&#115; &#97; &#60; &#98;</span>
 }
 </pre><p></p>
 <h4><a id='unless-statement'></a>Unless Statement</h4>
 <p>The unless statement is used to specify a group of statements to execute if a statement is false. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>const a = 2;
-const b = 3;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>const</span> a = 2;
+<span style='color: #8959A8'>const</span> b = 3;
 
-unless(a &gt; b) { // false
-   println("a &gt; b"); // prints as a &lt; b
+<span style='color: #8959A8'>unless</span>(a &gt; b) { <span style='color: #718C00'>&#47;&#47; &#102;&#97;&#108;&#115;&#101;</span>
+   println(<span style='color: #C82829'>"&#97; &#62; &#98;"</span>); <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116;&#115; &#97;&#115; &#97; &#60; &#98;</span>
 }
 </pre><p></p>
 <h4><a id='assert-statement'></a>Assert Statement</h4>
 <p>The assert statement is used to determine if an expression evaluates to true or false. If the expression evaluates  to true the operation has no effect, otherwise an assertion exception is thrown. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>const a = 2;
-const b = 3;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>const</span> a = 2;
+<span style='color: #8959A8'>const</span> b = 3;
 
-assert a &lt; b;
-assert a &gt; b; // assert exception
+<span style='color: #8959A8'>assert</span> a &lt; b;
+<span style='color: #8959A8'>assert</span> a &gt; b; <span style='color: #718C00'>&#47;&#47; &#97;&#115;&#115;&#101;&#114;&#116; &#101;&#120;&#99;&#101;&#112;&#116;&#105;&#111;&#110;</span>
 </pre><p></p>
 <h4><a id='debug-statement'></a>Debug Statement</h4>
 <p>The debug statement is used to suspend any attached debugger if and expression evaluates to true. This can be useful if there is a specific part of the program that you want to evaluate given a known state of execution. It is similar to the debugger statement for JavaScript with the addition of logic predicate the suspension. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>debug a * b &gt; 4; // suspend the debugger if true
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>debug</span> a * b &gt; 4; <span style='color: #718C00'>&#47;&#47; &#115;&#117;&#115;&#112;&#101;&#110;&#100; &#116;&#104;&#101; &#100;&#101;&#98;&#117;&#103;&#103;&#101;&#114; &#105;&#102; &#116;&#114;&#117;&#101;</span>
 </pre><p></p>
 <h4><a id='ternary-operator'></a>Ternary Operator</h4>
 <p>To make statements more concise there is a ternary operator. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let a = 2;
-let b = 3;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> a = 2;
+<span style='color: #8959A8'>let</span> b = 3;
 
-println(a &gt;= b ? "a &gt;= b" : "a &lt; b"); // prints a &lt; b
+println(a &gt;= b ? <span style='color: #C82829'>"&#97; &#62;= &#98;"</span> : <span style='color: #C82829'>"&#97; &#60; &#98;"</span>); <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116;&#115; &#97; &#60; &#98;</span>
 </pre><p></p>
 <h4><a id='null-coalesce'></a>Null Coalesce</h4>
 <p>The null coalesce operator is similar to the ternary operator with one exception, the evaluation is whether a value is null. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let a = null;
-let b = 3;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> a = <span style='color: #8959A8'>null</span>;
+<span style='color: #8959A8'>let</span> b = 3;
 
-println(a ?? b); // prints b
+println(a ?? b); <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116;&#115; &#98;</span>
 </pre><p></p>
 <h3><a id='loops'></a>Loops</h3>
 <p>Loops are used to perform a group of statements a number of times until a condition has been satisfied. </p>
@@ -598,60 +608,60 @@ println(a ?? b); // prints b
 <h4><a id='while-statement'></a>While Statement</h4>
 <p>The while statement is the simplest conditional statement. It repeats a group of statements while the  condition it evaluates is false. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let n = 0;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> n = 0;
 
-while(n &lt; 10) { // conditional loop
+<span style='color: #8959A8'>while</span>(n &lt; 10) { <span style='color: #718C00'>&#47;&#47; &#99;&#111;&#110;&#100;&#105;&#116;&#105;&#111;&#110;&#97;&#108; &#108;&#111;&#111;&#112;</span>
    n++;
 }
 </pre><h4><a id='until-statement'></a>Until Statement</h4>
 <p>The until statement is similar to the while statement but loops while the condition is false. It repeats  a group of statements until the condition it evaluates is true. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let n = 0;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> n = 0;
 
-until(n &gt;= 10) { // conditional loop
+<span style='color: #8959A8'>until</span>(n &gt;= 10) { <span style='color: #718C00'>&#47;&#47; &#99;&#111;&#110;&#100;&#105;&#116;&#105;&#111;&#110;&#97;&#108; &#108;&#111;&#111;&#112;</span>
    n++;
 }
 </pre><h4><a id='for-statement'></a>For Statement</h4>
 <p>The for statement is typically used to count over a range of numeric values. It contains three parts, a  declaration, a condition, and an optional statement which is evaluated at the end of the loop. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>for(let i = 0; i &lt; 10; i++){ // loops from 1 to 10
-   if(i % 2 == 0) {
-      continue; // continue loop
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>for</span>(<span style='color: #8959A8'>let</span> i = 0; i &lt; 10; i++){ <span style='color: #718C00'>&#47;&#47; &#108;&#111;&#111;&#112;&#115; &#102;&#114;&#111;&#109; 1 &#116;&#111; 10</span>
+   <span style='color: #8959A8'>if</span>(i % 2 == 0) {
+      <span style='color: #8959A8'>continue</span>; <span style='color: #718C00'>&#47;&#47; &#99;&#111;&#110;&#116;&#105;&#110;&#117;&#101; &#108;&#111;&#111;&#112;</span>
    }
-   println(i);  // prints only odd numbers
+   println(i);  <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116;&#115; &#111;&#110;&#108;&#121; &#111;&#100;&#100; &#110;&#117;&#109;&#98;&#101;&#114;&#115;</span>
 }
 </pre><p></p>
 <h4><a id='for-in-statement'></a>For In Statement</h4>
 <p>The for in statement offers a simpler way to iterate over a range of values, a collection, or an array. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let list = [35, 22, 13, 64, 53];
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> list = [35, 22, 13, 64, 53];
 
-for(e in list){ // iterates over the list
+<span style='color: #8959A8'>for</span>(e <span style='color: #8959A8'>in</span> list){ <span style='color: #718C00'>&#47;&#47; &#105;&#116;&#101;&#114;&#97;&#116;&#101;&#115; &#111;&#118;&#101;&#114; &#116;&#104;&#101; &#108;&#105;&#115;&#116;</span>
    println(e);
 }
 
-for(e in 0..9) { // iterates from 0 to 9
-   if(e == 7) {
-      break; // exit loop when e is 7
+<span style='color: #8959A8'>for</span>(e <span style='color: #8959A8'>in</span> 0..9) { <span style='color: #718C00'>&#47;&#47; &#105;&#116;&#101;&#114;&#97;&#116;&#101;&#115; &#102;&#114;&#111;&#109; 0 &#116;&#111; 9</span>
+   <span style='color: #8959A8'>if</span>(e == 7) {
+      <span style='color: #8959A8'>break</span>; <span style='color: #718C00'>&#47;&#47; &#101;&#120;&#105;&#116; &#108;&#111;&#111;&#112; &#119;&#104;&#101;&#110; &#101; &#105;&#115; 7</span>
    }
-   println(e); // prints from 0 to 6
+   println(e); <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116;&#115; &#102;&#114;&#111;&#109; 0 &#116;&#111; 6</span>
 }
 
-for(i in 0 to 9) { // iterates from 0 to 9
+<span style='color: #8959A8'>for</span>(i <span style='color: #8959A8'>in</span> 0 <span style='color: #8959A8'>to</span> 9) { <span style='color: #718C00'>&#47;&#47; &#105;&#116;&#101;&#114;&#97;&#116;&#101;&#115; &#102;&#114;&#111;&#109; 0 &#116;&#111; 9</span>
     println(i);
 }
 
-for(i in 0 from 9) { // iterates from 9 to 0
+<span style='color: #8959A8'>for</span>(i <span style='color: #8959A8'>in</span> 0 <span style='color: #8959A8'>from</span> 9) { <span style='color: #718C00'>&#47;&#47; &#105;&#116;&#101;&#114;&#97;&#116;&#101;&#115; &#102;&#114;&#111;&#109; 9 &#116;&#111; 0</span>
     println(i)
 }
 </pre><h4><a id='loop-statement'></a>Loop Statement</h4>
 <p>The loop statement offers a way to specify an infinite loop, it does not evaluate any condition. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let n = 0;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> n = 0;
 
-loop { // infinite loop
-   if(n++ &gt; 100) {
-      break;
+<span style='color: #8959A8'>loop</span> { <span style='color: #718C00'>&#47;&#47; &#105;&#110;&#102;&#105;&#110;&#105;&#116;&#101; &#108;&#111;&#111;&#112;</span>
+   <span style='color: #8959A8'>if</span>(n++ &gt; 100) {
+      <span style='color: #8959A8'>break</span>;
    }
 }
 </pre><p></p>
@@ -661,21 +671,21 @@ loop { // infinite loop
 <h4><a id='catch-statement'></a>Catch Statement</h4>
 <p>In order to catch an exception the throwing statement needs to be wrapped in a try catch statement. This  statement basically allows the program to try to execute a statement or group of statements, if during  execution an exception is thrown then an error handling block is executed. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>try {
-   throw new IllegalStateException("some error");
-} catch(e: IllegalStateException) {
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>try</span> {
+   <span style='color: #8959A8'>throw</span> <span style='color: #8959A8'>new</span> IllegalStateException(<span style='color: #C82829'>"&#115;&#111;&#109;&#101; &#101;&#114;&#114;&#111;&#114;"</span>);
+} <span style='color: #8959A8'>catch</span>(e: IllegalStateException) {
    e.printStackTrace();
 }
 </pre><p></p>
 <h4><a id='finally-statement'></a>Finally Statement</h4>
 <p>The finally statement is a group of statements that are always executed regardless of whether an exception is thrown. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>try {
-   throw "throw a string value";
-} catch(e) {
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>try</span> {
+   <span style='color: #8959A8'>throw</span> <span style='color: #C82829'>"&#116;&#104;&#114;&#111;&#119; &#97; &#115;&#116;&#114;&#105;&#110;&#103; &#118;&#97;&#108;&#117;&#101;"</span>;
+} <span style='color: #8959A8'>catch</span>(e) {
    println(e);
-} finally {
-   println("finally always runs");
+} <span style='color: #8959A8'>finally</span> {
+   println(<span style='color: #C82829'>"&#116;&#104;&#105;&#115; &#97;&#108;&#119;&#97;&#121;&#115; &#114;&#117;&#110;&#115;"</span>);
 }
 </pre><p></p>
 <h3><a id='functions'></a>Functions</h3>
@@ -684,113 +694,113 @@ loop { // infinite loop
 <h4><a id='declaration'></a>Declaration</h4>
 <p>The most basic type of function is declared with a name and a specific number of parameters. Such a method can then be called using the declared name by passing in a right number of arguments. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let r = max(11, 3, 67); // r is 67
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> r = max(11, 3, 67); <span style='color: #718C00'>&#47;&#47; &#114; &#105;&#115; 67</span>
 
-func max(a, b) {
-   return a &gt; b ? a : b;
+<span style='color: #8959A8'>func</span> max(a, b) {
+   <span style='color: #8959A8'>return</span> a &gt; b ? a : b;
 }
 
-func max(a, b, c) { // function overloading
-   return a &lt; b ? max(a, c) : max(b, c);
+<span style='color: #8959A8'>func</span> max(a, b, c) { <span style='color: #718C00'>&#47;&#47; &#102;&#117;&#110;&#99;&#116;&#105;&#111;&#110; &#111;&#118;&#101;&#114;&#108;&#111;&#97;&#100;&#105;&#110;&#103;</span>
+   <span style='color: #8959A8'>return</span> a &lt; b ? max(a, c) : max(b, c);
 }
 </pre><p></p>
 <h4><a id='type-constraints'></a>Type Constraints</h4>
 <p>In order to bind invocations to the correct function implementation it can be declared with optional type constraints. These type constraints will ensure that variables of a specific type will be bound to the correct implementation. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let x: Double = 11.2;
-let y: Integer = 11;
-let z: String = "11";
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> x: Double = 11.2;
+<span style='color: #8959A8'>let</span> y: Integer = 11;
+<span style='color: #8959A8'>let</span> z: String = <span style='color: #C82829'>"11"</span>;
 
-f(x); // prints double 11.2
-f(y); // prints integer 11
-f(z); // prints string 11
-f(true); // type coercion to string, prints string true
+f(x); <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116;&#115; &#100;&#111;&#117;&#98;&#108;&#101; 11.2</span>
+f(y); <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116;&#115; &#105;&#110;&#116;&#101;&#103;&#101;&#114; 11</span>
+f(z); <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116;&#115; &#115;&#116;&#114;&#105;&#110;&#103; 11</span>
+f(true); <span style='color: #718C00'>&#47;&#47; &#116;&#121;&#112;&#101; &#99;&#111;&#101;&#114;&#99;&#105;&#111;&#110; &#116;&#111; &#115;&#116;&#114;&#105;&#110;&#103;, &#112;&#114;&#105;&#110;&#116;&#115; &#115;&#116;&#114;&#105;&#110;&#103; &#116;&#114;&#117;&#101;</span>
 
-func f(x: Integer) {
-   println("integer ${x}");
+<span style='color: #8959A8'>func</span> f(x: Integer) {
+   println(<span style='color: #C82829'>"&#105;&#110;&#116;&#101;&#103;&#101;&#114; ${&#120;}"</span>);
 }
 
-func f(x: Double) {
-   println("double ${x}");
+<span style='color: #8959A8'>func</span> f(x: Double) {
+   println(<span style='color: #C82829'>"&#100;&#111;&#117;&#98;&#108;&#101; ${&#120;}"</span>);
 }
 
-func f(x: String) {
-   println("string ${x}");
+<span style='color: #8959A8'>func</span> f(x: String) {
+   println(<span style='color: #C82829'>"&#115;&#116;&#114;&#105;&#110;&#103; ${&#120;}"</span>);
 }
 </pre><p></p>
 <h4><a id='variable-arguments'></a>Variable Arguments</h4>
 <p>At times it can be useful to provide a large number of arguments to a function. To achieve this the last parameter can be declared with a variable argument modifier. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let result = sum(0, 13, 44, 234, 1, 3); 
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> result = sum(0, 13, 44, 234, 1, 3); 
 
-func sum(offset, numbers...){ // variable arguments
-   let size = numbers.size();
-   let sum = 0;
+<span style='color: #8959A8'>func</span> sum(offset, numbers...){ <span style='color: #718C00'>&#47;&#47; &#118;&#97;&#114;&#105;&#97;&#98;&#108;&#101; &#97;&#114;&#103;&#117;&#109;&#101;&#110;&#116;&#115;</span>
+   <span style='color: #8959A8'>let</span> size = numbers.size();
+   <span style='color: #8959A8'>let</span> sum = 0;
    
-   for(let i = offset; i &lt; size; i++){
+   <span style='color: #8959A8'>for</span>(<span style='color: #8959A8'>let</span> i = offset; i &lt; size; i++){
       sum += number;
    }
-   return sum;
+   <span style='color: #8959A8'>return</span> sum;
 }
 </pre><p></p>
 <h4><a id='closures'></a>Closures</h4>
 <p>A closure is an anonymous function that captures the current scope and can be assigned to a variable. This variable can then act as a function and can be called in the same manner. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>const square = (x) -&gt; x * x;
-const cube = (x) -&gt; square(x) * x;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>const</span> square = (x) -&gt; x * x;
+<span style='color: #8959A8'>const</span> cube = (x) -&gt; square(x) * x;
 
-cube(2); // result is 8
+cube(2); <span style='color: #718C00'>&#47;&#47; &#114;&#101;&#115;&#117;&#108;&#116; &#105;&#115; 8</span>
 
-const printAll = (values...) -&gt; {
-   for(var e in values) {
+<span style='color: #8959A8'>const</span> printAll = (values...) -&gt; {
+   <span style='color: #8959A8'>for</span>(var e <span style='color: #8959A8'>in</span> values) {
       println(e);
    }
 }
 
-printAll(1, 2, 3, 4); // print all values
+printAll(1, 2, 3, 4); <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116; &#97;&#108;&#108; &#118;&#97;&#108;&#117;&#101;&#115;</span>
 </pre><p></p>
 <h4><a id='function-handles'></a>Function Handles</h4>
 <p>A function handle is simply a way to reference an existing function as a closure. Function handles can represent constructors or functions that are in scope. For example take the constructor for a string, it is quite possible to execute the following. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>['a', 'b', 'c'].iterator.forEachRemaining(this::println)
+<pre style='border: 1px solid #dfe2e5'>[<span style='color: #C82829'>'&#97;'</span>, <span style='color: #C82829'>'&#98;'</span>, <span style='color: #C82829'>'&#99;'</span>].iterator.forEachRemaining(this::println)
 </pre><p>Here we are calling the println function with the item passed to the function. This function is represented as a function handle that takes a string. A function handle can represent a static or an instance function. For example: </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>class Formatter {
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>class</span> Formatter {
 
-    public static upper(s: String) {
-        return s.toUpperCase();
+    <span style='color: #8959A8'>public</span> <span style='color: #8959A8'>static</span> upper(s: String) {
+        <span style='color: #8959A8'>return</span> s.toUpperCase();
     }
 }
 
-['a', 'b', 'c'].stream().map(Formatter::upper).forEach(this::println);
+[<span style='color: #C82829'>'&#97;'</span>, <span style='color: #C82829'>'&#98;'</span>, <span style='color: #C82829'>'&#99;'</span>].stream().map(Formatter::upper).forEach(this::println);
 </pre><p></p>
 <h4><a id='generic-functions'></a>Generic Functions</h4>
 <p>Generics can be used to qualify the arguments that can be passed to a function. They are useful when the static analyser verifies the program as it ensures arguments and return types match the declared qualifiers. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>func abs&lt;T: Number&gt;(nums: T): List&lt;T&gt; {
-    let result: List&lt;T&gt;  = [];
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>func</span> abs&lt;T: Number&gt;(nums: T): List&lt;T&gt; {
+    <span style='color: #8959A8'>let</span> result: List&lt;T&gt;  = [];
     
-    for(num in nums) {
-        let abs = num.abs();
+    <span style='color: #8959A8'>for</span>(num <span style='color: #8959A8'>in</span> nums) {
+        <span style='color: #8959A8'>let</span> abs = num.abs();
         result.add(abs);
     }
-    return result;
+    <span style='color: #8959A8'>return</span> result;
 }
 
-let list: List&lt;Double&gt; = abs&lt;Double&gt;(-1.0, 2.0, -3.0);
+<span style='color: #8959A8'>let</span> list: List&lt;Double&gt; = abs&lt;Double&gt;(-1.0, 2.0, -3.0);
 
-assert list[0] == 1;
-assert list[2] == 2;
+<span style='color: #8959A8'>assert</span> list[0] == 1;
+<span style='color: #8959A8'>assert</span> list[2] == 2;
 </pre><p></p>
 <h4><a id='coroutines'></a>Coroutines</h4>
 <p>It is often useful to suspend execution of a function in order to return a result. Typically this requires a great deal of effort from the developer. <a href='https://en.wikipedia.org/wiki/Coroutine'>Coroutines</a>  allow an idiomatic means of suspending the execution of a function which can be resumed at the point of  suspension. This allows for complex reactive iteration to be performed with minimal effort. For example  take a Fibonnaci sequence. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>func fib(n){
-   let a = 1;
-   let b = 2;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>func</span> fib(n){
+   <span style='color: #8959A8'>let</span> a = 1;
+   <span style='color: #8959A8'>let</span> b = 2;
    
-   until(n-- &lt;= 0) {
-      yield a; // function is suspended here
+   <span style='color: #8959A8'>until</span>(n-- &lt;= 0) {
+      <span style='color: #8959A8'>yield</span> a; <span style='color: #718C00'>&#47;&#47; &#102;&#117;&#110;&#99;&#116;&#105;&#111;&#110; &#105;&#115; &#115;&#117;&#115;&#112;&#101;&#110;&#100;&#101;&#100; &#104;&#101;&#114;&#101;</span>
       (a, b) = (b, a + b);
    }
 }
@@ -798,29 +808,29 @@ assert list[2] == 2;
 <h4><a id='async-await'></a>Async Await</h4>
 <p>Asynchronous functions can be implemented with the async and await modifiers. This is similar to a standard Coroutine however this paradigm will allow the execution of the program to fork in two different threads of execution. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>async loadImage(n: String): Promise&lt;?&gt; {
-    if(!cache.contains(n)) {
-        return await ImageIO.read(n); 
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>async</span> loadImage(n: String): Promise&lt;?&gt; {
+    <span style='color: #8959A8'>if</span>(!cache.contains(n)) {
+        <span style='color: #8959A8'>return</span> <span style='color: #8959A8'>await</span> ImageIO.read(n); 
     }
-    return cache.get(n); // no need to go async
+    <span style='color: #8959A8'>return</span> cache.get(n); <span style='color: #718C00'>&#47;&#47; &#110;&#111; &#110;&#101;&#101;&#100; &#116;&#111; &#103;&#111; &#97;&#115;&#121;&#110;&#99;</span>
 }
 </pre><p>All async functions can cascade such that if an async function calls another it is suspended until the function being called completes, at which point it will resume from the call site. For convenience closures can also be asynchronous. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let loadImage = async (n: String) -&gt; ImageIO.read(n);
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> loadImage = <span style='color: #8959A8'>async</span> (n: String) -&gt; ImageIO.read(n);
 </pre><p>Here there is no need to specify the await keyword as expression based asynchronous closures have an implicit await. For closures that have more than a single expression you must specify which statements are asynchronous. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let loadImage = async (n: String) -&gt; {
-    if(!cache.contains(n)) {
-        return await ImageIO.read(n); 
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> loadImage = <span style='color: #8959A8'>async</span> (n: String) -&gt; {
+    <span style='color: #8959A8'>if</span>(!cache.contains(n)) {
+        <span style='color: #8959A8'>return</span> <span style='color: #8959A8'>await</span> ImageIO.read(n); 
     }
-    return cache.get(n); // no need to go async
+    <span style='color: #8959A8'>return</span> cache.get(n); <span style='color: #718C00'>&#47;&#47; &#110;&#111; &#110;&#101;&#101;&#100; &#116;&#111; &#103;&#111; &#97;&#115;&#121;&#110;&#99;</span>
 }
 </pre><p></p>
 <h4><a id='blank-parameters'></a>Blank Parameters</h4>
 <p>Blank parameters allow you to specify an argument that is not needed or can be ignored. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>func create&lt;T&gt;(type: T): T {
-    return cache.computeIfAbsent(type.name, (_) -&gt; new T());
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>func</span> create&lt;T&gt;(type: T): T {
+    <span style='color: #8959A8'>return</span> cache.computeIfAbsent(&#116;ype.name, (_) -&gt; <span style='color: #8959A8'>new</span> T());
 }
 </pre><p></p>
 <h3><a id='types'></a>Types</h3>
@@ -830,51 +840,51 @@ assert list[2] == 2;
 <h4><a id='class'></a>Class</h4>
 <p>A class is the most basic type. It contains variables, and functions that can operate on those variables.  Once declared a type can be instantiated by calling a special function called a constructor. There are two primary categories of class, the abstract class and the concrete class. An abstract class represents a generic concept and as such cannot be instantiated. Below is an example of an abstract class. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>abstract class Shape {
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>abstract</span> <span style='color: #8959A8'>class</span> Shape {
 
-    let origin: Point;
+    <span style='color: #8959A8'>let</span> origin: Point;
     
-    new(origin: Point) {
-       this.origin = origin;
+    <span style='color: #8959A8'>new</span>(origin: Point) {
+       <span style='color: #8959A8'>this</span>.origin = origin;
     }
 
-    /**
-     * Draw the shape to the provided graphics. Each
-     * shape will be drawn from the origin.
+    <span style='color: #718C00'>&#47;**
+     * &#68;&#114;&#97;&#119; &#116;&#104;&#101; &#115;&#104;&#97;&#112;&#101; &#116;&#111; &#116;&#104;&#101; &#112;&#114;&#111;&#118;&#105;&#100;&#101;&#100; &#103;&#114;&#97;&#112;&#104;&#105;&#99;&#115;. &#69;&#97;&#99;&#104;
+     * &#115;&#104;&#97;&#112;&#101; &#119;&#105;&#108;&#108; &#98;&#101; &#100;&#114;&#97;&#119;&#110; &#102;&#114;&#111;&#109; &#116;&#104;&#101; &#111;&#114;&#105;&#103;&#105;&#110;.
      *
-     * @param g the graphics to draw with
-     */
-    abstract draw(g: Graphics);
+     * @&#112;&#97;&#114;&#97;&#109; &#103; &#116;&#104;&#101; &#103;&#114;&#97;&#112;&#104;&#105;&#99;&#115; &#116;&#111; &#100;&#114;&#97;&#119; &#119;&#105;&#116;&#104;
+     *&#47;</span>
+    <span style='color: #8959A8'>abstract</span> draw(g: Graphics);
     
-    class Point { // inner class
+    <span style='color: #8959A8'>class</span> Point { <span style='color: #718C00'>&#47;&#47; &#105;&#110;&#110;&#101;&#114; &#99;&#108;&#97;&#115;&#115;</span>
     
-        const x;
-        const y;
+        <span style='color: #8959A8'>const</span> x;
+        <span style='color: #8959A8'>const</span> y;
         
-        new(x, y) {
-            this.x = x;
-            this.y = y;
+        <span style='color: #8959A8'>new</span>(x, y) {
+            <span style='color: #8959A8'>this</span>.x = x;
+            <span style='color: #8959A8'>this</span>.y = y;
         }
     }
 }
 </pre><p>A concrete class represents an whole object or entity and unlike abstract classes it can be instantiated. To leverage methods and state from other classes inheritance is possible. Below we can see how a square inherits state and a method from the abstract shape class.  </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>class Square extends Shape {
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>class</span> Square <span style='color: #8959A8'>extends</span> Shape {
 
-    private let width: Integer;
-    private let height: Integer;
+    <span style='color: #8959A8'>private</span> <span style='color: #8959A8'>let</span> width: Integer;
+    <span style='color: #8959A8'>private</span> <span style='color: #8959A8'>let</span> height: Integer;
 
-    new(origin: Point, width: Integer, height: Integer): super(origin) {
-        this.width = width;
-        this.height = height;
+    <span style='color: #8959A8'>new</span>(origin: Point, width: Integer, height: Integer): <span style='color: #8959A8'>super</span>(origin) {
+        <span style='color: #8959A8'>this</span>.width = width;
+        <span style='color: #8959A8'>this</span>.height = height;
     }
     
-    /**
-     * Draw a square at the origin.
+    <span style='color: #718C00'>&#47;**
+     * &#68;&#114;&#97;&#119; &#97; &#115;&#113;&#117;&#97;&#114;&#101; &#97;&#116; &#116;&#104;&#101; &#111;&#114;&#105;&#103;&#105;&#110;.
      *
-     * @param g the graphics to draw on
-     */
-    override draw(g: Graphics) {
+     * @&#112;&#97;&#114;&#97;&#109; &#103; &#116;&#104;&#101; &#103;&#114;&#97;&#112;&#104;&#105;&#99;&#115; &#116;&#111; &#100;&#114;&#97;&#119; &#111;&#110;
+     *&#47;</span>
+    <span style='color: #8959A8'>override</span> draw(g: Graphics) {
         g.drawSquare(origin.x, origin.y, width, height);
     }
 }
@@ -914,71 +924,71 @@ assert list[2] == 2;
 <h4><a id='enumeration'></a>Enumeration</h4>
 <p>An enumeration is a type that specifies a list of constant values. This values are constant and are instances of the enum they are declared in. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>enum Color {
-   RED("#ff0000"),
-   BLUE("#0000ff"),
-   GREEN("#00ff00");
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>enum</span> Color {
+   RED(<span style='color: #C82829'>"#&#102;&#102;0000"</span>),
+   BLUE(<span style='color: #C82829'>"#0000&#102;&#102;"</span>),
+   GREEN(<span style='color: #C82829'>"#00&#102;&#102;00"</span>);
    
-   let rgb;
+   <span style='color: #8959A8'>let</span> rgb;
    
-   new(rgb) {
-      this.rgb = rgb;
+   <span style='color: #8959A8'>new</span>(rgb) {
+      <span style='color: #8959A8'>this</span>.rgb = rgb;
    }
 }
 
-let red = Color.RED;
-let blue = Color.BLUE;
+<span style='color: #8959A8'>let</span> red = Color.RED;
+<span style='color: #8959A8'>let</span> blue = Color.BLUE;
 </pre><p></p>
 <h4><a id='trait'></a>Trait</h4>
 <p>A trait is similar to a class in that is specifies a list of functions. However, unlike a class a trait  does not declare any variables and does not have a constructor. It can be used to add functions to a class. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>trait NumberFormat&lt;T: Number&gt; {
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>trait</span> NumberFormat&lt;T: Number&gt; {
    
-   /**
-    * Round to number to a specific number of decimal
-    * places or to an integer.
+   <span style='color: #718C00'>&#47;**
+    * &#82;&#111;&#117;&#110;&#100; &#116;&#111; &#110;&#117;&#109;&#98;&#101;&#114; &#116;&#111; &#97; &#115;&#112;&#101;&#99;&#105;&#102;&#105;&#99; &#110;&#117;&#109;&#98;&#101;&#114; &#111;&#102; &#100;&#101;&#99;&#105;&#109;&#97;&#108;
+    * &#112;&#108;&#97;&#99;&#101;&#115; &#111;&#114; &#116;&#111; &#97;&#110; &#105;&#110;&#116;&#101;&#103;&#101;&#114;.
     *
-    * @param a places to round to
-    */
+    * @&#112;&#97;&#114;&#97;&#109; &#97; &#112;&#108;&#97;&#99;&#101;&#115; &#116;&#111; &#114;&#111;&#117;&#110;&#100; &#116;&#111;
+    *&#47;</span>
    round(a): T;
    
    format(a: T) {
-      return round(a);
+      <span style='color: #8959A8'>return</span> round(a);
    }
 }
 
-class DoubleFormat with NumberFormat&lt;Double&gt; {
+<span style='color: #8959A8'>class</span> DoubleFormat <span style='color: #8959A8'>with</span> NumberFormat&lt;Double&gt; {
    
-   let places: Integer;
+   <span style='color: #8959A8'>let</span> places: Integer;
    
-   new(places: Integer) {
-      this.places = places;
+   <span style='color: #8959A8'>new</span>(places: Integer) {
+      <span style='color: #8959A8'>this</span>.places = places;
    }
    
-   override round(a: Double) {
-      return a.round(places);
+   <span style='color: #8959A8'>override</span> round(a: Double) {
+      <span style='color: #8959A8'>return</span> a.round(places);
    }
 }
 
-class IntegerFormat with NumberFormat&lt;Integer&gt; {
+<span style='color: #8959A8'>class</span> IntegerFormat <span style='color: #8959A8'>with</span> NumberFormat&lt;Integer&gt; {
    
-   override round(a: Integer) {
-      return a;
+   <span style='color: #8959A8'>override</span> round(a: Integer) {
+      <span style='color: #8959A8'>return</span> a;
    }
 }
 </pre><p></p>
 <h4><a id='module'></a>Module</h4>
 <p>A module is collection of types, functions, and variables. It is similar to enclosing a script within a named type.  Modules are useful in providing constructs such as singletons. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>module ImageStore {
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>module</span> ImageStore {
 
-   private const cache = {:};
+   <span style='color: #8959A8'>private</span> <span style='color: #8959A8'>const</span> cache = {:};
    
-   public find(name) {
-      return cache.get(name);
+   <span style='color: #8959A8'>public</span> find(name) {
+      <span style='color: #8959A8'>return</span> cache.get(name);
    }
    
-   private cache(name, image) {
+   <span style='color: #8959A8'>private</span> cache(name, image) {
       cache.put(name, image);
    }
 } 
@@ -986,131 +996,131 @@ class IntegerFormat with NumberFormat&lt;Integer&gt; {
 <h4><a id='generics'></a>Generics</h4>
 <p>All types and functions can accept generic parameters. Geenerics in are basically additional parameters than can be  applied to a function or type in order to improve static analysis. The static analyser will perform projections on any  generic entity to determine types when generics cascade. Below is an example of how generic parameters applied to  a hash map can enable the compiler to perform projections to determine the actual types from a stream of values. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>let map: Map&lt;?, Number&gt; = HashMap&lt;?, Number&gt;();
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>let</span> map: Map&lt;?, Number&gt; = HashMap&lt;?, Number&gt;();
 
-map.get('x').iterator(); // compile error
-map.get('x').intValue(); // success
+map.get(<span style='color: #C82829'>'&#120;'</span>).iterator(); <span style='color: #718C00'>&#47;&#47; &#99;&#111;&#109;&#112;&#105;&#108;&#101; &#101;&#114;&#114;&#111;&#114;</span>
+map.get(<span style='color: #C82829'>'&#120;'</span>).intValue(); <span style='color: #718C00'>&#47;&#47; &#115;&#117;&#99;&#99;&#101;&#115;&#115;</span>
 
-map.values().stream().findFirst().get().toUpperCase(); // compile error
-map.values().stream().findFirst().get().doubleValue(); // success
+map.values().stream().findFirst().get().toUpperCase(); <span style='color: #718C00'>&#47;&#47; &#99;&#111;&#109;&#112;&#105;&#108;&#101; &#101;&#114;&#114;&#111;&#114;</span>
+map.values().stream().findFirst().get().doubleValue(); <span style='color: #718C00'>&#47;&#47; &#115;&#117;&#99;&#99;&#101;&#115;&#115;</span>
 </pre><p>Generic projections are also performed on type hierarchies such that it is possible to determine the actual types for all functions and properties. Below is an example of how static analysis can use a generic declaration to determine the  actual types for the functions invoked. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>trait Repository&lt;A, B&gt; {
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>trait</span> Repository&lt;A, B&gt; {
    findOne(key: A): B;
    findAll(): Map&lt;A, B&gt;;
 }
 
-class Person {
-   const name: String;
-   const address: String;
+<span style='color: #8959A8'>class</span> Person {
+   <span style='color: #8959A8'>const</span> name: String;
+   <span style='color: #8959A8'>const</span> address: String;
 
-   new(name: String, address: String) {
-      this.name = name;
-      this.address = address;
+   <span style='color: #8959A8'>new</span>(name: String, address: String) {
+      <span style='color: #8959A8'>this</span>.name = name;
+      <span style='color: #8959A8'>this</span>.address = address;
    }
 
    getName() {
-      return name;
+      <span style='color: #8959A8'>return</span> name;
    }
 }
 
-trait PersonRepository&lt;A&gt; with Repository&lt;A, List&lt;Person&gt;&gt; {
+<span style='color: #8959A8'>trait</span> PersonRepository&lt;A&gt; <span style='color: #8959A8'>with</span> Repository&lt;A, List&lt;Person&gt;&gt; {
    findPerson(key: A): List&lt;Person&gt;;
 }
 
-let repo: PersonRepository&lt;String&gt; = // ... 
+<span style='color: #8959A8'>let</span> repo: PersonRepository&lt;String&gt; = <span style='color: #718C00'>&#47;&#47; ... </span>
 
-repo.findAll().values().stream().findFirst().get().getName(); // compile error
-repo.findAll().values().stream().findFirst().get().stream().findFirst().get().getName(); // success
-repo.findPerson("john").stream().findFirst().get().getName(); // success
+repo.findAll().values().stream().findFirst().get().getName(); <span style='color: #718C00'>&#47;&#47; &#99;&#111;&#109;&#112;&#105;&#108;&#101; &#101;&#114;&#114;&#111;&#114;</span>
+repo.findAll().values().stream().findFirst().get().stream().findFirst().get().getName(); <span style='color: #718C00'>&#47;&#47; &#115;&#117;&#99;&#99;&#101;&#115;&#115;</span>
+repo.findPerson(<span style='color: #C82829'>"&#106;&#111;&#104;&#110;"</span>).stream().findFirst().get().getName(); <span style='color: #718C00'>&#47;&#47; &#115;&#117;&#99;&#99;&#101;&#115;&#115;</span>
 </pre><p></p>
 <h4><a id='annotations'></a>Annotations</h4>
 <p>Annotations can be applied to any type and do not need to be declared. These are useful when you need to determine the behaviour of a type and its methods through introspection. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>@ComponentPath(path: '/images')
-class ImageService {
+<pre style='border: 1px solid #dfe2e5'>@ComponentPath(path: <span style='color: #C82829'>'&#47;&#105;&#109;&#97;&#103;&#101;&#115;'</span>)
+<span style='color: #8959A8'>class</span> ImageService {
 
-    @Path(match = "/{path}')
-    @Method(verb: 'GET')
-    @ContentType(value: 'image/png')
-    getImage(@Param(name: 'path') path) {
-        return ImageIO.read(path);
+    @Path(match = <span style='color: #C82829'>"&#47;{&#112;&#97;&#116;&#104;}"</span>)
+    @Method(verb: <span style='color: #C82829'>'&#71;&#69;&#84;'</span>)
+    @ContentType(value: <span style='color: #C82829'>'&#105;&#109;&#97;&#103;&#101;&#47;&#112;&#110;&#103;'</span>)
+    getImage(@Param(name: <span style='color: #C82829'>'&#112;&#97;&#116;&#104;'</span>) path) {
+        <span style='color: #8959A8'>return</span> ImageIO.read(path);
     }
 }
 </pre><p></p>
 <h4><a id='type-alias'></a>Type Alias</h4>
 <p>It can often be useful to alias types for readability, particularly when generics are involved. An alias is not a new type but rather a new name for a known type.  </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>import util.concurrent.ConcurrentHashMap;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>import</span> util.concurrent.ConcurrentHashMap;
 
-type Bag&lt;T&gt; = ConcurrentHashMap&lt;String, T&gt;();
+<span style='color: #8959A8'>type</span> Bag&lt;T&gt; = ConcurrentHashMap&lt;String, T&gt;();
 
-func bagOf&lt;T: Number&gt;(nums...: T): Bag&lt;T&gt; {
-    let bag: Bag&lt;T&gt; = new Bag&lt;T&gt;();
+<span style='color: #8959A8'>func</span> bagOf&lt;T: Number&gt;(nums...: T): Bag&lt;T&gt; {
+    <span style='color: #8959A8'>let</span> bag: Bag&lt;T&gt; = <span style='color: #8959A8'>new</span> Bag&lt;T&gt;();
     
-    for(num in nums){
-        bag.put(`${num}`, num);
+    <span style='color: #8959A8'>for</span>(num <span style='color: #8959A8'>in</span> nums){
+        bag.put(<span style='color: #C82829'>`${&#110;&#117;&#109;}`</span>, num);
     }
-    return bag;
+    <span style='color: #8959A8'>return</span> bag;
 }
 </pre><p></p>
 <h4><a id='uniform-access'></a>Uniform Access</h4>
 <p>The uniform access principle of computer programming was put forth by Bertrand Meyer in his book called <a href='https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction'>Object Oriented Software Construction</a>.  It states all services offered by a module should be available through a uniform notation,  which does not betray whether they are implemented through storage or through computation. An example of this is typical getter and setter property methods but applies to any method that does not require arguments. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>class Person {
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>class</span> Person {
     
-    private const firstName;
-    private const surname;
+    <span style='color: #8959A8'>private</span> <span style='color: #8959A8'>const</span> firstName;
+    <span style='color: #8959A8'>private</span> <span style='color: #8959A8'>const</span> surname;
     
-    new(firstName, surname) {
-        this.firstName = firstName;
-        this.surname = surname;
+    <span style='color: #8959A8'>new</span>(firstName, surname) {
+        <span style='color: #8959A8'>this</span>.firstName = firstName;
+        <span style='color: #8959A8'>this</span>.surname = surname;
     }
     
     getFullName() {
-        return "${firstName} ${surname}";
+        <span style='color: #8959A8'>return</span> <span style='color: #C82829'>"${&#102;&#105;&#114;&#115;&#116;&#78;&#97;&#109;&#101;} ${&#115;&#117;&#114;&#110;&#97;&#109;&#101;}"</span>;
     }
 }
 
-let person = new Person("John", "Doe");
+<span style='color: #8959A8'>let</span> person = <span style='color: #8959A8'>new</span> Person(<span style='color: #C82829'>"&#74;&#111;&#104;&#110;"</span>, <span style='color: #C82829'>"&#68;&#111;&#101;"</span>);
 
-assert person.fullName == 'John Doe';
+<span style='color: #8959A8'>assert</span> person.fullName == <span style='color: #C82829'>'&#74;&#111;&#104;&#110; &#68;&#111;&#101;'</span>;
 </pre><p></p>
 <h4><a id='import'></a>Import</h4>
 <p>In order to access the Java types available they can be imported by name. Once imported the type can be instantiated  and used as if it was a script object. In addition to importing types, functions can also be imported by using a  static import. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>import static lang.Math.*; // import static functions
-import security.SecureRandom;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>import</span> <span style='color: #8959A8'>static</span> lang.Math.*; <span style='color: #718C00'>&#47;&#47; &#105;&#109;&#112;&#111;&#114;&#116; &#115;&#116;&#97;&#116;&#105;&#99; &#102;&#117;&#110;&#99;&#116;&#105;&#111;&#110;&#115;</span>
+<span style='color: #8959A8'>import</span> security.SecureRandom;
 
-const random = new SecureRandom(); // create a java type
-const a = random.nextInt(40);
-const b = random.nextInt(40);
-const c = max(a, b); // Math.max(a, b)
+<span style='color: #8959A8'>const</span> random = <span style='color: #8959A8'>new</span> SecureRandom(); <span style='color: #718C00'>&#47;&#47; &#99;&#114;&#101;&#97;&#116;&#101; &#97; &#106;&#97;&#118;&#97; &#116;&#121;&#112;&#101;</span>
+<span style='color: #8959A8'>const</span> a = random.nextInt(40);
+<span style='color: #8959A8'>const</span> b = random.nextInt(40);
+<span style='color: #8959A8'>const</span> c = max(a, b); <span style='color: #718C00'>&#47;&#47; &#77;&#97;&#116;&#104;.&#109;&#97;&#120;(&#97;, &#98;)</span>
 
-println(c); // prints the maximum random
+println(c); <span style='color: #718C00'>&#47;&#47; &#112;&#114;&#105;&#110;&#116;&#115; &#116;&#104;&#101; &#109;&#97;&#120;&#105;&#109;&#117;&#109; &#114;&#97;&#110;&#100;&#111;&#109;</span>
 </pre><p>To avoid name collisions it is also possible to import types with aliases. Additionally an imports visibility can be encapsulated within a module so that it is only available in that module.  </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>import util.concurrent.ConcurrentHashMap as Bag;
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>import</span> util.concurrent.ConcurrentHashMap <span style='color: #8959A8'>as</span> Bag;
 
-module ImageStore {
+<span style='color: #8959A8'>module</span> ImageStore {
 
-    import aws.image.BufferedImage as Image;
-    import aws.Graphics;
+    <span style='color: #8959A8'>import</span> aws.image.BufferedImage <span style='color: #8959A8'>as</span> Image;
+    <span style='color: #8959A8'>import</span> aws.Graphics;
     
-    public paint(g: Graphics) {
-        // ...
+    <span style='color: #8959A8'>public</span> paint(g: Graphics) {
+        <span style='color: #718C00'>&#47;&#47; ...</span>
     }
 }
 </pre><p>Imports can be grouped from the same package using braces. Below is an example of  import groups. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>import util.concurrent.{ ConcurrentHashMap, CopyOnWriteArrayList };
-import util.{ Map, Set, List };
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>import</span> util.concurrent.{ ConcurrentHashMap, CopyOnWriteArrayList };
+<span style='color: #8959A8'>import</span> util.{ Map, Set, List };
 </pre><p></p>
 <p></p>
 <h4><a id='coercion'></a>Coercion</h4>
 <p>For interfaces that have only a single method a closure can be coerced to that interface type. This makes for a much simpler and concise syntax similar to that offered by Java closures. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>const set = new TreeSet(Double::compare);
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>const</span> set = <span style='color: #8959A8'>new</span> TreeSet(Double::compare);
 
 set.add(1.2);
 set.add(2.3);
@@ -1118,22 +1128,22 @@ set.add(33.4);
 set.add(4.55);
 set.add(2);
 
-for(entry in set){
+<span style='color: #8959A8'>for</span>(entry <span style='color: #8959A8'>in</span> set){
    println(entry);
 }
 </pre><p></p>
 <h4><a id='platform-integration'></a>Platform Integration</h4>
 <p>To leverage the large array of frameworks and services available on the Java platform any Java type  can be instantiated, and any Java interface can be implemented. </p>
 <p></p>
-<pre style='border: 1px solid #dfe2e5'>class DoubleComparator with Comparator{
+<pre style='border: 1px solid #dfe2e5'><span style='color: #8959A8'>class</span> DoubleComparator <span style='color: #8959A8'>with</span> Comparator{
 
-   override compare(a,b){
-      return Double.compare(a,b);
+   <span style='color: #8959A8'>override</span> compare(a,b){
+      <span style='color: #8959A8'>return</span> Double.compare(a,b);
    }
 }
 
-let comparator = new DoubleComparator();
-let set = new TreeSet(comparator);
+<span style='color: #8959A8'>let</span> comparator = <span style='color: #8959A8'>new</span> DoubleComparator();
+<span style='color: #8959A8'>let</span> set = <span style='color: #8959A8'>new</span> TreeSet(comparator);
 
 set.add(1.2);
 set.add(2.3);
@@ -1141,7 +1151,7 @@ set.add(33.4);
 set.add(4.55);
 set.add(2);
 
-for(let entry in set){
+<span style='color: #8959A8'>for</span>(<span style='color: #8959A8'>let</span> entry <span style='color: #8959A8'>in</span> set){
    println(entry);
 }
 </pre><p></p>

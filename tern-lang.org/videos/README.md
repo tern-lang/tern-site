@@ -23,7 +23,7 @@ are used to provide an overview of how to use the command line interpreter as we
 
 ## Getting Started
 
-To get started you will first need to download the command line interpreter and if require the development environment.
+To get started you will first need to download the command line interpreter and if required the development environment.
 This section provides some very short clips of how to dowload both of these tools and runs through some example code
 to clarify how to use them.
 
