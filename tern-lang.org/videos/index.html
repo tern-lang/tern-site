@@ -97,21 +97,22 @@
   <li><a href='#getting-started'>Getting Started</a>
   <ul>
         <li><a href='#command-line-interpreter'>Command Line Interpreter</a></li>
-        <li><a href='#development-environment'>Development Environment</a>
-        <ul>
-                 <li><a href='#debugging'>Debugging</a>
-                 <ul>
-                             <li><a href='#browser-debugging'>Browser Debugging</a></li>
-                             <li><a href='#conditional-debugging'>Conditional Debugging</a></li>
-                             <li><a href='#debug-coroutines'>Debug Coroutines</a></li>
-                             <li><a href='#debug-remote-process'>Debug Remote Process</a></li>
-                             <li><a href='#reverse-debugging'>Reverse Debugging</a></li>
-                 </ul>
-                 </li>
-                 <li><a href='#code-completion'>Code Completion</a></li>
-                 <li><a href='#error-detection'>Error Detection</a></li>
-        </ul>
-        </li>
+        <li><a href='#development-environment'>Development Environment</a></li>
+  </ul>
+  </li>
+  <li><a href='#debugging'>Debugging</a>
+  <ul>
+        <li><a href='#browser-debugging'>Browser Debugging</a></li>
+        <li><a href='#conditional-debugging'>Conditional Debugging</a></li>
+        <li><a href='#debug-coroutines'>Debug Coroutines</a></li>
+        <li><a href='#debug-remote-process'>Debug Remote Process</a></li>
+        <li><a href='#reverse-debugging'>Reverse Debugging</a></li>
+  </ul>
+  </li>
+  <li><a href='#editor'>Editor</a>
+  <ul>
+        <li><a href='#code-completion'>Code Completion</a></li>
+        <li><a href='#error-detection'>Error Detection</a></li>
   </ul>
   </li>
   <li><a href='#example-programs'>Example Programs</a>
@@ -483,30 +484,33 @@
    </tr>
 </table>
 <p></p>
-<h3><a id='debugging'></a>Debugging</h3>
+<h2><a id='debugging'></a>Debugging</h2>
 <p>The development environment comes with a wide array of features that enable you to step through your application and inspect variables.  The environment itself is a HTML 5 application written with TypeScript and CSS so it is possible to debug applications through the standalone application or through a web browser. In addition to standard debug actions there are additional capabilities such as conditional and remote debugging. </p>
 <p></p>
-<h2><a id='browser-debugging'></a>Browser Debugging</h2>
+<h3><a id='browser-debugging'></a>Browser Debugging</h3>
 <p>The standalone development environment is essentially a web application wrapped with the <a href='https://en.wikipedia.org/wiki/Chromium_Embedded_Framework'>Chrome Embedded Framework</a>. To run in server mode you can specify the port to connect to and debug with a conventional web browser. </p>
 <p></p>
 <p><iframe width='850' height='480' src='https://www.youtube.com/embed/t0BHpvCC9gw?VQ=HD1080&amp;rel=0'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p></p>
-<h4><a id='conditional-debugging'></a>Conditional Debugging</h4>
+<h3><a id='conditional-debugging'></a>Conditional Debugging</h3>
 <p>It can often be useful when debugging large complex applications to set a breakpoint that suspends execution when a specific condition has been satisfied. For simplicity a debug statement is available in the Tern language. This is similar to the debugger statement in JavaScript only that it can accept any conditional expression. This debug statement will always be executed for consistency, however it will suspend execution only when the application is running within the debugger. </p>
 <p></p>
 <p><iframe width='850' height='480' src='https://www.youtube.com/embed/Y-1a86jziMc?VQ=HD1080&amp;rel=0'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p></p>
-<h4><a id='debug-coroutines'></a>Debug Coroutines</h4>
+<h3><a id='debug-coroutines'></a>Debug Coroutines</h3>
 <p>When a function contains a yield expression it becomes a coroutine. It is useful to think of a coroutine as a cursor that will suspend the execution of the function when something has been yielded from it. This cursor will resume execution after the yield statement with the same stack variables and execution pointer.  </p>
 <p></p>
 <p><iframe width='850' height='480' src='https://www.youtube.com/embed/57vPgs0xNJI?VQ=HD1080&amp;rel=0'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p></p>
-<h4><a id='debug-remote-process'></a>Debug Remote Process</h4>
+<h3><a id='debug-remote-process'></a>Debug Remote Process</h3>
 <p>During the development process it is useful to be able to debug an application. There are also obvious benefits in the ability to attach the development environment to a remote process that could be running on another machine. In order to enable remote debugging you need to specify a debug port that the process will listen on. You can also specify whether the application should wait to start running until the debugger is attached. The following video shows how to attach the development environment to a running process. </p>
 <p></p>
 <p><iframe width='850' height='480' src='https://www.youtube.com/embed/JuFA5ZZdOwc?VQ=HD1080&amp;rel=0'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p>A key benefit to this remote debugging process is that the running application can push its sources to the debugger. You do not need to have the sources locally. This allows you to see exactly what is running and avoids any issues that can occur when local source code does not match that of the running process. </p>
 <p></p>
-<h4><a id='reverse-debugging'></a>Reverse Debugging</h4>
+<h3><a id='reverse-debugging'></a>Reverse Debugging</h3>
 <p>There are often cases where an application may have an issue that is difficult to replicate. In such scenarios it would be much easier if the application could notify a debug service when the issue has occured and suspend execution. With reverse debugging you can specify the URL of the debugger to be notified when a debug statement evaluates to true. When suspended you can navigate through the whole application and have the debug agent push the sources to the debugger. </p>
 <p></p>
 <p><iframe width='850' height='480' src='https://www.youtube.com/embed/BmgmMrOfP0c?VQ=HD1080&amp;rel=0'  frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe></p><p></p>
+<h2><a id='editor'></a>Editor</h2>
+<p>The development environment has an embedded editor for reading and writing code. In addition to syntax highlighting it provides some tools to assist the developer. Two features of note are the code completion tool and the error detection system. </p>
+<p></p>
 <h3><a id='code-completion'></a>Code Completion</h3>
 <p>For productivity code completion is provided from the development environment editor. It supports import completion as well as variable, function, and type completion. Below is a short example of these features. </p>
 <p></p>

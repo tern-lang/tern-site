@@ -6,14 +6,15 @@ are used to provide an overview of how to use the command line interpreter as we
   * [Getting Started](#getting-started)  
       * [Command Line Interpreter](#command-line-interpreter)      
       * [Development Environment](#development-environment)
-         * [Debugging](#debugging)
-            * [Browser Debugging](#browser-debugging)   
-            * [Conditional Debugging](#conditional-debugging)
-            * [Debug Coroutines](#debug-coroutines)   
-            * [Debug Remote Process](#debug-remote-process)
-            * [Reverse Debugging](#reverse-debugging)
-         * [Code Completion](#code-completion) 
-         * [Error Detection](#error-detection)
+  * [Debugging](#debugging)
+      * [Browser Debugging](#browser-debugging)   
+      * [Conditional Debugging](#conditional-debugging)
+      * [Debug Coroutines](#debug-coroutines)   
+      * [Debug Remote Process](#debug-remote-process)
+      * [Reverse Debugging](#reverse-debugging)
+  * [Editor](#editor)
+      * [Code Completion](#code-completion) 
+      * [Error Detection](#error-detection)
   * [Example Programs](#example-programs)
       * [Mario](#mario)      
       * [Space Invaders](#space-invaders) 
@@ -90,21 +91,21 @@ The following key bindings are available for the development environment.
 | F7	 |  Step Out|
 | F6	 |  Step Over|
 
-### Debugging
+## Debugging
 
 The development environment comes with a wide array of features that enable you to step through your application and inspect variables. 
 The environment itself is a HTML 5 application written with TypeScript and CSS so it is possible to debug applications through the
 standalone application or through a web browser. In addition to standard debug actions there are additional capabilities such as
 conditional and remote debugging.
 
-## Browser Debugging
+### Browser Debugging
 
 The standalone development environment is essentially a web application wrapped with the [Chrome Embedded Framework](https://en.wikipedia.org/wiki/Chromium_Embedded_Framework). To run in server mode you can specify
 the port to connect to and debug with a conventional web browser.
 
 [![Web Development Environment](http://img.youtube.com/vi/t0BHpvCC9gw/0.jpg)](https://www.youtube.com/watch?v=t0BHpvCC9gw)
 
-#### Conditional Debugging
+### Conditional Debugging
 
 It can often be useful when debugging large complex applications to set a breakpoint that suspends execution when a specific condition
 has been satisfied. For simplicity a debug statement is available in the Tern language. This is similar to the debugger statement in
@@ -113,7 +114,7 @@ execution only when the application is running within the debugger.
 
 [![Conditional Debugging](http://img.youtube.com/vi/Y-1a86jziMc/0.jpg)](https://www.youtube.com/watch?v=Y-1a86jziMc)
 
-#### Debug Coroutines
+### Debug Coroutines
 
 When a function contains a yield expression it becomes a coroutine. It is useful to think of a coroutine as a cursor that will suspend
 the execution of the function when something has been yielded from it. This cursor will resume execution after the yield statement with
@@ -121,7 +122,7 @@ the same stack variables and execution pointer.
 
 [![Debug Coroutines](http://img.youtube.com/vi/57vPgs0xNJI/0.jpg)](https://www.youtube.com/watch?v=57vPgs0xNJI)
 
-#### Debug Remote Process
+### Debug Remote Process
 
 During the development process it is useful to be able to debug an application. There are also obvious benefits in the ability to attach
 the development environment to a remote process that could be running on another machine. In order to enable remote debugging you need
@@ -134,7 +135,7 @@ A key benefit to this remote debugging process is that the running application c
 to have the sources locally. This allows you to see exactly what is running and avoids any issues that can occur when local source
 code does not match that of the running process.
 
-#### Reverse Debugging
+### Reverse Debugging
 
 There are often cases where an application may have an issue that is difficult to replicate. In such scenarios it would be much easier
 if the application could notify a debug service when the issue has occured and suspend execution. With reverse debugging you can specify
@@ -142,6 +143,11 @@ the URL of the debugger to be notified when a debug statement evaluates to true.
 application and have the debug agent push the sources to the debugger.
 
 [![Reverse Debugging](http://img.youtube.com/vi/BmgmMrOfP0c/0.jpg)](https://www.youtube.com/watch?v=BmgmMrOfP0c)
+
+## Editor
+
+The development environment has an embedded editor for reading and writing code. In addition to syntax highlighting it provides
+some tools to assist the developer. Two features of note are the code completion tool and the error detection system.
 
 ### Code Completion
 
