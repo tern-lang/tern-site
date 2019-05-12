@@ -10,7 +10,9 @@ To run scripts as a standalone application you can download the interpreter. The
 be installed on the host machine. Once you have downloaded the interpreter you can begin running scripts right 
 away. All you need to do is specify the script file relative to the current directory.
 
-Download - [http://tern-lang.org/tern.zip](http://tern-lang.org/tern.zip)
+| Platform      | Description   | Download   |
+| ------------- | ------------- | ------ |
+| Java      | Command line interpreter for Java and Android  | [Download](http://tern-lang.org/tern.zip)   |
 
 ### Development Environment
 
@@ -20,4 +22,8 @@ play button. This will initiate a bootstrapping process where the interpreter is
 this bootstrapping process has completed the source program is downloaded and executed. Stepping through the
 code can be done by setting break points.
 
-Download - [http://tern-lang.org/ternd.zip](http://tern-lang.org/ternd.zip)
+| Platform      | Description   | Download   |
+| ------------- | ------------- | ------ |
+| Windows      | This build uses Chrome Embedded Framework compatible with 64-bit Windows  | [Download](http://tern-lang.org/download/ternd-windows.zip)   |
+| Linux      | This build uses Chrome Embedded Framework compatible with 64-bit Linux  | [Download](http://tern-lang.org/download/ternd-linux.tar.gz)   |
+| Mac      | This build uses Chrome Embedded Framework compatible with 64-bit Mac  | [Download](http://tern-lang.org/download/ternd-mac.zip)   |
