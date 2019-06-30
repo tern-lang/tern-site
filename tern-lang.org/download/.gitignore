@@ -1,10 +1,6 @@
 *.exe
 *.jar
 *.zip
-*.ini
 log
 work
 *.log
-mac
-linux
-windows
